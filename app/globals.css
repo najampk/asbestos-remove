@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design tokens — "Containment Grid" system (SPEC.md §1.2 / §1.3)
+   Color tokens reproduced exactly from the spec; font families bound to the
+   self-hosted next/font variables; type scale = 12/14/16/18/22/28/36/48/64.
+   ───────────────────────────────────────────────────────────────────────────── */
+@theme {
+  /* Primary — shield blue */
+  --color-brand-950: #071b47; /* deep navy — headings, footer bg */
+  --color-brand-900: #0b2a6b;
+  --color-brand-700: #1d4ed8; /* primary blue — logo shield */
+  --color-brand-500: #2563eb; /* interactive/hover */
+
+  /* Secondary — leaf green */
+  --color-eco-700: #15803d;
+  --color-eco-500: #16a34a; /* logo leaf green */
+  --color-eco-400: #4ade80; /* gradient end, accents */
+
+  /* Neutrals */
+  --color-ink: #0f172a;
+  --color-slate-600: #475569;
+  --color-surface: #f8fafc;
+  --color-line: #e2e8f0;
+
+  /* Semantic */
+  --color-danger: #dc2626; /* hazard notices only — used sparingly */
+
+  /* Typography — self-hosted via next/font (see app/layout.tsx) */
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "Cascadia Code", monospace;
+
+  /* Type scale — 12 / 14 / 16 / 18 / 22 / 28 / 36 / 48 / 64 */
+  --text-xs: 0.75rem; /* 12 */
+  --text-sm: 0.875rem; /* 14 */
+  --text-base: 1rem; /* 16 */
+  --text-lg: 1.125rem; /* 18 */
+  --text-xl: 1.375rem; /* 22 */
+  --text-2xl: 1.75rem; /* 28 */
+  --text-3xl: 2.25rem; /* 36 */
+  --text-4xl: 3rem; /* 48 */
+  --text-5xl: 4rem; /* 64 */
+
+  /* Elevation — navy-tinted shadows read cleaner on the cool palette than
+     the default neutral-black Tailwind shadows */
+  --shadow-card: 0 1px 2px rgb(7 27 71 / 0.06), 0 1px 3px rgb(7 27 71 / 0.08);
+  --shadow-card-hover:
+    0 4px 6px -2px rgb(7 27 71 / 0.08), 0 12px 24px -6px rgb(7 27 71 / 0.16);
+  --shadow-cta: 0 8px 20px -6px rgb(29 78 216 / 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Base
+   ───────────────────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Brand-tinted text selection */
+::selection {
+  background-color: color-mix(in srgb, var(--color-brand-700) 18%, transparent);
+  color: var(--color-brand-950);
+}
+
+/* Typographic niceties — balanced headings, no orphans in body copy */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Visible focus for keyboard users (WCAG AA — SPEC.md standing rules) */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Signature devices — gradients + containment grid motif (SPEC.md §1.1 / §1.2)
+   ───────────────────────────────────────────────────────────────────────────── */
+@layer components {
+  .gradient-hero {
+    background-image: linear-gradient(
+      135deg,
+      #071b47 0%,
+      #0b2a6b 45%,
+      #15803d 100%
+    );
+  }
+
+  .gradient-cta {
+    background-image: linear-gradient(90deg, #1d4ed8, #16a34a);
+  }
+
+  /* blue→green clipped text — stat numbers & section eyebrows only */
+  .gradient-text {
+    background-image: linear-gradient(90deg, #1d4ed8, #16a34a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine 1px enclosure-scaffolding grid, ~6% opacity (hero + section dividers) */
+  .containment-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--color-brand-950) 6%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--color-brand-950) 6%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+  }
+
+  /* Fluid H1 per SPEC.md §1.3 */
+  .h1-fluid {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  /* 1px blue→green hairline — header bottom, footer top, section seams */
+  .gradient-hairline {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      #1d4ed8 20%,
+      #16a34a 80%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  /* Soft radial glow accents for dark gradient surfaces (hero, stats, CTA) */
+  .hero-glow {
+    background-image:
+      radial-gradient(
+        42rem 28rem at 82% 0%,
+        color-mix(in srgb, var(--color-eco-400) 14%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        36rem 24rem at 8% 100%,
+        color-mix(in srgb, var(--color-brand-500) 18%, transparent),
+        transparent 70%
+      );
+  }
+
+  /* Containment grid for dark surfaces — white lines, faded at the edges so the
+     motif reads as texture rather than wallpaper */
+  .containment-grid-dark {
+    background-image:
+      linear-gradient(
+        to right,
+        rgb(255 255 255 / 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(255 255 255 / 0.07) 1px,
+        transparent 1px
+      );
+    background-size: 40px 40px;
+    mask-image: radial-gradient(
+      ellipse 90% 90% at 50% 40%,
+      black 30%,
+      transparent 100%
+    );
+  }
+
+  /* Nav link — animated gradient underline on hover / current page */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.125rem;
+    height: 2px;
+    border-radius: 9999px;
+    background-image: linear-gradient(90deg, #1d4ed8, #16a34a);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-underline:hover::after,
+  .nav-underline:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FAQ <details> — smooth open/close. `interpolate-size` is progressive
+   enhancement (Chromium 129+); other browsers get an instant, fully
+   functional toggle plus the content fade.
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  details.faq-item::details-content {
+    opacity: 0;
+    block-size: 0;
+    overflow-y: clip;
+    transition:
+      content-visibility 0.3s allow-discrete,
+      opacity 0.3s ease,
+      block-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  details.faq-item[open]::details-content {
+    opacity: 1;
+    block-size: auto;
+  }
+  @supports (interpolate-size: allow-keywords) {
+    details.faq-item {
+      interpolate-size: allow-keywords;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Scroll-reveal entrance (SPEC.md §1.5). Progressive enhancement: the hidden state
+   applies ONLY when scripting is enabled and motion is allowed — so no-JS crawlers
+   and reduced-motion users always see content immediately, with no layout shift and
+   no pre-hydration DOM mutation.
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Respect reduced-motion globally (SPEC.md §1.5)
+   ───────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
