@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { ArrowRight, FileCheck2, MapPin, Phone, ShieldCheck } from "lucide-react";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
 import TrustBar from "@/components/TrustBar";
@@ -13,6 +13,8 @@ import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import Reveal from "@/components/Reveal";
 import HeroSlider from "@/components/HeroSlider";
 import PropertyExplorer from "@/components/explorer/PropertyExplorer";
+import SafetyTriage from "@/components/SafetyTriage";
+import ServiceArea from "@/components/ServiceArea";
 import { SERVICES } from "@/lib/services";
 import { SECTORS } from "@/lib/sectors";
 import { PROCESS_STEPS } from "@/lib/process";
@@ -21,7 +23,6 @@ import {
   HOMEPAGE_SCOPE_PARAGRAPH,
   LICENSING_FAQ_ANSWER,
   FAQ_SELF_REMOVAL_ANSWER,
-  PLACEHOLDERS,
 } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 
@@ -46,7 +47,7 @@ const HOME_FAQS: FAQ[] = [
   {
     question: "How much does asbestos removal cost in Glasgow?",
     answer:
-      "It depends on material type, condition, location and quantity — a garage roof differs greatly from pipe lagging in a boiler room. Every job is quoted individually after a survey or photo assessment, and quotes are free and fixed.",
+      "It depends on material type, condition, location and quantity — a garage roof differs greatly from pipe lagging in a boiler room. Every job is quoted individually after an assessment, and quotes are free and fixed.",
   },
   {
     question: "Is it illegal to remove asbestos myself?",
@@ -58,9 +59,13 @@ const HOME_FAQS: FAQ[] = [
       "Any building constructed or refurbished before 2000 may contain asbestos. The only reliable confirmation is sampling and laboratory analysis as part of an asbestos survey.",
   },
   {
-    question: "Do you cover areas outside Glasgow?",
+    question: "Searching for “asbestos removal near me” in Glasgow?",
     answer:
-      "Yes — we're Glasgow-based and cover the surrounding areas, with Scotland-wide coverage for commercial and industrial projects.",
+      "We're based in Glasgow city and cover the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld — with Scotland-wide coverage for commercial and industrial projects.",
+  },
+  {
+    question: "Do you offer emergency asbestos removal?",
+    answer: `If asbestos has been damaged or disturbed, stop work, keep people out of the area and call us on ${BUSINESS.phoneDisplay}. Urgent situations are prioritised — we'll tell you straight away how to make the area safe, then arrange the survey or removal that follows.`,
   },
   {
     question: "Are you licensed by the HSE?",
@@ -100,23 +105,44 @@ export default function HomePage() {
               Safe, Compliant, Efficient Asbestos Removal in Glasgow
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
-              Asbestos Removal Environmental Ltd delivers safe, compliant
-              asbestos removal, surveying, disposal and management for homes,
-              businesses and industrial sites across Glasgow and beyond.
-              Protecting your property. Safeguarding your health.
+              Clear advice, asbestos surveys and controlled non-licensed and
+              notifiable non-licensed work for homes, businesses and industrial
+              sites across Glasgow and the surrounding council areas.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href="/contact" variant="primary">
+              <Button href="/contact#quote-form" variant="primary">
                 Get a Free Quote
               </Button>
-              <Button href="/services" variant="outlineLight">
-                View Our Services
+              <Button href={BUSINESS.phoneHref} variant="outlineLight" external>
+                <Phone className="h-4 w-4" aria-hidden="true" /> Call {BUSINESS.phoneDisplay}
               </Button>
             </div>
+            <p className="mt-4 text-sm text-white/70">Free, no-obligation enquiry · Glasgow-based team · We explain the appropriate work category before quoting</p>
           </div>
         </Container>
       </section>
       <TrustBar tone="onLight" />
+      <SafetyTriage />
+
+      <section className="bg-white py-12 sm:py-16">
+        <Container>
+          <div className="gradient-hero relative overflow-hidden rounded-3xl p-7 text-white shadow-card-hover sm:p-10">
+            <div className="containment-grid-dark absolute inset-0 opacity-50" aria-hidden="true" />
+            <div className="relative grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <p className="font-mono text-xs font-semibold uppercase tracking-wider text-eco-400">A clearer first step</p>
+                <h2 className="mt-3 font-display text-3xl font-bold">Not sure what service you need?</h2>
+                <p className="mt-4 max-w-2xl leading-relaxed text-white/80">Use the free Glasgow Asbestos Clarity Check. Describe the property, your plans and the suspected material to receive safety-first guidance and an honest indication of what should happen next.</p>
+                <Button href="/clarity-check" variant="white" className="mt-6">Start the 2-minute check <ArrowRight className="h-4 w-4" aria-hidden="true" /></Button>
+              </div>
+              <ul className="grid gap-3 text-sm">
+                <li className="flex gap-3 rounded-xl border border-white/15 bg-white/8 p-4"><ShieldCheck className="h-5 w-5 shrink-0 text-eco-400" aria-hidden="true" /><span>No visual asbestos diagnosis and no unsafe DIY advice</span></li>
+                <li className="flex gap-3 rounded-xl border border-white/15 bg-white/8 p-4"><FileCheck2 className="h-5 w-5 shrink-0 text-eco-400" aria-hidden="true" /><span>Printable summary and direct handoff to the Glasgow team</span></li>
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       {/* ── Direct-answer GEO block ──────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -204,7 +230,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Interactive"
             title="Where Asbestos Hides in Glasgow Homes"
-            intro="Most Glasgow homes built before 2000 hide asbestos in plain sight. Tap the markers to see what's where, how risky it is, and what to do about it."
+            intro="Homes built or refurbished before 2000 may contain asbestos-containing materials. Explore common locations, but remember: appearance alone cannot confirm asbestos and suspected material should not be disturbed."
             align="center"
           />
           <div className="mt-12">
@@ -240,13 +266,10 @@ export default function HomePage() {
             <StatStrip
               tone="onDark"
               stats={[
-                { value: "100%", label: "CAR 2012 Compliant" },
-                { value: "24hr", label: "Quote Turnaround" },
+                { value: "Glasgow", label: "Local Team" },
+                { value: "4", label: "Core Services" },
                 { value: "30+ yrs", label: "Founder Industry Experience" },
-                {
-                  value: `£${PLACEHOLDERS.insuranceCover}`,
-                  label: "Insurance Cover",
-                },
+                { value: "3", label: "Domestic, Commercial & Industrial" },
               ]}
             />
           </Reveal>
@@ -296,6 +319,8 @@ export default function HomePage() {
           </Reveal>
         </Container>
       </section>
+
+      <ServiceArea />
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
       <section className="bg-white py-16 sm:py-20">

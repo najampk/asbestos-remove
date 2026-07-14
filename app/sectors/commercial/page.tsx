@@ -63,7 +63,7 @@ export default function CommercialSectorPage() {
         intro="Every non-domestic building owner or occupier in Scotland has a legal duty to manage asbestos. We keep Glasgow businesses compliant and trading — surveys, removal and management delivered around your hours, with audit-ready documentation."
         crumbs={[
           { label: "Home", href: "/" },
-          { label: "Sectors", href: "/sectors/domestic" },
+          { label: "Sectors", href: "/sectors" },
           { label: "Commercial", href: "/sectors/commercial" },
         ]}
       />

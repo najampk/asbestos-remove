@@ -4,7 +4,7 @@ import { clsx } from "@/lib/clsx";
 type Variant = "primary" | "outline" | "outlineLight" | "white";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 motion-reduce:transform-none";
 
 const variants: Record<Variant, string> = {
   primary: "gradient-cta text-white shadow-sm hover:shadow-cta",

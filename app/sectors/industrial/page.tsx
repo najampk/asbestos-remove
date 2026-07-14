@@ -82,7 +82,7 @@ export default function IndustrialSectorPage() {
         intro="Industrial asbestos work demands scale and discipline: protected work zones, controlled access, air filtration and tight programme control. Our UKATA-trained teams deliver large-scale non-licensed and notifiable asbestos removal — cement roofs, cladding, gutters and flues — on factories, warehouses and demolition-phase projects Scotland-wide."
         crumbs={[
           { label: "Home", href: "/" },
-          { label: "Sectors", href: "/sectors/domestic" },
+          { label: "Sectors", href: "/sectors" },
           { label: "Industrial", href: "/sectors/industrial" },
         ]}
       />

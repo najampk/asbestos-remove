@@ -142,7 +142,7 @@ export default function PropertyExplorer() {
         {active && (
           <motion.div
             key="sheet"
-            className="fixed inset-x-0 bottom-0 z-50 lg:hidden"
+            className="fixed inset-x-0 bottom-0 z-[60] lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label={active.label}
@@ -169,7 +169,7 @@ export default function PropertyExplorer() {
             aria-hidden="true"
             tabIndex={-1}
             onClick={close}
-            className="fixed inset-0 z-40 bg-brand-950/40 lg:hidden"
+            className="fixed inset-0 z-[55] bg-brand-950/40 lg:hidden"
             initial={reduced ? false : { opacity: 0 }}
             animate={reduced ? {} : { opacity: 1 }}
             exit={reduced ? {} : { opacity: 0 }}

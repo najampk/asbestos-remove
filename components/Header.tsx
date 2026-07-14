@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
@@ -12,6 +12,12 @@ import {
 
 function DesktopItem({ group }: { group: NavGroup }) {
   const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  function closeAndFocusTrigger() {
+    setOpen(false);
+    triggerRef.current?.focus();
+  }
 
   if (!group.children) {
     return (
@@ -29,14 +35,23 @@ function DesktopItem({ group }: { group: NavGroup }) {
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && open) {
+          e.preventDefault();
+          closeAndFocusTrigger();
+        }
+      }}
     >
       <button
+        ref={triggerRef}
         type="button"
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         onFocus={() => setOpen(true)}
-        onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
         className="nav-underline flex items-center gap-1 px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-brand-700"
       >
         {group.label}
@@ -46,15 +61,20 @@ function DesktopItem({ group }: { group: NavGroup }) {
         />
       </button>
       <div
-        className={`absolute left-0 top-full min-w-60 rounded-xl border border-line bg-white/95 p-2 shadow-card-hover ring-1 ring-brand-950/5 backdrop-blur transition-all duration-200 ${
+        className={`absolute left-0 top-full z-10 min-w-60 rounded-xl border border-line bg-white/95 p-2 shadow-card-hover ring-1 ring-brand-950/5 backdrop-blur transition-all duration-200 ${
           open
             ? "visible translate-y-0 opacity-100"
             : "invisible -translate-y-1 opacity-0"
         }`}
-        onBlur={(e) => {
-          if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false);
-        }}
       >
+        {!group.children.some((child) => child.href === group.href) && (
+          <Link
+            href={group.href}
+            className="mb-1 flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold text-brand-950 transition-colors hover:bg-surface hover:text-brand-700"
+          >
+            All {group.label.toLowerCase()}
+          </Link>
+        )}
         {group.children.map((child) => (
           <Link
             key={child.href}
@@ -75,6 +95,45 @@ function DesktopItem({ group }: { group: NavGroup }) {
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const mobileToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const mobileToggle = mobileToggleRef.current;
+    document.body.style.overflow = "hidden";
+    const menu = mobileMenuRef.current;
+    const focusable = menu?.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+    focusable?.[0]?.focus();
+
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setMobileOpen(false);
+        return;
+      }
+      if (event.key !== "Tab" || !focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      mobileToggle?.focus();
+    };
+  }, [mobileOpen]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/85 shadow-[0_1px_12px_rgb(7_27_71/0.05)] backdrop-blur-md">
@@ -90,7 +149,7 @@ export default function Header() {
             alt=""
             width={1254}
             height={1254}
-            className="h-12 w-12 transition-transform duration-300 group-hover:scale-105"
+            className="h-14 w-14 transition-transform duration-300 group-hover:scale-105"
             priority
           />
           <span className="flex flex-col leading-none">
@@ -128,7 +187,7 @@ export default function Header() {
             {BUSINESS.phoneDisplay}
           </a>
           <Link
-            href="/contact"
+            href="/contact#quote-form"
             className="gradient-cta rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-cta active:translate-y-0"
           >
             Get a Free Quote
@@ -137,6 +196,7 @@ export default function Header() {
 
         {/* Mobile toggle */}
         <button
+          ref={mobileToggleRef}
           type="button"
           className="inline-flex items-center justify-center rounded-md p-2 text-brand-950 transition-colors hover:bg-brand-950/5 lg:hidden"
           aria-expanded={mobileOpen}
@@ -163,12 +223,16 @@ export default function Header() {
       {/* Mobile sheet */}
       {mobileOpen && (
         <div
+          ref={mobileMenuRef}
           id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
           className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-white shadow-card-hover lg:hidden"
         >
           <nav
             aria-label="Mobile"
-            className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6"
+            className="mx-auto max-w-7xl space-y-1 px-4 pb-24 pt-4 sm:px-6"
           >
             {MAIN_NAV.map((group) => (
               <div key={group.label}>
@@ -209,7 +273,7 @@ export default function Header() {
                 {BUSINESS.phoneDisplay}
               </a>
               <Link
-                href="/contact"
+                href="/contact#quote-form"
                 onClick={() => setMobileOpen(false)}
                 className="gradient-cta block rounded-full px-5 py-3 text-center text-sm font-semibold text-white"
               >

@@ -6,9 +6,8 @@ import {
   labelFor,
   PROPERTY_TYPES,
   SERVICE_OPTIONS,
-  MAX_PHOTOS,
-  MAX_PHOTO_BYTES,
   RATE_LIMIT,
+  MAX_REQUEST_BYTES,
   type QuoteFields,
 } from "@/lib/quote";
 import { HOTSPOTS } from "@/components/explorer/explorer-data";
@@ -29,10 +28,25 @@ function rateLimited(ip: string): boolean {
   const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT.windowMs);
   recent.push(now);
   hits.set(ip, recent);
+  if (hits.size > 1_000) {
+    for (const [key, timestamps] of hits) {
+      if (!timestamps.some((timestamp) => now - timestamp < RATE_LIMIT.windowMs)) {
+        hits.delete(key);
+      }
+    }
+  }
   return recent.length > RATE_LIMIT.max;
 }
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length"));
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return NextResponse.json(
+      { ok: false, error: "Request is too large." },
+      { status: 413 },
+    );
+  }
+
   let form: FormData;
   try {
     form = await request.formData();
@@ -46,8 +60,9 @@ export async function POST(request: Request) {
   }
 
   const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (rateLimited(ip)) {
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip")?.trim();
+  if (ip && rateLimited(ip)) {
     return NextResponse.json(
       { ok: false, error: "Too many requests. Please try again later." },
       { status: 429 },
@@ -68,17 +83,6 @@ export async function POST(request: Request) {
   const errors = validateQuote(fields);
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ ok: false, errors }, { status: 400 });
-  }
-
-  // Photo attachments (optional, ≤ MAX_PHOTOS, images only, size-capped).
-  const files = form
-    .getAll("photos")
-    .filter((f): f is File => f instanceof File && f.size > 0);
-  const attachments: { filename: string; content: string }[] = [];
-  for (const file of files.slice(0, MAX_PHOTOS)) {
-    if (!file.type.startsWith("image/") || file.size > MAX_PHOTO_BYTES) continue;
-    const buffer = Buffer.from(await file.arrayBuffer());
-    attachments.push({ filename: file.name, content: buffer.toString("base64") });
   }
 
   const materialLabel = fields.material
@@ -114,9 +118,7 @@ export async function POST(request: Request) {
         service: serviceLabel,
         message: fields.message,
         materialLabel,
-        photoCount: attachments.length,
       }),
-      attachments: attachments.length > 0 ? attachments : undefined,
     });
 
     if (notify.error) {

@@ -5,9 +5,9 @@ import FeatureList from "@/components/FeatureList";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
-import { PLACEHOLDERS } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
+import { PLACEHOLDERS } from "@/lib/claims";
 
 export const metadata = buildMetadata({
   title: "Certified Asbestos Disposal Glasgow",
@@ -26,7 +26,7 @@ const schema = serviceSchema({
 
 const WHATS_INCLUDED = [
   "UN-approved double bagging & sealed containment",
-  `Registered waste carrier transport ${PLACEHOLDERS.wasteCarrierNo}`,
+  `SEPA registered waste carrier transport (${PLACEHOLDERS.wasteCarrierNo})`,
   "SEPA consignment notes",
   "Disposal at licensed transfer/landfill facilities",
   "Certificates retained & copied to you",
@@ -76,6 +76,12 @@ export default function AsbestosDisposalPage() {
           <SectionHeading eyebrow="End To End" title="What's Included" />
           <div className="mt-10 rounded-2xl border border-line bg-white p-8 shadow-card">
             <FeatureList items={WHATS_INCLUDED} columns={2} />
+            <p className="mt-6 text-sm leading-relaxed text-slate-600">
+              Our SEPA registration ({PLACEHOLDERS.wasteCarrierNo}) authorises
+              us to transport waste in Scotland under The Environmental
+              Authorisations (Scotland) Regulations 2018 — final disposal is
+              carried out at separately licensed facilities.
+            </p>
           </div>
         </Container>
       </section>

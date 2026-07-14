@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Paperclip, Check, X } from "lucide-react";
+import { Check } from "lucide-react";
+import Link from "next/link";
 import {
   PROPERTY_TYPES,
   SERVICE_OPTIONS,
-  MAX_PHOTOS,
-  MAX_PHOTO_BYTES,
   validateQuote,
   type QuoteErrors,
   type QuoteFields,
@@ -37,20 +36,40 @@ function serviceFromLink(link: string): string {
 export default function QuoteForm() {
   const [values, setValues] = useState<QuoteFields>(EMPTY);
   const [errors, setErrors] = useState<QuoteErrors>({});
-  const [photos, setPhotos] = useState<File[]>([]);
-  const [photoError, setPhotoError] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState<string | null>(null);
-  const fileRef = useRef<HTMLInputElement | null>(null);
+  const errorSummaryRef = useRef<HTMLDivElement | null>(null);
+  const successRef = useRef<HTMLDivElement | null>(null);
+
+  const errorEntries = Object.entries(errors).filter(
+    (entry): entry is [keyof QuoteFields, string] => Boolean(entry[1]),
+  );
+  const errorCount = errorEntries.length;
+
+  useEffect(() => {
+    if (errorCount > 0) errorSummaryRef.current?.focus();
+  }, [errorCount]);
+
+  // Move focus to the success confirmation so keyboard and screen-reader users
+  // are told the enquiry went through (the submit button they used is now gone).
+  useEffect(() => {
+    if (status === "success") successRef.current?.focus();
+  }, [status]);
 
   // Prefill from the property explorer (?material=<id>). Runs after hydration —
   // the statically-prerendered HTML has no query param.
   useEffect(() => {
-    const material = new URLSearchParams(window.location.search).get("material");
+    const params = new URLSearchParams(window.location.search);
+    const clarity = params.get("clarity");
+    if (clarity) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional query-string prefill after hydration
+      setValues((v) => ({ ...v, message: clarity }));
+      return;
+    }
+    const material = params.get("material");
     if (!material) return;
     const hotspot = HOTSPOTS.find((h) => h.id === material);
     if (!hotspot) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-hydration prefill
     setValues((v) => ({
       ...v,
       material,
@@ -62,27 +81,6 @@ export default function QuoteForm() {
   function update<K extends keyof QuoteFields>(key: K, value: QuoteFields[K]) {
     setValues((v) => ({ ...v, [key]: value }));
     if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
-  }
-
-  function onFiles(list: FileList | null) {
-    setPhotoError(null);
-    if (!list) return;
-    const picked = Array.from(list);
-    if (picked.length > MAX_PHOTOS) {
-      setPhotoError(`Please attach no more than ${MAX_PHOTOS} photos.`);
-      return;
-    }
-    if (picked.some((f) => f.size > MAX_PHOTO_BYTES)) {
-      setPhotoError("Each photo must be 5 MB or smaller.");
-      return;
-    }
-    setPhotos(picked);
-  }
-
-  function removePhotos() {
-    setPhotos([]);
-    setPhotoError(null);
-    if (fileRef.current) fileRef.current.value = "";
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -100,7 +98,6 @@ export default function QuoteForm() {
       if (v) fd.append(k, v);
     }
     fd.append("company", ""); // honeypot (empty for real users)
-    photos.forEach((p) => fd.append("photos", p));
 
     try {
       const res = await fetch("/api/quote", { method: "POST", body: fd });
@@ -126,7 +123,12 @@ export default function QuoteForm() {
 
   if (status === "success") {
     return (
-      <div className="relative overflow-hidden rounded-2xl border border-eco-500/30 bg-white p-8 text-center shadow-card">
+      <div
+        ref={successRef}
+        role="status"
+        tabIndex={-1}
+        className="relative overflow-hidden rounded-2xl border border-eco-500/30 bg-white p-8 text-center shadow-card outline-none"
+      >
         <span
           className="gradient-hairline absolute inset-x-0 top-0"
           aria-hidden="true"
@@ -169,6 +171,29 @@ export default function QuoteForm() {
             {HOTSPOTS.find((h) => h.id === values.material)?.label}
           </span>
         </p>
+      )}
+
+      {errorEntries.length > 0 && (
+        <div
+          ref={errorSummaryRef}
+          tabIndex={-1}
+          role="alert"
+          className="mb-5 rounded-lg border border-danger/25 bg-danger/10 px-4 py-3 text-sm text-danger"
+        >
+          <p className="font-semibold">
+            Please correct {errorEntries.length}{" "}
+            {errorEntries.length === 1 ? "error" : "errors"} before sending.
+          </p>
+          <ul className="mt-2 list-disc space-y-1 pl-5">
+            {errorEntries.map(([field, message]) => (
+              <li key={field}>
+                <a className="underline underline-offset-2" href={`#${field}`}>
+                  {message}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -264,44 +289,6 @@ export default function QuoteForm() {
         />
       </div>
 
-      <div className="mt-5">
-        <span className={labelClass}>Photos (optional)</span>
-        <label
-          htmlFor="photos"
-          className="mt-1.5 flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-line bg-surface px-3.5 py-3 text-sm text-slate-600 transition duration-200 hover:border-brand-500 hover:bg-brand-500/5 hover:text-brand-700"
-        >
-          <Paperclip className="h-4 w-4" aria-hidden="true" />
-          Attach up to 3 photos — a safe-distance photo helps us price faster
-          <input
-            ref={fileRef}
-            id="photos"
-            name="photos"
-            type="file"
-            accept="image/*"
-            multiple
-            className="sr-only"
-            onChange={(e) => onFiles(e.target.files)}
-          />
-        </label>
-        {photos.length > 0 && (
-          <div className="mt-2 flex items-center justify-between rounded-lg bg-surface px-3 py-2 text-sm text-slate-600">
-            <span>
-              {photos.length} photo{photos.length > 1 ? "s" : ""} attached
-            </span>
-            <button
-              type="button"
-              onClick={removePhotos}
-              className="inline-flex items-center gap-1 text-xs font-medium text-brand-700 hover:text-brand-500"
-            >
-              <X className="h-3.5 w-3.5" aria-hidden="true" /> Clear
-            </button>
-          </div>
-        )}
-        {photoError && (
-          <p className="mt-1.5 text-sm text-danger">{photoError}</p>
-        )}
-      </div>
-
       {serverError && (
         <p className="mt-5 rounded-lg bg-danger/10 px-3.5 py-2.5 text-sm text-danger" role="alert">
           {serverError}
@@ -315,8 +302,8 @@ export default function QuoteForm() {
       >
         {status === "submitting" ? "Sending…" : "Request My Free Quote"}
       </button>
-      <p className="mt-3 text-center text-xs text-slate-600" aria-live="polite">
-        Free, fixed quotes · No-obligation advice · Response within 24 hours
+      <p className="mt-3 text-center text-xs leading-relaxed text-slate-600">
+        By sending this form, you agree that we may use your details to respond to your enquiry. Read our <Link href="/privacy-policy" className="font-medium text-brand-700 underline underline-offset-2">Privacy Policy</Link>.
       </p>
     </form>
   );

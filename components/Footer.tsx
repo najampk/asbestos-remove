@@ -48,6 +48,15 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-brand-950 text-white">
+      <Image
+        src="/images/asbestos-fibres.avif"
+        alt=""
+        fill
+        sizes="100vw"
+        className="pointer-events-none object-cover opacity-20"
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-brand-950/88" aria-hidden="true" />
       {/* Signature hairline + faded containment grid */}
       <div className="gradient-hairline absolute inset-x-0 top-0" aria-hidden="true" />
       <div

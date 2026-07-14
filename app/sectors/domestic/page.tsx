@@ -48,7 +48,7 @@ const FAQS: FAQ[] = [
   {
     question: "How much to remove a garage roof in Glasgow?",
     answer:
-      "It depends on the roof size, access and condition, but garage roofs are core non-licensed work and are usually a straightforward, fixed-price job. Send a photo and we'll give you a quote quickly.",
+      "It depends on the roof size, access and condition, but garage roofs are core non-licensed work and are usually a straightforward, fixed-price job. Send an enquiry and we'll advise on the next step quickly.",
   },
   {
     question: "Do landlords have asbestos duties?",
@@ -66,7 +66,7 @@ export default function DomesticSectorPage() {
         intro="Most Glasgow homes built before 2000 contain some asbestos — usually safe until disturbed by DIY, renovation or damage. We help homeowners and landlords identify, remove or safely manage it with minimal disruption and a fixed written quote."
         crumbs={[
           { label: "Home", href: "/" },
-          { label: "Sectors", href: "/sectors/domestic" },
+          { label: "Sectors", href: "/sectors" },
           { label: "Domestic", href: "/sectors/domestic" },
         ]}
       />

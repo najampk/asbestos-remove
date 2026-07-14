@@ -25,16 +25,22 @@
  * §0 Confirm-Before-Launch flags. These render as clearly-marked, greppable TODO
  * tokens until verified values are supplied. NEVER invent numbers — replace the
  * token strings here (one place) once the real values are confirmed.
+ *
+ * Removed pending confirmation from Quinton — re-add HERE, in this object, once
+ * real values are supplied (never scatter the re-add across other files):
+ *   - isoStandards (which of ISO 9001 / 14001 / 45001)
+ *   - insuranceCover (public/employers liability cover amount)
+ *   - founderQuote (a real 2–3 sentence statement from Quinton Davidson —
+ *     never invent a quote in his voice)
  */
 export const PLACEHOLDERS = {
-  /** Confirm which: ISO 9001 / 14001 / 45001 */
-  isoStandards: "[ISO_STANDARDS]",
-  /** SEPA waste carrier registration number */
-  wasteCarrierNo: "[WASTE_CARRIER_NO]",
-  /** Public/employers liability cover amount, e.g. £10m */
-  insuranceCover: "[INSURANCE_COVER]",
-  /** 2–3 sentence founder statement from Quinton Davidson */
-  founderQuote: "[FOUNDER_QUOTE]",
+  /**
+   * SEPA waste carrier registration — The Environmental Authorisations
+   * (Scotland) Regulations 2018; authorised activity: transporting waste,
+   * Scotland (standard conditions EASR-SC-035).
+   * END DATE: 10 July 2029 — registration must be renewed before then.
+   */
+  wasteCarrierNo: "EAS/R/6101484",
 } as const;
 
 /**
@@ -66,13 +72,14 @@ export const LICENSING_FAQ_ANSWER =
 
 /**
  * TrustBar items (SPEC.md §1.4 / §4). Rendered in mono type beneath the hero.
- * ISO / carrier no. / insurance are §0 placeholders until confirmed.
+ * ISO / insurance items join this list once those §0 values are confirmed.
  */
 export const TRUST_BAR_ITEMS: readonly string[] = [
   "UKATA-TRAINED OPERATIVES",
-  PLACEHOLDERS.isoStandards,
   `SEPA REGISTERED CARRIER ${PLACEHOLDERS.wasteCarrierNo}`,
-  `FULLY INSURED ${PLACEHOLDERS.insuranceCover}`,
+  "NON-LICENSED & NNLW SCOPE",
+  "CONTROLLED WORK METHODS",
+  "GLASGOW-BASED TEAM",
 ];
 
 /**
@@ -80,9 +87,10 @@ export const TRUST_BAR_ITEMS: readonly string[] = [
  */
 export const FOOTER_COMPLIANCE_ITEMS: readonly string[] = [
   "UKATA-Trained Operatives",
-  PLACEHOLDERS.isoStandards,
   `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
-  `Fully Insured ${PLACEHOLDERS.insuranceCover}`,
+  "Non-Licensed & NNLW Scope",
+  "Controlled Work Methods",
+  "Glasgow-Based Team",
 ];
 
 /**

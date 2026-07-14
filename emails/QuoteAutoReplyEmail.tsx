@@ -11,7 +11,8 @@ import {
   Heading,
   Text,
   Hr,
-  Link,
+  Img,
+  Button,
 } from "@react-email/components";
 
 export interface QuoteAutoReplyProps {
@@ -34,16 +35,16 @@ export default function QuoteAutoReplyEmail({
       <Head />
       <Preview>We&rsquo;ve received your enquiry — here&rsquo;s what happens next</Preview>
       <Body style={{ backgroundColor: "#F8FAFC", fontFamily: "Arial, sans-serif", margin: 0, padding: "24px 0" }}>
-        <Container style={{ maxWidth: 560, margin: "0 auto" }}>
+        <Container style={{ maxWidth: 600, margin: "0 auto", borderRadius: 16, overflow: "hidden", boxShadow: "0 12px 32px rgba(7,27,71,.12)" }}>
           {/* Gradient header band */}
           <Section
             style={{
               background: "linear-gradient(90deg, #1D4ED8, #16A34A)",
-              borderRadius: "12px 12px 0 0",
               padding: "28px 32px",
             }}
           >
-            <Text style={{ margin: 0, fontSize: 12, letterSpacing: 1, textTransform: "uppercase", color: "rgba(255,255,255,0.85)" }}>
+            <Img src="https://www.asbestosremove.co.uk/images/logo.webp" width="60" height="60" alt="Asbestos Remove" style={{ borderRadius: 14, marginBottom: 18 }} />
+            <Text style={{ margin: 0, fontSize: 12, letterSpacing: 1, textTransform: "uppercase", color: "#86EFAC" }}>
               Asbestos Remove · Glasgow
             </Text>
             <Heading style={{ margin: "8px 0 0", fontSize: 22, color: "#ffffff" }}>
@@ -66,12 +67,12 @@ export default function QuoteAutoReplyEmail({
               What happens next
             </Heading>
             <Text style={{ margin: 0, fontSize: 14, color: muted, lineHeight: 1.7 }}>
-              1. We review your details and any photos you sent.
+              1. We review the details you sent.
               <br />
               2. We come back with advice and a fixed quote, or arrange a survey if
               one is needed.
               <br />
-              3. If anything looks urgent, we&rsquo;ll call you.
+              3. If anything sounds urgent, we&rsquo;ll call you.
             </Text>
 
             <Section style={{ marginTop: 24, borderRadius: 8, border: "1px solid #FECACA", backgroundColor: "#FEF2F2", padding: "14px 16px" }}>
@@ -85,13 +86,8 @@ export default function QuoteAutoReplyEmail({
             </Section>
 
             <Hr style={{ borderColor: line, margin: "24px 0" }} />
-            <Text style={{ margin: 0, fontSize: 14, color: muted }}>
-              Need us sooner? Call{" "}
-              <Link href={phoneHref} style={{ color: "#1D4ED8", fontWeight: 600 }}>
-                {phoneDisplay}
-              </Link>
-              .
-            </Text>
+            <Text style={{ margin: "0 0 14px", fontSize: 14, color: muted }}>Need us sooner?</Text>
+            <Button href={phoneHref} style={{ backgroundColor: "#16A34A", borderRadius: 999, color: "#ffffff", fontSize: 14, fontWeight: 700, padding: "12px 22px", textDecoration: "none" }}>Call {phoneDisplay}</Button>
             <Text style={{ margin: "16px 0 0", fontSize: 12, color: muted }}>
               Asbestos Remove is a trading name of Asbestos Removal Environmental
               Ltd, Glasgow (SC889602).

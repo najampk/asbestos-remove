@@ -28,6 +28,13 @@ export const BUSINESS = {
 export const ADDRESS_ONE_LINE =
   "Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE";
 
+/** Provisional public hours; update here if the operating schedule changes. */
+export const OPENING_HOURS = [
+  { days: "Monday–Friday", hours: "8:00am–6:00pm" },
+  { days: "Saturday", hours: "9:00am–1:00pm" },
+  { days: "Sunday", hours: "Closed" },
+] as const;
+
 export interface NavLink {
   label: string;
   href: string;
@@ -55,15 +62,27 @@ export const SECTOR_LINKS: NavLink[] = [
 
 export const MAIN_NAV: NavGroup[] = [
   { label: "Home", href: "/" },
+  { label: "Clarity Check", href: "/clarity-check" },
   { label: "Services", href: "/services", children: SERVICE_LINKS },
-  { label: "Sectors", href: "/sectors/domestic", children: SECTOR_LINKS },
+  { label: "Sectors", href: "/sectors", children: SECTOR_LINKS },
+  {
+    label: "Resources",
+    href: "/project-library",
+    children: [
+      { label: "Project Library", href: "/project-library" },
+      { label: "Trust Centre", href: "/trust-centre" },
+      { label: "Customer Portal", href: "/customer-portal" },
+    ],
+  },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const COMPANY_LINKS: NavLink[] = [
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Clarity Check", href: "/clarity-check" },
+  { label: "Trust Centre", href: "/trust-centre" },
+  { label: "Customer Portal", href: "/customer-portal" },
   { label: "Privacy Policy", href: "/privacy-policy" },
   { label: "Terms", href: "/terms" },
 ];

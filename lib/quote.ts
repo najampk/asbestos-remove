@@ -22,11 +22,20 @@ export const SERVICE_OPTIONS: SelectOption[] = [
   { value: "not-sure", label: "Not sure" },
 ];
 
-export const MAX_PHOTOS = 3;
-export const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5 MB per file
-
 /** Basic per-IP rate limit for the API route. */
 export const RATE_LIMIT = { max: 5, windowMs: 60 * 60 * 1000 }; // 5 / hour
+export const MAX_REQUEST_BYTES = 64 * 1024;
+
+export const FIELD_LIMITS = {
+  name: 100,
+  phone: 40,
+  email: 254,
+  postcode: 16,
+  propertyType: 40,
+  service: 40,
+  message: 5_000,
+  material: 100,
+} as const satisfies Record<keyof QuoteFields, number>;
 
 export interface QuoteFields {
   name: string;
@@ -53,6 +62,15 @@ export function validateQuote(fields: Partial<QuoteFields>): QuoteErrors {
   else if (!EMAIL_RE.test(fields.email.trim()))
     errors.email = "Please enter a valid email address.";
   if (!fields.postcode?.trim()) errors.postcode = "Please enter your postcode.";
+  for (const key of Object.keys(FIELD_LIMITS) as (keyof QuoteFields)[]) {
+    if (fields[key] && fields[key]!.length > FIELD_LIMITS[key]) {
+      errors[key] = `Please keep this field under ${FIELD_LIMITS[key]} characters.`;
+    }
+  }
+  if (fields.propertyType && !PROPERTY_TYPES.some((o) => o.value === fields.propertyType))
+    errors.propertyType = "Please select a valid property type.";
+  if (fields.service && !SERVICE_OPTIONS.some((o) => o.value === fields.service))
+    errors.service = "Please select a valid service.";
   return errors;
 }
 

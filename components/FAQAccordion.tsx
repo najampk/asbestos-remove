@@ -13,7 +13,7 @@ export default function FAQAccordion({ items }: { items: FAQ[] }) {
   return (
     <>
       <JsonLd data={faqPageSchema(items)} />
-      <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white shadow-card">
+      <div className="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white shadow-card-hover ring-1 ring-brand-950/5">
         {items.map((item) => (
           <details key={item.question} className="faq-item group px-6 transition-colors duration-200 open:bg-surface/60 hover:bg-surface/60">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-display text-lg font-semibold text-brand-950 transition-colors marker:content-none hover:text-brand-700 [&::-webkit-details-marker]:hidden">

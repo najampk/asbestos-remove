@@ -3,7 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTABand from "@/components/CTABand";
+import ConditionalCTABand from "@/components/ConditionalCTABand";
+import MobileActionBar from "@/components/MobileActionBar";
 import JsonLd from "@/components/JsonLd";
 import { Analytics } from "@vercel/analytics/next";
 import { localBusinessSchema } from "@/lib/schema";
@@ -73,7 +74,7 @@ export default function RootLayout({
       className={`${archivo.variable} ${inter.variable} ${plexMono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-surface text-ink antialiased">
+      <body className="flex min-h-full flex-col bg-surface pb-16 text-ink antialiased lg:pb-0">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-brand-950 focus:px-4 focus:py-2 focus:text-white"
@@ -85,8 +86,9 @@ export default function RootLayout({
         <main id="main" className="flex-1">
           {children}
         </main>
-        <CTABand />
+        <ConditionalCTABand />
         <Footer />
+        <MobileActionBar />
         <Analytics />
       </body>
     </html>

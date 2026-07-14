@@ -11,7 +11,7 @@ export interface ProcessStep {
 export const PROCESS_STEPS: ProcessStep[] = [
   {
     title: "Contact & Advice",
-    body: "Call or send photos. We assess urgency and advise on the safest next step, free of charge.",
+    body: "Call or send an enquiry. We assess urgency and advise on the safest next step, free of charge.",
   },
   {
     title: "Survey & Quote",

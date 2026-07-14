@@ -1,16 +1,16 @@
-import { Phone, Mail, MapPin, Clock, Camera } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import QuoteForm from "@/components/QuoteForm";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
-import { BUSINESS, ADDRESS_ONE_LINE } from "@/lib/constants";
+import { BUSINESS, ADDRESS_ONE_LINE, OPENING_HOURS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact Asbestos Remove Glasgow | Free Quotes 07960 881102",
   description:
-    "Get a free asbestos survey or removal quote in Glasgow. Call 07960 881102, email info@asbestosremove.co.uk or send photos through our quick quote form.",
+    "Get a free asbestos survey or removal quote in Glasgow. Call 07960 881102, email info@asbestosremove.co.uk or use our quick quote form.",
   path: "/contact",
   titleAbsolute: true,
 });
@@ -24,7 +24,7 @@ const FAQS: FAQ[] = [
   {
     question: "Do you charge for quotes?",
     answer:
-      "No — quotes are free, fixed and no-obligation. Send photos or book a survey and we'll give you a clear written price.",
+      "No — quotes are free, fixed and no-obligation. Tell us what you need or book a survey and we'll give you a clear written price.",
   },
   {
     question: "Which areas do you cover?",
@@ -39,7 +39,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get Your Free Asbestos Quote"
-        intro="Call, email or send photos through the form below. We'll assess your situation and come back with free, fixed-price advice — usually within 24 hours."
+        intro="Call, email or use the form below. We'll assess your situation and come back with free, fixed-price advice — usually within 24 hours."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },
@@ -49,12 +49,12 @@ export default function ContactPage() {
       <section className="py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-5">
           {/* Form */}
-          <div className="lg:col-span-3">
+          <div id="quote-form" className="scroll-mt-24 lg:col-span-3">
             <h2 className="font-display text-2xl font-bold tracking-tight text-brand-950">
               Request a quote
             </h2>
             <p className="mt-2 text-slate-600">
-              Fields marked <span className="text-danger">*</span> are required.
+              Fields marked <span className="text-danger" aria-hidden="true">*</span><span className="sr-only">with an asterisk</span> are required. Tell us what you can see, where it is and whether it has been damaged. Do not disturb it to take measurements or photographs.
             </p>
             <div className="mt-6">
               <QuoteForm />
@@ -110,7 +110,11 @@ export default function ContactPage() {
                   <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-700" aria-hidden="true" />
                   <span>
                     <span className="block font-medium text-brand-950">Hours</span>
-                    Opening hours — to be confirmed
+                    {OPENING_HOURS.map((entry) => (
+                      <span key={entry.days} className="block">
+                        {entry.days}: {entry.hours}
+                      </span>
+                    ))}
                   </span>
                 </div>
               </address>
@@ -122,20 +126,6 @@ export default function ContactPage() {
                 <MapPin className="h-3.5 w-3.5 text-eco-700" aria-hidden="true" />
                 SMK Business Centre · Glasgow G5 8BE
               </p>
-            </div>
-
-            {/* Tip block */}
-            <div className="rounded-2xl border border-eco-500/30 bg-eco-500/5 p-6">
-              <div className="flex items-start gap-3">
-                <Camera className="mt-0.5 h-5 w-5 shrink-0 text-eco-700" aria-hidden="true" />
-                <p className="text-sm leading-relaxed text-slate-600">
-                  <span className="font-semibold text-brand-950">
-                    Not sure if it&rsquo;s asbestos?
-                  </span>{" "}
-                  Don&rsquo;t touch it — photograph it from a safe distance and
-                  attach it to the form.
-                </p>
-              </div>
             </div>
 
             {/* Reassurance strip */}

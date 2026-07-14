@@ -12,6 +12,8 @@ import {
   Text,
   Hr,
   Link,
+  Img,
+  Button,
 } from "@react-email/components";
 
 export interface QuoteNotificationProps {
@@ -23,7 +25,6 @@ export interface QuoteNotificationProps {
   service: string;
   message: string;
   materialLabel?: string;
-  photoCount: number;
 }
 
 const navy = "#071B47";
@@ -60,14 +61,19 @@ export default function QuoteNotificationEmail({
   service,
   message,
   materialLabel,
-  photoCount,
 }: QuoteNotificationProps) {
   return (
     <Html>
       <Head />
       <Preview>{`New quote enquiry from ${name} (${postcode})`}</Preview>
       <Body style={{ backgroundColor: "#F8FAFC", fontFamily: "Arial, sans-serif", margin: 0, padding: "24px 0" }}>
-        <Container style={{ backgroundColor: "#ffffff", borderRadius: 12, border: `1px solid ${line}`, maxWidth: 560, margin: "0 auto", padding: 32 }}>
+        <Container style={{ backgroundColor: "#ffffff", borderRadius: 16, border: `1px solid ${line}`, maxWidth: 600, margin: "0 auto", overflow: "hidden", boxShadow: "0 12px 32px rgba(7,27,71,.12)" }}>
+          <Section style={{ backgroundColor: navy, padding: "20px 32px", borderBottom: "4px solid #16A34A" }}>
+            <Img src="https://www.asbestosremove.co.uk/images/logo.webp" width="52" height="52" alt="Asbestos Remove" style={{ display: "inline-block", verticalAlign: "middle", borderRadius: 12 }} />
+            <Text style={{ display: "inline-block", verticalAlign: "middle", margin: "0 0 0 14px", color: "#ffffff", fontSize: 18, fontWeight: 700 }}>Asbestos Remove</Text>
+          </Section>
+          <Section style={{ padding: 32 }}>
+          <Text style={{ display: "inline-block", margin: "0 0 10px", borderRadius: 999, backgroundColor: "#DCFCE7", color: "#15803D", fontSize: 11, fontWeight: 700, letterSpacing: 0.8, padding: "6px 10px", textTransform: "uppercase" }}>New website lead</Text>
           <Heading style={{ margin: 0, fontSize: 20, color: navy }}>
             New quote enquiry
           </Heading>
@@ -92,19 +98,10 @@ export default function QuoteNotificationEmail({
           <Field label="Property type" value={propertyType} />
           <Field label="Service needed" value={service} />
           <Field label="Message" value={message} />
-          <Field
-            label="Photos attached"
-            value={photoCount > 0 ? `${photoCount} attached` : "None"}
-          />
-
           <Hr style={{ borderColor: line, margin: "20px 0" }} />
-          <Text style={{ margin: 0, fontSize: 13, color: muted }}>
-            Reply to this email to respond directly to{" "}
-            <Link href={`mailto:${email}`} style={{ color: "#1D4ED8" }}>
-              {name}
-            </Link>
-            .
-          </Text>
+          <Button href={`mailto:${email}`} style={{ backgroundColor: "#1D4ED8", borderRadius: 999, color: "#ffffff", fontSize: 14, fontWeight: 700, padding: "12px 20px", textDecoration: "none" }}>Reply to {name}</Button>
+          <Link href={`tel:${phone.replace(/\s/g, "")}`} style={{ marginLeft: 16, color: "#15803D", fontSize: 14, fontWeight: 700, textDecoration: "none" }}>Call {phone}</Link>
+          </Section>
         </Container>
       </Body>
     </Html>

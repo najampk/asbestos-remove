@@ -16,6 +16,12 @@ const RING: Record<AsbestosHotspot["risk"], string> = {
   higher: "bg-danger/40",
 };
 
+const SYMBOL: Record<AsbestosHotspot["risk"], string> = {
+  lower: "",
+  moderate: "after:absolute after:h-1.5 after:w-1.5 after:rotate-45 after:bg-white",
+  higher: "after:absolute after:h-2 after:w-0.5 after:bg-white",
+};
+
 export default function Hotspot({
   hotspot,
   active,
@@ -41,7 +47,7 @@ export default function Hotspot({
       aria-label={`${hotspot.label} — ${RISK_LABEL[hotspot.risk]}`}
       style={{ left, top }}
       className={clsx(
-        "group absolute -translate-x-1/2 -translate-y-1/2 rounded-full p-2",
+        "group absolute flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full",
         "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
       )}
     >
@@ -60,8 +66,9 @@ export default function Hotspot({
       {/* Marker dot */}
       <span
         className={clsx(
-          "relative block h-4 w-4 rounded-full border-2 border-white shadow-md transition-transform",
+          "relative flex h-4 w-4 items-center justify-center rounded-full border-2 border-white shadow-md transition-transform",
           DOT[hotspot.risk],
+          SYMBOL[hotspot.risk],
           active ? "scale-125 ring-2 ring-white" : "group-hover:scale-110",
         )}
       />

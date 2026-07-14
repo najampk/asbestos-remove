@@ -39,7 +39,7 @@ export default function CTABand() {
             Call {BUSINESS.phoneDisplay}
           </a>
           <Link
-            href="/contact"
+            href="/contact#quote-form"
             className="inline-flex items-center gap-2 rounded-full border border-white/70 px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-white hover:bg-white/10 active:translate-y-0"
           >
             Request a Free Quote

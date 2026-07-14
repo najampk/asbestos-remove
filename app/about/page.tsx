@@ -1,4 +1,4 @@
-import { ShieldCheck, BadgeCheck, Truck, FileCheck } from "lucide-react";
+import { BadgeCheck, Truck, FileCheck } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -22,19 +22,14 @@ const CREDENTIALS = [
     body: "Every operative holds current UKATA asbestos training, so the people on your site know exactly how to work safely and legally.",
   },
   {
-    icon: ShieldCheck,
-    label: PLACEHOLDERS.isoStandards,
-    body: "Certified management systems mean consistent, audited processes — the same disciplined approach on every job. (Standard to be confirmed.)",
-  },
-  {
     icon: Truck,
-    label: `SEPA Registered Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
-    body: "Your asbestos waste is transported legally by a registered carrier and tracked to a licensed facility, discharging your duty of care.",
+    label: `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
+    body: "Registered with SEPA to transport waste in Scotland, so asbestos waste is contained, transported and tracked to an appropriately authorised facility with the applicable paperwork.",
   },
   {
     icon: FileCheck,
-    label: `Fully Insured ${PLACEHOLDERS.insuranceCover}`,
-    body: "Comprehensive cover protects you and your property throughout the works. (Cover amount to be confirmed.)",
+    label: "Clear Project Records",
+    body: "We provide the applicable project and waste documentation for your records.",
   },
 ];
 
@@ -134,25 +129,6 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </section>
-
-      {/* Why we exist — founder voice (placeholder) */}
-      <section className="py-16 sm:py-20">
-        <Container className="max-w-3xl">
-          <SectionHeading eyebrow="Why We Exist" title="A word from our founder" />
-          <figure className="relative mt-8 overflow-hidden rounded-2xl bg-white p-8 pl-9 shadow-card">
-            <span
-              className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand-700 to-eco-500"
-              aria-hidden="true"
-            />
-            <blockquote className="text-lg leading-relaxed text-slate-600">
-              {PLACEHOLDERS.founderQuote}
-            </blockquote>
-            <figcaption className="mt-4 font-mono text-xs uppercase tracking-wider text-slate-600">
-              {BUSINESS.founder}, Founder — quote to be confirmed
-            </figcaption>
-          </figure>
         </Container>
       </section>
 
