@@ -20,7 +20,6 @@ import { SECTORS } from "@/lib/sectors";
 import { PROCESS_STEPS } from "@/lib/process";
 import { BUSINESS } from "@/lib/constants";
 import {
-  HERO_CREDENTIALS,
   HOMEPAGE_SCOPE_PARAGRAPH,
   LICENSING_FAQ_ANSWER,
   FAQ_SELF_REMOVAL_ANSWER,
@@ -62,7 +61,7 @@ const HOME_FAQS: FAQ[] = [
       "Any building constructed or refurbished before 2000 may contain asbestos. The only reliable confirmation is sampling and laboratory analysis as part of an asbestos survey.",
   },
   {
-    question: "Searching for “asbestos removal near me” in Glasgow?",
+    question: "Which areas of Glasgow and Scotland do you cover?",
     answer:
       "We're based in Glasgow city and cover the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld — as well as Livingston, Edinburgh and further afield, with Scotland-wide coverage for commercial and industrial projects.",
   },
@@ -104,10 +103,8 @@ export default function HomePage() {
               />
               UKATA-Trained Specialists · Glasgow &amp; All of Scotland
             </p>
-            <p className="mt-3 font-mono text-sm font-bold uppercase tracking-wider text-white">
-              {HERO_CREDENTIALS}
-            </p>
-            <h1 className="h1-fluid mt-4 font-display font-bold text-white">
+            {/* SEPA registration renders once, in the TrustBar directly below */}
+            <h1 className="h1-fluid mt-5 font-display font-bold text-white">
               Safe, Compliant, Efficient Asbestos Removal in Glasgow &amp;
               Across Scotland
             </h1>
@@ -124,7 +121,7 @@ export default function HomePage() {
                 <Phone className="h-4 w-4" aria-hidden="true" /> Call {BUSINESS.phoneDisplay}
               </Button>
             </div>
-            <p className="mt-4 text-sm text-white/70">Free, no-obligation enquiry · Available 24/7 · Glasgow-based team · We explain the appropriate work category before quoting</p>
+            <p className="mt-4 text-sm text-white/70">Free, no-obligation enquiry · Available 24/7 · Glasgow-based team</p>
           </div>
         </Container>
       </section>
@@ -257,6 +254,15 @@ export default function HomePage() {
             <div className="mt-12">
               <ProcessTimeline steps={PROCESS_STEPS} />
             </div>
+            <div className="mt-10">
+              <Button
+                href="/services/asbestos-removal#removal-story"
+                variant="outline"
+              >
+                See how a controlled removal happens
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </div>
           </Reveal>
         </Container>
       </section>
@@ -274,9 +280,9 @@ export default function HomePage() {
               tone="onDark"
               stats={[
                 { value: "Glasgow", label: "Local Team" },
-                { value: "4", label: "Core Services" },
+                { value: "24/7", label: "Phone Line, Always Open" },
                 { value: "30+ yrs", label: "Founder Industry Experience" },
-                { value: "3", label: "Domestic, Commercial & Industrial" },
+                { value: "SEPA", label: "Registered Waste Carrier" },
               ]}
             />
           </Reveal>

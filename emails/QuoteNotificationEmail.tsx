@@ -1,20 +1,18 @@
 // emails/QuoteNotificationEmail.tsx
-// Internal notification sent to info@ when a quote enquiry arrives (reply-to is the
-// customer, so a reply goes straight back to them).
+// Internal notification sent to the quotes inbox when an enquiry arrives
+// (reply-to is the customer, so a reply goes straight back to them).
+// Rendered inside the shared branded EmailShell (logo header + compliance footer).
 import {
-  Html,
-  Head,
-  Preview,
-  Body,
-  Container,
   Section,
+  Row,
+  Column,
   Heading,
   Text,
   Hr,
   Link,
-  Img,
   Button,
 } from "@react-email/components";
+import EmailShell, { palette, monoStack } from "@/emails/EmailShell";
 
 export interface QuoteNotificationProps {
   name: string;
@@ -27,28 +25,43 @@ export interface QuoteNotificationProps {
   materialLabel?: string;
 }
 
-const navy = "#071B47";
-const muted = "#475569";
-const line = "#E2E8F0";
-
 function Field({ label, value }: { label: string; value: string }) {
   return (
-    <Section style={{ marginBottom: 12 }}>
-      <Text
+    <Row style={{ marginBottom: 10 }}>
+      <Column
         style={{
-          margin: 0,
-          fontSize: 12,
-          textTransform: "uppercase",
-          letterSpacing: 0.5,
-          color: muted,
+          width: 140,
+          verticalAlign: "top",
         }}
       >
-        {label}
-      </Text>
-      <Text style={{ margin: "2px 0 0", fontSize: 15, color: navy, fontWeight: 600 }}>
-        {value || "—"}
-      </Text>
-    </Section>
+        <Text
+          style={{
+            margin: 0,
+            fontSize: 11,
+            fontFamily: monoStack,
+            textTransform: "uppercase" as const,
+            letterSpacing: 0.8,
+            color: palette.muted,
+            lineHeight: "20px",
+          }}
+        >
+          {label}
+        </Text>
+      </Column>
+      <Column style={{ verticalAlign: "top" }}>
+        <Text
+          style={{
+            margin: 0,
+            fontSize: 14,
+            color: palette.navy,
+            fontWeight: 600,
+            lineHeight: "20px",
+          }}
+        >
+          {value || "—"}
+        </Text>
+      </Column>
+    </Row>
   );
 }
 
@@ -63,47 +76,125 @@ export default function QuoteNotificationEmail({
   materialLabel,
 }: QuoteNotificationProps) {
   return (
-    <Html>
-      <Head />
-      <Preview>{`New quote enquiry from ${name} (${postcode})`}</Preview>
-      <Body style={{ backgroundColor: "#F8FAFC", fontFamily: "Arial, sans-serif", margin: 0, padding: "24px 0" }}>
-        <Container style={{ backgroundColor: "#ffffff", borderRadius: 16, border: `1px solid ${line}`, maxWidth: 600, margin: "0 auto", overflow: "hidden", boxShadow: "0 12px 32px rgba(7,27,71,.12)" }}>
-          <Section style={{ backgroundColor: navy, padding: "20px 32px", borderBottom: "4px solid #16A34A" }}>
-            <Img src="https://www.asbestosremove.co.uk/images/logo.webp" width="52" height="52" alt="Asbestos Remove" style={{ display: "inline-block", verticalAlign: "middle", borderRadius: 12 }} />
-            <Text style={{ display: "inline-block", verticalAlign: "middle", margin: "0 0 0 14px", color: "#ffffff", fontSize: 18, fontWeight: 700 }}>Asbestos Remove</Text>
-          </Section>
-          <Section style={{ padding: 32 }}>
-          <Text style={{ display: "inline-block", margin: "0 0 10px", borderRadius: 999, backgroundColor: "#DCFCE7", color: "#15803D", fontSize: 11, fontWeight: 700, letterSpacing: 0.8, padding: "6px 10px", textTransform: "uppercase" }}>New website lead</Text>
-          <Heading style={{ margin: 0, fontSize: 20, color: navy }}>
-            New quote enquiry
-          </Heading>
-          <Text style={{ margin: "6px 0 0", fontSize: 14, color: muted }}>
-            Submitted via asbestosremove.co.uk
+    <EmailShell preview={`New quote enquiry from ${name} (${postcode})`}>
+      <Text
+        style={{
+          display: "inline-block",
+          margin: "0 0 12px",
+          borderRadius: 999,
+          backgroundColor: palette.greenChip,
+          color: palette.greenDark,
+          fontSize: 11,
+          fontWeight: 700,
+          fontFamily: monoStack,
+          letterSpacing: 0.8,
+          padding: "6px 12px",
+          textTransform: "uppercase" as const,
+        }}
+      >
+        New website lead
+      </Text>
+      <Heading as="h1" style={{ margin: 0, fontSize: 22, color: palette.navy }}>
+        New quote enquiry
+      </Heading>
+      <Text style={{ margin: "6px 0 0", fontSize: 13, color: palette.muted }}>
+        Submitted via the asbestosremove.co.uk quote form
+      </Text>
+
+      {materialLabel && (
+        <Section
+          style={{
+            marginTop: 16,
+            borderRadius: 8,
+            backgroundColor: "#EFF6FF",
+            border: "1px solid #BFDBFE",
+            padding: "10px 14px",
+          }}
+        >
+          <Text
+            style={{
+              margin: 0,
+              fontSize: 13,
+              color: palette.blue,
+              fontWeight: 600,
+            }}
+          >
+            Via property explorer: {materialLabel}
           </Text>
+        </Section>
+      )}
 
-          {materialLabel && (
-            <Section style={{ marginTop: 16, borderRadius: 8, backgroundColor: "#EFF6FF", padding: "10px 14px" }}>
-              <Text style={{ margin: 0, fontSize: 13, color: "#1D4ED8", fontWeight: 600 }}>
-                Via property explorer: {materialLabel}
-              </Text>
-            </Section>
-          )}
+      <Hr style={{ borderColor: palette.line, margin: "20px 0" }} />
 
-          <Hr style={{ borderColor: line, margin: "20px 0" }} />
+      <Field label="Name" value={name} />
+      <Field label="Phone" value={phone} />
+      <Field label="Email" value={email} />
+      <Field label="Postcode" value={postcode} />
+      <Field label="Property type" value={propertyType} />
+      <Field label="Service needed" value={service} />
 
-          <Field label="Name" value={name} />
-          <Field label="Phone" value={phone} />
-          <Field label="Email" value={email} />
-          <Field label="Postcode" value={postcode} />
-          <Field label="Property type" value={propertyType} />
-          <Field label="Service needed" value={service} />
-          <Field label="Message" value={message} />
-          <Hr style={{ borderColor: line, margin: "20px 0" }} />
-          <Button href={`mailto:${email}`} style={{ backgroundColor: "#1D4ED8", borderRadius: 999, color: "#ffffff", fontSize: 14, fontWeight: 700, padding: "12px 20px", textDecoration: "none" }}>Reply to {name}</Button>
-          <Link href={`tel:${phone.replace(/\s/g, "")}`} style={{ marginLeft: 16, color: "#15803D", fontSize: 14, fontWeight: 700, textDecoration: "none" }}>Call {phone}</Link>
-          </Section>
-        </Container>
-      </Body>
-    </Html>
+      <Text
+        style={{
+          margin: "14px 0 0",
+          fontSize: 11,
+          fontFamily: monoStack,
+          textTransform: "uppercase" as const,
+          letterSpacing: 0.8,
+          color: palette.muted,
+        }}
+      >
+        Message
+      </Text>
+      <Section
+        style={{
+          marginTop: 6,
+          borderRadius: 8,
+          backgroundColor: palette.surface,
+          border: `1px solid ${palette.line}`,
+          padding: "12px 14px",
+        }}
+      >
+        <Text
+          style={{
+            margin: 0,
+            fontSize: 14,
+            color: palette.ink,
+            lineHeight: 1.6,
+            whiteSpace: "pre-wrap" as const,
+          }}
+        >
+          {message || "—"}
+        </Text>
+      </Section>
+
+      <Hr style={{ borderColor: palette.line, margin: "22px 0" }} />
+
+      <Button
+        href={`mailto:${email}`}
+        style={{
+          backgroundColor: palette.blue,
+          borderRadius: 999,
+          color: "#FFFFFF",
+          fontSize: 14,
+          fontWeight: 700,
+          padding: "12px 22px",
+          textDecoration: "none",
+        }}
+      >
+        Reply to {name}
+      </Button>
+      <Link
+        href={`tel:${phone.replace(/\s/g, "")}`}
+        style={{
+          marginLeft: 16,
+          color: palette.greenDark,
+          fontSize: 14,
+          fontWeight: 700,
+          textDecoration: "none",
+        }}
+      >
+        Call {phone}
+      </Link>
+    </EmailShell>
   );
 }

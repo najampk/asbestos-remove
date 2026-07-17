@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { BUSINESS } from "@/lib/constants";
+import { BUSINESS, QUOTE_NOTIFICATIONS_EMAIL } from "@/lib/constants";
 import {
   validateQuote,
   labelFor,
@@ -106,7 +106,7 @@ export async function POST(request: Request) {
     // Notification to the business (reply-to = customer).
     const notify = await resend.emails.send({
       from: FROM,
-      to: BUSINESS.emailGeneral,
+      to: QUOTE_NOTIFICATIONS_EMAIL,
       replyTo: fields.email,
       subject: `New quote enquiry — ${fields.name} (${fields.postcode})`,
       react: QuoteNotificationEmail({

@@ -154,8 +154,9 @@ export default function AsbestosRemovalPage() {
         </Container>
       </section>
 
-      {/* Removal process — the "Anatomy of a Safe Removal" scroll story (M2.6) */}
-      <section className="py-16 sm:py-20">
+      {/* Removal process — the "Anatomy of a Safe Removal" scroll story (M2.6).
+          The id anchors the homepage process section's cross-link. */}
+      <section id="removal-story" className="py-16 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="On Your Property"

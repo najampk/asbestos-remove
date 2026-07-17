@@ -28,6 +28,12 @@ export const BUSINESS = {
 export const ADDRESS_ONE_LINE =
   "Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE";
 
+/**
+ * Internal inbox that receives quote-form notifications (app/api/quote).
+ * Not public NAP — customer-facing contact details live in BUSINESS above.
+ */
+export const QUOTE_NOTIFICATIONS_EMAIL = "qd@asbestosremovalenvironmental.com";
+
 /** The team and phone line operate around the clock; update here if the schedule changes. */
 export const OPENING_HOURS = [
   { days: "Monday–Sunday", hours: "Open 24 hours" },

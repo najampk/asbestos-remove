@@ -145,9 +145,11 @@ p {
     background-image: linear-gradient(90deg, #1d4ed8, #16a34a);
   }
 
-  /* blue→green clipped text — stat numbers & section eyebrows only */
+  /* blue→green clipped text — stat numbers & section eyebrows only.
+     Ends on eco-700 (not eco-500): the 12px mono eyebrows must hold ≥4.5:1
+     WCAG AA contrast on white across the whole gradient. */
   .gradient-text {
-    background-image: linear-gradient(90deg, #1d4ed8, #16a34a);
+    background-image: linear-gradient(90deg, #1d4ed8, #15803d);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
