@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+// Render emails to HTML here with a STATIC import. Passing `react:` to Resend
+// makes the SDK dynamically import @react-email/render at runtime, which
+// Vercel's function bundler doesn't trace — the deployed function then fails
+// with "Failed to render React component".
+import { render } from "@react-email/components";
 import { BUSINESS, QUOTE_NOTIFICATIONS_EMAIL } from "@/lib/constants";
 import {
   validateQuote,
@@ -103,22 +108,25 @@ export async function POST(request: Request) {
   const serviceLabel = labelFor(SERVICE_OPTIONS, fields.service);
 
   try {
+    const notification = QuoteNotificationEmail({
+      name: fields.name,
+      phone: fields.phone,
+      email: fields.email,
+      postcode: fields.postcode,
+      propertyType: propertyTypeLabel,
+      service: serviceLabel,
+      message: fields.message,
+      materialLabel,
+    });
+
     // Notification to the business (reply-to = customer).
     const notify = await resend.emails.send({
       from: FROM,
       to: QUOTE_NOTIFICATIONS_EMAIL,
       replyTo: fields.email,
       subject: `New quote enquiry — ${fields.name} (${fields.postcode})`,
-      react: QuoteNotificationEmail({
-        name: fields.name,
-        phone: fields.phone,
-        email: fields.email,
-        postcode: fields.postcode,
-        propertyType: propertyTypeLabel,
-        service: serviceLabel,
-        message: fields.message,
-        materialLabel,
-      }),
+      html: await render(notification),
+      text: await render(notification, { plainText: true }),
     });
 
     if (notify.error) {
@@ -131,15 +139,17 @@ export async function POST(request: Request) {
 
     // Branded auto-reply to the customer (best-effort — don't fail the request).
     try {
+      const autoReply = QuoteAutoReplyEmail({
+        name: fields.name,
+        phoneDisplay: BUSINESS.phoneDisplay,
+        phoneHref: BUSINESS.phoneHref,
+      });
       await resend.emails.send({
         from: FROM,
         to: fields.email,
         subject: "We've received your enquiry — Asbestos Remove",
-        react: QuoteAutoReplyEmail({
-          name: fields.name,
-          phoneDisplay: BUSINESS.phoneDisplay,
-          phoneHref: BUSINESS.phoneHref,
-        }),
+        html: await render(autoReply),
+        text: await render(autoReply, { plainText: true }),
       });
     } catch (err) {
       console.error("Auto-reply failed (non-fatal):", err);
