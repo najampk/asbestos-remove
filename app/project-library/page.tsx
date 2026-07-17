@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({ title: "Glasgow Asbestos Project Library", description: "Explore representative asbestos project workflows for Glasgow homes, shared buildings and industrial premises.", path: "/project-library" });
+export const metadata = buildMetadata({ title: "Glasgow Asbestos Project Library", description: "Representative asbestos project workflows for Glasgow homes, shared buildings and industrial premises — from first survey to documented disposal.", path: "/project-library" });
 
 const scenarios = [
   { icon: Home, area: "Glasgow homeowner journey", title: "Suspected cement garage roof", problem: "A homeowner is planning replacement work on a weathered outbuilding roof.", approach: "Confirm existing evidence, assess condition and access, determine work category, then provide a defined removal and disposal scope.", pack: "Written scope, relevant work records and applicable waste documentation." },

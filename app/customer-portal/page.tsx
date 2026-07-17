@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({ title: "Customer Project Passport", description: "Preview the planned secure project passport and multi-property dashboard for Asbestos Remove customers.", path: "/customer-portal" });
+export const metadata = buildMetadata({ title: "Customer Project Passport", description: "Preview the planned Asbestos Remove customer portal — a secure project passport with appointments, documents and reminders for Glasgow properties.", path: "/customer-portal" });
 
 const passport = [
   { icon: CalendarCheck, title: "Appointments", text: "Attendance dates, site contacts and preparation notes." },

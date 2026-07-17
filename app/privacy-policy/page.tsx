@@ -5,7 +5,8 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "How Asbestos Remove collects, uses and protects personal information.",
+  description:
+    "How Asbestos Remove (Asbestos Removal Environmental Ltd, Glasgow) collects, uses and protects personal information when you browse or request a quote.",
   path: "/privacy-policy",
 });
 

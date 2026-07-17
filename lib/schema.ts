@@ -2,10 +2,20 @@
 // JSON-LD builders (SPEC.md §3.4). LocalBusiness (ProfessionalService) sitewide,
 // Service per service page, FAQPage for every FAQ section, BreadcrumbList on inner
 // pages. NEVER emit an HSE licence credential — UKATA training only.
-import { SITE_URL, BUSINESS } from "./constants";
-import { SCHEMA_CREDENTIALS } from "./claims";
+import { SITE_URL, BUSINESS, SERVICE_AREAS } from "./constants";
+import { SCHEMA_CREDENTIALS, SCOPE_STATEMENT } from "./claims";
 
 export const BUSINESS_ID = `${SITE_URL}/#business`;
+
+// Council areas served (from constants) plus Scotland-wide coverage — mirrors
+// the ServiceArea section and homepage copy.
+const AREA_SERVED = [
+  ...SERVICE_AREAS.map((name) => ({
+    "@type": "AdministrativeArea" as const,
+    name,
+  })),
+  { "@type": "AdministrativeArea" as const, name: "Scotland" },
+];
 
 export function localBusinessSchema() {
   return {
@@ -14,10 +24,15 @@ export function localBusinessSchema() {
     "@id": BUSINESS_ID,
     name: BUSINESS.legalName,
     alternateName: BUSINESS.tradingName,
+    description: SCOPE_STATEMENT,
+    slogan: "Breathe Easy",
     url: SITE_URL,
     telephone: BUSINESS.phoneHref.replace("tel:", ""),
     email: BUSINESS.emailGeneral,
     image: `${SITE_URL}/og-img.jpg`,
+    logo: `${SITE_URL}/images/logo.webp`,
+    // Incorporation date of ASBESTOS REMOVAL ENVIRONMENTAL LTD (lib/claims.ts §0).
+    foundingDate: "2026-05-13",
     address: {
       "@type": "PostalAddress",
       streetAddress: `${BUSINESS.address.line1}, ${BUSINESS.address.line2}`,
@@ -32,7 +47,7 @@ export function localBusinessSchema() {
       latitude: 55.8541,
       longitude: -4.2649,
     },
-    areaServed: { "@type": "City", name: "Glasgow" },
+    areaServed: AREA_SERVED,
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [
@@ -78,7 +93,10 @@ export function serviceSchema({
     serviceType,
     url: `${SITE_URL}${path}`,
     provider: { "@id": BUSINESS_ID },
-    areaServed: { "@type": "City", name: "Glasgow" },
+    areaServed: [
+      { "@type": "City", name: "Glasgow" },
+      { "@type": "AdministrativeArea", name: "Scotland" },
+    ],
   };
 }
 

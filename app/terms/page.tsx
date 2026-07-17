@@ -5,7 +5,8 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Terms & Conditions",
-  description: "Terms governing use of the Asbestos Remove website and our quotations and services.",
+  description:
+    "The terms governing use of the Asbestos Remove website and our quotations, surveys, removal and disposal services across Glasgow and Scotland.",
   path: "/terms",
 });
 

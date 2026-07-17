@@ -34,6 +34,20 @@ export const ADDRESS_ONE_LINE =
  */
 export const QUOTE_NOTIFICATIONS_EMAIL = "qd@asbestosremovalenvironmental.com";
 
+/**
+ * Core council areas served from the Glasgow base. Single source for the
+ * ServiceArea section UI and the areaServed property in LocalBusiness JSON-LD.
+ */
+export const SERVICE_AREAS = [
+  "Glasgow City",
+  "East Renfrewshire",
+  "Renfrewshire",
+  "South Lanarkshire",
+  "North Lanarkshire",
+  "East Dunbartonshire",
+  "West Dunbartonshire",
+] as const;
+
 /** The team and phone line operate around the clock; update here if the schedule changes. */
 export const OPENING_HOURS = [
   { days: "Monday–Sunday", hours: "Open 24 hours" },

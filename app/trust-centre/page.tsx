@@ -6,7 +6,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { BUSINESS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({ title: "Trust Centre | Asbestos Remove Glasgow", description: "Verify the company, understand our asbestos work scope and see the documentation customers should expect.", path: "/trust-centre" });
+export const metadata = buildMetadata({ title: "Trust Centre | Asbestos Remove Glasgow", titleAbsolute: true, description: "Verify the company behind Asbestos Remove — legal identity, training, honest work scope and the documentation Glasgow customers should expect on every job.", path: "/trust-centre" });
 
 const proofs = [
   { icon: Building2, title: "Legal identity", text: `${BUSINESS.legalName}, registered in Scotland under company number ${BUSINESS.companyNumber}.` },

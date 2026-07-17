@@ -21,6 +21,7 @@ import { PROCESS_STEPS } from "@/lib/process";
 import { BUSINESS } from "@/lib/constants";
 import {
   HOMEPAGE_SCOPE_PARAGRAPH,
+  LICENSABLE_REFERRAL,
   LICENSING_FAQ_ANSWER,
   FAQ_SELF_REMOVAL_ANSWER,
 } from "@/lib/claims";
@@ -169,8 +170,8 @@ export default function HomePage() {
                 />
                 <div className="relative aspect-[5/4] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-line">
                   <Image
-                    src="/images/scotland.avif"
-                    alt="Scotland — the area Asbestos Remove covers from its Glasgow base"
+                    src="/images/asbestos-remove-glasgow-uk.avif"
+                    alt="Glasgow — home of Asbestos Remove, serving the city and all of Scotland"
                     fill
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover"
@@ -186,6 +187,71 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Team & consultancy ───────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+            <Reveal delay={120} className="lg:order-first">
+              <div className="relative">
+                <div
+                  className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-eco-500/10 to-brand-700/10 blur-2xl"
+                  aria-hidden="true"
+                />
+                <div className="relative aspect-[5/4] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-line">
+                  <Image
+                    src="/images/asbestos-remove-glasgow-uk-consultancy.avif"
+                    alt="The Asbestos Remove team carrying out asbestos removal and consultancy work in Glasgow"
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-950/45 via-brand-950/5 to-transparent"
+                    aria-hidden="true"
+                  />
+                  <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full bg-white/95 px-4 py-2 shadow-lg backdrop-blur">
+                    <ShieldCheck className="h-4 w-4 text-eco-700" aria-hidden="true" />
+                    <span className="font-mono text-xs font-medium uppercase tracking-wider text-brand-900">
+                      UKATA-Trained Team
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal>
+              <SectionHeading
+                eyebrow="An Entire Team Dedicated To"
+                title="Asbestos Removal & Consultancy"
+              />
+              <p className="mt-6 text-lg leading-relaxed text-slate-600">
+                From the first phone call to the final clearance certificate,
+                every job is handled by one dedicated Glasgow team —
+                UKATA-trained operatives supported by a certified plumber and
+                joiner, both asbestos trained.
+              </p>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                That depth of experience — more than 30 years of it at founder
+                level — is why clients also use us as consultants. Surveys,
+                registers and asbestos management plans keep homes, businesses
+                and duty holders compliant with CAR 2012 long after the work is
+                finished.
+              </p>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                {LICENSABLE_REFERRAL} And whatever the job, our
+                customer-focused team works in close cooperation with you to
+                deliver it safely, on budget and on time.
+              </p>
+              <div className="mt-8">
+                <Button href="/services" variant="outline">
+                  Explore our services
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Button>
               </div>
             </Reveal>
           </div>

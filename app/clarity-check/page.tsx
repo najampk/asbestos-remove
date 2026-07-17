@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ClarityCheck from "@/components/clarity/ClarityCheck";
 import { buildMetadata } from "@/lib/seo";
 
-export const metadata = buildMetadata({ title: "Glasgow Asbestos Clarity Check", description: "Get a clear, safety-first next step for suspected asbestos in a Glasgow property. No visual diagnosis and no obligation.", path: "/clarity-check" });
+export const metadata = buildMetadata({ title: "Glasgow Asbestos Clarity Check", description: "Free 2-minute self-assessment for suspected asbestos in a Glasgow property. Get a clear, safety-first next step — no visual diagnosis and no obligation.", path: "/clarity-check" });
 
 const journeys = [
   { icon: Building2, title: "Renovating a tenement", text: "Understand why the planned work and affected area determine the right survey." },

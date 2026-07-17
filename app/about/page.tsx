@@ -9,10 +9,10 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "About Asbestos Remove | Glasgow Asbestos Specialists",
+  titleAbsolute: true,
   description:
     "Meet Asbestos Removal Environmental Ltd — Glasgow asbestos specialists led by 30+ years of industry experience. UKATA-trained team and a safety-first culture.",
   path: "/about",
-  titleAbsolute: true,
 });
 
 const CREDENTIALS = [

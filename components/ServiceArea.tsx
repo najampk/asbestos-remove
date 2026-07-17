@@ -2,8 +2,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
-
-const AREAS = ["Glasgow City", "East Renfrewshire", "Renfrewshire", "South Lanarkshire", "North Lanarkshire", "East Dunbartonshire", "West Dunbartonshire"];
+import { SERVICE_AREAS } from "@/lib/constants";
 
 export default function ServiceArea() {
   return (
@@ -20,7 +19,7 @@ export default function ServiceArea() {
             </Button>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2" aria-label="Core service areas">
-            {AREAS.map((area) => <li key={area} className="flex min-h-14 items-center gap-3 rounded-xl border border-line bg-white px-4 py-3 font-medium text-brand-950 shadow-card"><MapPin className="h-4 w-4 shrink-0 text-eco-700" aria-hidden="true" />{area}</li>)}
+            {SERVICE_AREAS.map((area) => <li key={area} className="flex min-h-14 items-center gap-3 rounded-xl border border-line bg-white px-4 py-3 font-medium text-brand-950 shadow-card"><MapPin className="h-4 w-4 shrink-0 text-eco-700" aria-hidden="true" />{area}</li>)}
           </ul>
         </div>
       </Container>

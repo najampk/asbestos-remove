@@ -7,8 +7,9 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Asbestos Services by Sector | Glasgow & Scotland",
+  titleAbsolute: true,
   description:
-    "Asbestos surveys, management and removal for homes, commercial buildings and industrial sites across Glasgow and Scotland.",
+    "Asbestos surveys, management and removal tailored to homes, commercial buildings and industrial sites across Glasgow and Scotland. Honest, fixed quotes.",
   path: "/sectors",
 });
 

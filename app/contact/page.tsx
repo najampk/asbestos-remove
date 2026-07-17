@@ -9,10 +9,10 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact Asbestos Remove Glasgow | Free Quotes 07960 881102",
+  titleAbsolute: true,
   description:
     "Get a free asbestos survey or removal quote in Glasgow. Call 07960 881102, email info@asbestosremove.co.uk or use our quick quote form.",
   path: "/contact",
-  titleAbsolute: true,
 });
 
 const FAQS: FAQ[] = [
