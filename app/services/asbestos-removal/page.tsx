@@ -79,7 +79,7 @@ const FAQS: FAQ[] = [
   {
     question: "Can you remove my garage roof?",
     answer:
-      "Yes. Corrugated asbestos cement garage and shed roofs are core non-licensed work for us — removed whole where possible, double-bagged and taken to a licensed facility with full documentation.",
+      "Yes. Corrugated asbestos cement garage and shed roofs are core non-licensed work for us — removed whole where possible, wrapped in 1000 gauge polythene and taken to a licensed waste facility with full documentation.",
   },
 ];
 

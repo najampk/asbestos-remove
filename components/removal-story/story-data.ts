@@ -46,7 +46,7 @@ export const STORY_SCENES: StoryScene[] = [
     range: [0.62, 0.82],
     heading: "The work happens under control.",
     narration:
-      "UKATA-trained operatives remove the material whole where possible, double-bag every piece in UN-approved sacks, and decontaminate fully before stepping outside the work area.",
+      "UKATA-trained operatives remove the material whole where possible, double-bag every piece in UK approved waste bags, and decontaminate fully before stepping outside the work area.",
     ariaLabel:
       "A suited operative removing the material and sealing it into a red-tagged waste sack, then passing through decontamination.",
   },

@@ -20,6 +20,7 @@ import { SECTORS } from "@/lib/sectors";
 import { PROCESS_STEPS } from "@/lib/process";
 import { BUSINESS } from "@/lib/constants";
 import {
+  HERO_CREDENTIALS,
   HOMEPAGE_SCOPE_PARAGRAPH,
   LICENSING_FAQ_ANSWER,
   FAQ_SELF_REMOVAL_ANSWER,
@@ -37,10 +38,12 @@ export const metadata = buildMetadata({
 const WHY_US: string[] = [
   "30+ years of hands-on industry experience",
   "UKATA-trained, vetted operatives",
+  "Certified plumber & joiner on the team — both asbestos trained",
   "Fixed, transparent quotes — no surprises",
   "Honest advice on what we can and can't remove",
   "Full waste documentation supplied",
   "Glasgow-based, fast local response",
+  "Available 24 hours a day, 7 days a week",
 ];
 
 const HOME_FAQS: FAQ[] = [
@@ -61,11 +64,11 @@ const HOME_FAQS: FAQ[] = [
   {
     question: "Searching for “asbestos removal near me” in Glasgow?",
     answer:
-      "We're based in Glasgow city and cover the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld — with Scotland-wide coverage for commercial and industrial projects.",
+      "We're based in Glasgow city and cover the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld — as well as Livingston, Edinburgh and further afield, with Scotland-wide coverage for commercial and industrial projects.",
   },
   {
     question: "Do you offer emergency asbestos removal?",
-    answer: `If asbestos has been damaged or disturbed, stop work, keep people out of the area and call us on ${BUSINESS.phoneDisplay}. Urgent situations are prioritised — we'll tell you straight away how to make the area safe, then arrange the survey or removal that follows.`,
+    answer: `If asbestos has been damaged or disturbed, stop work, keep people out of the area and call us on ${BUSINESS.phoneDisplay} — our line is open 24 hours a day. Urgent situations are prioritised — we'll tell you straight away how to make the area safe, then arrange the survey or removal that follows.`,
   },
   {
     question: "Are you licensed by the HSE?",
@@ -99,15 +102,19 @@ export default function HomePage() {
                 className="h-px w-8 bg-gradient-to-r from-transparent to-eco-400"
                 aria-hidden="true"
               />
-              UKATA-Trained Specialists · Glasgow &amp; Surrounding Areas
+              UKATA-Trained Specialists · Glasgow &amp; All of Scotland
+            </p>
+            <p className="mt-3 font-mono text-sm font-bold uppercase tracking-wider text-white">
+              {HERO_CREDENTIALS}
             </p>
             <h1 className="h1-fluid mt-4 font-display font-bold text-white">
-              Safe, Compliant, Efficient Asbestos Removal in Glasgow
+              Safe, Compliant, Efficient Asbestos Removal in Glasgow &amp;
+              Across Scotland
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">
               Clear advice, asbestos surveys and controlled non-licensed and
               notifiable non-licensed work for homes, businesses and industrial
-              sites across Glasgow and the surrounding council areas.
+              sites across Glasgow and all of Scotland.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact#quote-form" variant="primary">
@@ -117,7 +124,7 @@ export default function HomePage() {
                 <Phone className="h-4 w-4" aria-hidden="true" /> Call {BUSINESS.phoneDisplay}
               </Button>
             </div>
-            <p className="mt-4 text-sm text-white/70">Free, no-obligation enquiry · Glasgow-based team · We explain the appropriate work category before quoting</p>
+            <p className="mt-4 text-sm text-white/70">Free, no-obligation enquiry · Available 24/7 · Glasgow-based team · We explain the appropriate work category before quoting</p>
           </div>
         </Container>
       </section>

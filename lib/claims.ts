@@ -71,15 +71,24 @@ export const LICENSING_FAQ_ANSWER =
   "We carry out non-licensed and notifiable non-licensed asbestos work — the categories that cover the majority of asbestos in Scottish homes and businesses, including cement roofs, Artex, floor tiles and more. Licensable materials legally require an HSE licensed contractor; if a survey identifies these, we say so straight away and help you arrange compliant removal.";
 
 /**
+ * Hero credentials line — rendered bold at the top of the homepage hero.
+ * The insurance policy number joins this string once confirmed (§0 rule:
+ * never invent it; add it HERE, not in the page).
+ */
+export const HERO_CREDENTIALS = `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`;
+
+/**
  * TrustBar items (SPEC.md §1.4 / §4). Rendered in mono type beneath the hero.
  * ISO / insurance items join this list once those §0 values are confirmed.
  */
 export const TRUST_BAR_ITEMS: readonly string[] = [
   "UKATA-TRAINED OPERATIVES",
   `SEPA REGISTERED CARRIER ${PLACEHOLDERS.wasteCarrierNo}`,
+  "ASBESTOS-TRAINED PLUMBER & JOINER",
   "NON-LICENSED & NNLW SCOPE",
   "CONTROLLED WORK METHODS",
   "GLASGOW-BASED TEAM",
+  "AVAILABLE 24/7",
 ];
 
 /**
@@ -88,9 +97,11 @@ export const TRUST_BAR_ITEMS: readonly string[] = [
 export const FOOTER_COMPLIANCE_ITEMS: readonly string[] = [
   "UKATA-Trained Operatives",
   `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
+  "Asbestos-Trained Plumber & Joiner",
   "Non-Licensed & NNLW Scope",
   "Controlled Work Methods",
   "Glasgow-Based Team",
+  "Available 24/7",
 ];
 
 /**

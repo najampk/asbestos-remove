@@ -65,7 +65,7 @@ const FAQS: FAQ[] = [
   {
     question: "Where can I get asbestos testing near me?",
     answer:
-      "If you're searching from Glasgow or the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank or Cumbernauld — we're your local option: targeted sampling collected at your property and analysed by a UKAS-accredited laboratory, with fast turnaround on results.",
+      "If you're searching from Glasgow or the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank, Cumbernauld, Livingston, Edinburgh or further afield — we're your local option: targeted sampling collected at your property and analysed by a UKAS-accredited laboratory, with fast turnaround on results.",
   },
   {
     question: "How much does an asbestos survey cost in Glasgow?",

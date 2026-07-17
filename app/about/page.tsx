@@ -1,4 +1,4 @@
-import { BadgeCheck, Truck, FileCheck } from "lucide-react";
+import { BadgeCheck, Truck, FileCheck, Wrench } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
@@ -31,6 +31,11 @@ const CREDENTIALS = [
     label: "Clear Project Records",
     body: "We provide the applicable project and waste documentation for your records.",
   },
+  {
+    icon: Wrench,
+    label: "Certified Plumber & Joiner In-House",
+    body: "The team includes a certified plumber and a certified joiner, both asbestos trained — so jobs that involve pipework, boarding or timber get safe strip-out and tidy reinstatement from one team.",
+  },
 ];
 
 const VALUES = [
@@ -56,6 +61,8 @@ const AREAS = [
   "East Kilbride",
   "Clydebank",
   "Cumbernauld",
+  "Livingston",
+  "Edinburgh",
 ];
 
 export default function AboutPage() {

@@ -39,7 +39,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Get Your Free Asbestos Quote"
-        intro="Call, email or use the form below. We'll assess your situation and come back with free, fixed-price advice — usually within 24 hours."
+        intro="Call, email or use the form below — our phone line is open 24 hours a day, 7 days a week. We'll assess your situation and come back with free, fixed-price advice."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Contact", href: "/contact" },
@@ -130,7 +130,7 @@ export default function ContactPage() {
 
             {/* Reassurance strip */}
             <p className="text-center font-mono text-xs uppercase tracking-wider text-slate-600">
-              Free, fixed quotes · No-obligation advice · Response within 24 hours
+              Free, fixed quotes · No-obligation advice · Available 24/7
             </p>
           </div>
         </Container>

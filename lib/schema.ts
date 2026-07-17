@@ -33,6 +33,20 @@ export function localBusinessSchema() {
       longitude: -4.2649,
     },
     areaServed: { "@type": "City", name: "Glasgow" },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
     identifier: {
       "@type": "PropertyValue",
       propertyID: "UK Company Number",

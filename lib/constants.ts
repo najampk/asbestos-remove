@@ -28,11 +28,9 @@ export const BUSINESS = {
 export const ADDRESS_ONE_LINE =
   "Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE";
 
-/** Provisional public hours; update here if the operating schedule changes. */
+/** The team and phone line operate around the clock; update here if the schedule changes. */
 export const OPENING_HOURS = [
-  { days: "Monday–Friday", hours: "8:00am–6:00pm" },
-  { days: "Saturday", hours: "9:00am–1:00pm" },
-  { days: "Sunday", hours: "Closed" },
+  { days: "Monday–Sunday", hours: "Open 24 hours" },
 ] as const;
 
 export interface NavLink {
