@@ -78,6 +78,34 @@ export const SECTOR_LINKS: NavLink[] = [
   { label: "Industrial", href: "/sectors/industrial" },
 ];
 
+/** M6 guide pages (SPEC.md §11) — shared by nav, footer and the /guides hub. */
+export const GUIDE_LINKS: NavLink[] = [
+  {
+    label: "Asbestos Removal Costs",
+    href: "/guides/asbestos-removal-cost",
+    description:
+      "What removal actually costs in 2026 — real price ranges for garage roofs, Artex, floor tiles and testing, and what moves the number.",
+  },
+  {
+    label: "Licensed vs Non-Licensed Work",
+    href: "/guides/licensed-vs-non-licensed-asbestos-removal",
+    description:
+      "The three legal categories of asbestos work, which one your material falls into, and how to vet any contractor before you pay a deposit.",
+  },
+  {
+    label: "How to Identify Asbestos",
+    href: "/guides/how-to-identify-asbestos",
+    description:
+      "Narrow it down by property age and material, see what the common culprits look like — and why a lab test beats every visual check.",
+  },
+  {
+    label: "Asbestos Disposal Rules",
+    href: "/guides/asbestos-disposal-rules-scotland",
+    description:
+      "Asbestos is special waste in Scotland. The wrapping, paperwork and carrier rules — and why the cheapest collection quote can cost you most.",
+  },
+];
+
 export const MAIN_NAV: NavGroup[] = [
   { label: "Home", href: "/" },
   { label: "Clarity Check", href: "/clarity-check" },
@@ -85,8 +113,9 @@ export const MAIN_NAV: NavGroup[] = [
   { label: "Sectors", href: "/sectors", children: SECTOR_LINKS },
   {
     label: "Resources",
-    href: "/project-library",
+    href: "/guides",
     children: [
+      { label: "Guides & Advice", href: "/guides" },
       { label: "Project Library", href: "/project-library" },
       { label: "Trust Centre", href: "/trust-centre" },
       { label: "Customer Portal", href: "/customer-portal" },
@@ -98,6 +127,7 @@ export const MAIN_NAV: NavGroup[] = [
 export const COMPANY_LINKS: NavLink[] = [
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Guides & Advice", href: "/guides" },
   { label: "Clarity Check", href: "/clarity-check" },
   { label: "Trust Centre", href: "/trust-centre" },
   { label: "Customer Portal", href: "/customer-portal" },

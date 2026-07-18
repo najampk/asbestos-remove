@@ -46,6 +46,7 @@ export const metadata: Metadata = {
   description:
     "Safe, compliant asbestos removal, surveys, disposal and management across Glasgow. UKATA-trained team, 30+ years' experience, free quotes.",
   applicationName: BUSINESS.tradingName,
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     siteName: BUSINESS.tradingName,

@@ -141,10 +141,10 @@ export default function AsbestosDisposalPage() {
                   "Removal and disposal handled together, with one paper trail.",
               },
               {
-                label: "Domestic Sector",
-                href: "/sectors/domestic",
+                label: "Asbestos Disposal Rules",
+                href: "/guides/asbestos-disposal-rules-scotland",
                 description:
-                  "Collection and disposal for homeowners and landlords in Glasgow.",
+                  "Special waste law in Scotland — wrapping, paperwork and your duty of care.",
               },
               {
                 label: "Asbestos Surveys",

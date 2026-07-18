@@ -169,3 +169,41 @@ export const FAQ_SELF_REMOVAL_ANSWER =
 /** Industrial FAQ — "Which materials fall within non-licensed scope?" (SPEC.md §5.9). */
 export const FAQ_NON_LICENSED_SCOPE_ANSWER =
   "Non-licensed and notifiable non-licensed work covers materials such as asbestos cement roofs, cladding, gutters and flues, and textured coatings. Higher-risk licensable materials — sprayed coatings, thermal lagging and most insulating board — legally require an HSE licensed contractor, and we help you arrange that where a survey identifies them.";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// M6 guide pages (SPEC.md §11). Licensing-status statements written for the
+// /guides landing pages. Same rule as everywhere: "HSE licensed contractor"
+// describes the third-party legal requirement for licensable materials — never
+// this company.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Licensing guide hero — direct-answer GEO block (≤50 words). */
+export const LICENSING_GUIDE_INTRO =
+  "UK law splits asbestos work into three categories: licensed, notifiable non-licensed (NNLW) and non-licensed. Only the highest-risk materials legally require an HSE licensed contractor. Most asbestos in homes and commercial buildings doesn't — and knowing the difference protects both your safety and your wallet.";
+
+/**
+ * Licensing guide — why searching "licensed asbestos removal companies" can
+ * mislead. Honest framing: the licence matters enormously for licensable
+ * materials and is not the relevant test for lower-risk ones.
+ */
+export const LICENSING_GUIDE_WHEN_IT_MATTERS =
+  "If your material is licensable — sprayed coatings, pipe or boiler lagging, most asbestos insulating board — an HSE licensed contractor isn't optional, it's the law, and no reputable firm will tell you otherwise. But for asbestos cement, Artex, floor tiles and the other lower-risk materials that make up the bulk of what's found in UK buildings, the licence isn't the test that matters. What matters is whether the operatives are trained, the work follows the control methods in the Control of Asbestos Regulations 2012, and the waste leaves site with the right paperwork.";
+
+/** Licensing guide FAQ — "Do I need a licensed contractor for a garage roof?" */
+export const LICENSING_FAQ_GARAGE_ROOF_ANSWER =
+  "No. Asbestos cement — the corrugated grey sheeting used on garages, sheds and outbuildings — is non-licensed work under the Control of Asbestos Regulations 2012, provided it's in reasonable condition and removed without breaking it up. It still demands trained operatives, controlled methods and certified disposal, which is exactly the work we do.";
+
+/** Licensing guide FAQ — consequences of hiring the wrong tier. */
+export const LICENSING_FAQ_WRONG_TIER_ANSWER =
+  "Having licensable materials removed by anyone other than an HSE licensed contractor is a criminal offence — for the firm doing the work, and potentially for a commercial client who commissioned it. If a contractor offers to strip pipe lagging or sprayed coating without a licence, walk away and report it. For domestic customers the bigger everyday risk is the reverse: paying licensed-work prices for materials that never needed a licence in the first place.";
+
+/** Licensing guide FAQ — how to verify a firm's licence for licensable work. */
+export const LICENSING_FAQ_CHECK_REGISTER_ANSWER =
+  "HSE publishes a register of every current asbestos licence holder — search for it as 'HSE asbestos licence holders list'. If a firm claims a licence, its name is on that list; no exceptions, no 'pending applications'. For non-licensed and NNLW work no such licence exists, so the checks that matter are training certificates, waste carrier registration and insurance — and any honest firm, ourselves included, will show you all three without being chased.";
+
+/**
+ * Cost guide — licensed work pricing context. The only licensing-status
+ * statement on the cost page.
+ */
+export const COST_GUIDE_LICENSED_NOTE =
+  "Licensable materials — sprayed coatings, pipe and boiler lagging, most asbestos insulating board — sit in a different world of cost: full enclosures, 14-day notification to HSE, air monitoring and a 4-stage clearance certificate. Budget from £2,500 and often well beyond. This work legally requires an HSE licensed contractor; it isn't work we quote for, but if a survey finds it we'll say so and help you arrange the right firm.";

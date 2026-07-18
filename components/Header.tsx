@@ -145,7 +145,7 @@ export default function Header() {
           aria-label={`${BUSINESS.tradingName} — home`}
         >
           <Image
-            src="/images/logo.webp"
+            src="/images/asbestos-remove-logo.webp"
             alt=""
             width={1254}
             height={1254}
@@ -154,10 +154,10 @@ export default function Header() {
           />
           <span className="flex flex-col leading-none">
             <span className="font-display text-lg font-bold tracking-tight text-brand-950">
-              Asbestos Remove
+              Asbestos Removal
             </span>
-            <span className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-eco-700">
-              Breathe Easy
+            <span className="mt-0.5 font-display text-xs font-semibold tracking-[0.24em] text-eco-700">
+              Environmental Ltd.
             </span>
           </span>
         </Link>

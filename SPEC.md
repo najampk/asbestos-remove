@@ -497,6 +497,7 @@ CTA Band.
 3. **M3** — Quote form + Resend + React Email templates + API route (honeypot, rate limit)
 4. **M4** — SEO layer: metadata exports, JSON-LD lib, sitemap/robots, OG images
 5. **M5** — Motion pass, CWV audit (Lighthouse ≥95 across the board), accessibility pass, launch checklist incl. §0 flag replacement
+6. **M6** — SEO landing pages Phase 1 (§11): `/guides` hub + 4 guide pages, claims/schema/nav/sitemap wiring
 
 ---
 
@@ -672,3 +673,32 @@ export interface StoryScene {
 ### 10.7 Relationship to the Property Explorer (§9)
 
 The two features split the funnel: the **Explorer** owns discovery ("do I have a problem?") on the homepage and domestic page; the **Story** owns trust ("can I let these people into my property?") on the removal page. Explorer hotspots with `serviceLink: /services/asbestos-removal` land the visitor directly above the story — the intended one-two sequence.
+
+---
+
+## 11. SEO Landing Pages — `/guides` (M6; starts the §7.2 Guides plan)
+
+Keyword-driven landing pages targeting low-difficulty, high-intent search clusters (source: Semrush/Ahrefs, July 2026). One page per **search intent**, never per keyword variant — the four "how much…" question keywords all resolve to the single cost guide.
+
+### 11.1 Page map (Phase 1 — informational guides)
+
+| Route | Target cluster (UK vol / KD) | Notes |
+|---|---|---|
+| `/guides` | — (hub) | Card grid linking the guides; links from Resources nav + footer |
+| `/guides/asbestos-removal-cost` | asbestos removal cost (1.9K/14), how much does it cost to remove asbestos (590/5) + 3 more "how much" variants (~1.4K/5–6) | Price table with indicative UK market ranges — clearly labelled as market context, NOT company quotes. VAT + variables section |
+| `/guides/licensed-vs-non-licensed-asbestos-removal` | licensed asbestos removal companies uk (1.6K/35) | The three-tier explainer as education. ALL licensing-status sentences imported from `lib/claims.ts` (§0 rule). Ranks honestly without any licence claim |
+| `/guides/how-to-identify-asbestos` | how to tell if you have asbestos, what does asbestos look like | Funnels to surveys + Clarity Check explorer |
+| `/guides/asbestos-disposal-rules-scotland` | asbestos disposal, getting rid of asbestos, how to remove asbestos | Scotland-specific: special waste (not "hazardous waste"), SEPA, consignment notes. Funnels to disposal service |
+
+### 11.2 Standing rules for guide pages
+
+- **Voice**: written UK-English trade prose — first-person plural, concrete specifics (regulations by name, real price ranges, materials, dates), varied sentence rhythm. No listicle filler, no "it's important to note", no invented company facts
+- **Prices** are indicative UK market ranges, stated as such, with a "your quote is the real answer" CTA. Never presented as this company's tariff. §0 placeholder rule still applies to company numbers (insurance, ISO)
+- Every guide: PageHero with ≤50-word direct-answer intro (GEO), `Article` + `BreadcrumbList` JSON-LD, FAQ section (FAQAccordion → auto `FAQPage`), RelatedLinks to services + sibling guides, unique metadata + canonical
+- A visible "Last updated <Month Year>" line (freshness signal); update when copy materially changes
+- Licensing-status statements ONLY via `lib/claims.ts` exports — new guide-specific statements are added there first, then imported
+
+### 11.3 Later phases (do not build in M6)
+
+- **Phase 2 — material pages** under `/services/asbestos-removal/…`: garage roofs, artex, floor tiles, cement sheets, soffits & fascias, sheds, water tanks. Target "[material] asbestos removal (+ cost)". Licensable materials (lagging, sprayed coatings, AIB) get NO service page — educational coverage only
+- **Phase 3 — location pages** per §7.1 (unchanged: ≥40% unique copy, no doorway pages)

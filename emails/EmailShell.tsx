@@ -84,12 +84,18 @@ export default function EmailShell({
             <Row>
               <Column style={{ width: 62 }}>
                 <Link href={SITE_URL}>
+                  {/* White tile: the logo is near-black on transparency and
+                      would vanish against the navy header without it. */}
                   <Img
                     src={`${SITE_URL}/apple-icon-180x180.png`}
                     width="48"
                     height="48"
                     alt={`${BUSINESS.tradingName} logo`}
-                    style={{ display: "block", borderRadius: 10 }}
+                    style={{
+                      display: "block",
+                      borderRadius: 10,
+                      backgroundColor: "#FFFFFF",
+                    }}
                   />
                 </Link>
               </Column>
@@ -103,7 +109,7 @@ export default function EmailShell({
                     lineHeight: "24px",
                   }}
                 >
-                  {BUSINESS.tradingName}
+                  Asbestos Removal
                 </Text>
                 <Text
                   style={{
@@ -116,7 +122,7 @@ export default function EmailShell({
                     lineHeight: "14px",
                   }}
                 >
-                  Breathe Easy · Glasgow
+                  Environmental Ltd · Glasgow
                 </Text>
               </Column>
             </Row>

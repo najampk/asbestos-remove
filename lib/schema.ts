@@ -30,7 +30,7 @@ export function localBusinessSchema() {
     telephone: BUSINESS.phoneHref.replace("tel:", ""),
     email: BUSINESS.emailGeneral,
     image: `${SITE_URL}/og-img.jpg`,
-    logo: `${SITE_URL}/images/logo.webp`,
+    logo: `${SITE_URL}/images/asbestos-remove-logo.webp`,
     // Incorporation date of ASBESTOS REMOVAL ENVIRONMENTAL LTD (lib/claims.ts §0).
     foundingDate: "2026-05-13",
     address: {
@@ -97,6 +97,41 @@ export function serviceSchema({
       { "@type": "City", name: "Glasgow" },
       { "@type": "AdministrativeArea", name: "Scotland" },
     ],
+  };
+}
+
+/**
+ * Guide pages (SPEC.md §11). Author/publisher resolve to the sitewide
+ * LocalBusiness node — the business itself is the author, which is the
+ * E-E-A-T signal that matters for a trade contractor.
+ */
+export function articleSchema({
+  headline,
+  description,
+  path,
+  datePublished,
+  dateModified,
+}: {
+  headline: string;
+  description: string;
+  path: string;
+  /** ISO date, e.g. "2026-07-18". */
+  datePublished: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    url: `${SITE_URL}${path}`,
+    mainEntityOfPage: `${SITE_URL}${path}`,
+    image: `${SITE_URL}/og-img.jpg`,
+    inLanguage: "en-GB",
+    author: { "@id": BUSINESS_ID },
+    publisher: { "@id": BUSINESS_ID },
+    datePublished,
+    dateModified: dateModified ?? datePublished,
   };
 }
 

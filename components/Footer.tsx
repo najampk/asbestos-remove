@@ -66,19 +66,21 @@ export default function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         {/* Brand lockup */}
         <div className="mb-10 flex items-center gap-3">
-          <Image
-            src="/images/logo.webp"
-            alt=""
-            width={1254}
-            height={1254}
-            className="h-14 w-14"
-          />
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-white via-slate-100 to-slate-300 p-1.5 shadow-sm ring-1 ring-white/30">
+            <Image
+              src="/images/asbestos-remove-logo.webp"
+              alt=""
+              width={1254}
+              height={1254}
+              className="h-full w-full object-contain"
+            />
+          </div>
           <div className="flex flex-col leading-none">
             <span className="font-display text-xl font-bold tracking-tight text-white">
-              Asbestos Remove
+              Asbestos Removal
             </span>
-            <span className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-eco-400">
-              Breathe Easy
+            <span className="mt-0.5 font-display text-sm font-semibold tracking-[0.31em] text-eco-400">
+              Environmental Ltd.
             </span>
           </div>
         </div>

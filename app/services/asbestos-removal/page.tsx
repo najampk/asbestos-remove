@@ -229,10 +229,10 @@ export default function AsbestosRemovalPage() {
                   "Every removal ends with tracked, certified waste disposal.",
               },
               {
-                label: "Industrial Sector",
-                href: "/sectors/industrial",
+                label: "Asbestos Removal Costs",
+                href: "/guides/asbestos-removal-cost",
                 description:
-                  "Large-scale removal for factories, warehouses and plant.",
+                  "What removal typically costs in 2026, and what moves the price.",
               },
             ]}
           />

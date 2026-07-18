@@ -181,10 +181,10 @@ export default function AsbestosSurveysPage() {
                   "Keeping material in place? Stay compliant with a management plan.",
               },
               {
-                label: "Domestic Sector",
-                href: "/sectors/domestic",
+                label: "How to Identify Asbestos",
+                href: "/guides/how-to-identify-asbestos",
                 description:
-                  "Surveying a home before renovation or sale in Glasgow.",
+                  "Read the clues by property age and material before booking anything.",
               },
             ]}
           />

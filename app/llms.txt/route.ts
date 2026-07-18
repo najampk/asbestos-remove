@@ -3,7 +3,12 @@
 // /llms.txt. Implemented as a route handler rather than a static public/ file so
 // every licensing-status statement is assembled from lib/claims.ts (LEGAL COPY
 // RULE) and business facts from lib/constants.ts — never duplicated here.
-import { SITE_URL, BUSINESS, ADDRESS_ONE_LINE } from "@/lib/constants";
+import {
+  SITE_URL,
+  BUSINESS,
+  ADDRESS_ONE_LINE,
+  GUIDE_LINKS,
+} from "@/lib/constants";
 import {
   SCOPE_STATEMENT,
   LICENSABLE_REFERRAL,
@@ -25,6 +30,10 @@ export function GET(): Response {
     (s) => `- [${s.cardTitle}](${SITE_URL}${s.href}): ${s.summary}`,
   ).join("\n");
 
+  const guides = GUIDE_LINKS.map(
+    (g) => `- [${g.label}](${SITE_URL}${g.href}): ${g.description}`,
+  ).join("\n");
+
   const body = `# ${BUSINESS.tradingName}
 
 > ${SCOPE_STATEMENT} ${LICENSABLE_REFERRAL}
@@ -40,6 +49,10 @@ ${services}
 ## Sectors
 
 ${sectors}
+
+## Guides
+
+${guides}
 
 ## Key pages
 
