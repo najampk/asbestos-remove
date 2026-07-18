@@ -11,7 +11,7 @@ export default function ServiceArea() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <div>
             <SectionHeading eyebrow="Local coverage" title="Glasgow-based, serving the wider city region" />
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">We support homeowners, landlords, property factors and organisations across Glasgow and neighbouring council areas. Commercial and industrial projects can be considered across Scotland.</p>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">We support homeowners, landlords, property factors and organisations across Glasgow and neighbouring areas. Commercial and industrial projects can be considered across Scotland.</p>
             <p className="mt-4 text-sm leading-relaxed text-slate-600">Tell us the property postcode and the material or work involved. We’ll confirm coverage and the appropriate next step before arranging a visit.</p>
             <Button href="/contact#quote-form" variant="outline" className="mt-6">
               Check coverage for your postcode

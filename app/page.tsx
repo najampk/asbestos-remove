@@ -382,7 +382,7 @@ export default function HomePage() {
                   Why Choose Us
                 </p>
                 <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                  Why Glasgow chooses Asbestos Remove
+                  Why Glasgow chooses Asbestos Removal Environmental Ltd
                 </h2>
                 <p className="mt-4 max-w-md text-lg leading-relaxed text-white/85">
                   From first survey to final clearance certificate, every job is
