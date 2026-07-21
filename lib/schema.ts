@@ -79,11 +79,18 @@ export function serviceSchema({
   description,
   path,
   serviceType,
+  areaServed,
 }: {
   name: string;
   description: string;
   path: string;
   serviceType: string;
+  /**
+   * Overrides the default Glasgow + Scotland coverage. Location pages
+   * (SPEC.md §7.1) pass their own town and council so each page describes the
+   * area it is actually about.
+   */
+  areaServed?: { type: "City" | "AdministrativeArea"; name: string }[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -93,10 +100,12 @@ export function serviceSchema({
     serviceType,
     url: `${SITE_URL}${path}`,
     provider: { "@id": BUSINESS_ID },
-    areaServed: [
-      { "@type": "City", name: "Glasgow" },
-      { "@type": "AdministrativeArea", name: "Scotland" },
-    ],
+    areaServed: (
+      areaServed ?? [
+        { type: "City" as const, name: "Glasgow" },
+        { type: "AdministrativeArea" as const, name: "Scotland" },
+      ]
+    ).map((a) => ({ "@type": a.type, name: a.name })),
   };
 }
 

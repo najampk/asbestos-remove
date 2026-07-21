@@ -70,6 +70,23 @@ export const SERVICE_LINKS: NavLink[] = [
   { label: "Asbestos Removal", href: "/services/asbestos-removal" },
   { label: "Asbestos Disposal", href: "/services/asbestos-disposal" },
   { label: "Asbestos Management", href: "/services/asbestos-management" },
+  {
+    label: "Emergency Removal",
+    href: "/services/emergency-asbestos-removal",
+  },
+];
+
+/**
+ * Location pages (SPEC.md §7.1). Town + route only — the page copy lives in
+ * lib/locations.ts. Used by the ServiceArea section and the sitemap.
+ */
+export const LOCATION_LINKS: NavLink[] = [
+  { label: "Paisley", href: "/asbestos-removal-paisley" },
+  { label: "Hamilton", href: "/asbestos-removal-hamilton" },
+  { label: "East Kilbride", href: "/asbestos-removal-east-kilbride" },
+  { label: "Motherwell", href: "/asbestos-removal-motherwell" },
+  { label: "Clydebank", href: "/asbestos-removal-clydebank" },
+  { label: "Cumbernauld", href: "/asbestos-removal-cumbernauld" },
 ];
 
 export const SECTOR_LINKS: NavLink[] = [
@@ -84,7 +101,7 @@ export const GUIDE_LINKS: NavLink[] = [
     label: "Asbestos Removal Costs",
     href: "/guides/asbestos-removal-cost",
     description:
-      "What removal actually costs in 2026 — real price ranges for garage roofs, Artex, floor tiles and testing, and what moves the number.",
+      "What removal actually costs in 2026 — price ranges for garage roofs, Artex and testing, rates per square metre, and what Glasgow adds to the bill.",
   },
   {
     label: "Licensed vs Non-Licensed Work",
@@ -102,7 +119,7 @@ export const GUIDE_LINKS: NavLink[] = [
     label: "Asbestos Disposal Rules",
     href: "/guides/asbestos-disposal-rules-scotland",
     description:
-      "Asbestos is special waste in Scotland. The wrapping, paperwork and carrier rules — and why the cheapest collection quote can cost you most.",
+      "Whether you can legally remove it yourself, plus the wrapping, paperwork and carrier rules that apply to special waste in Scotland.",
   },
 ];
 

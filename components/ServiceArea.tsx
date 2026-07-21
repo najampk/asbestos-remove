@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
-import { SERVICE_AREAS } from "@/lib/constants";
+import { SERVICE_AREAS, LOCATION_LINKS } from "@/lib/constants";
 
 export default function ServiceArea() {
   return (
@@ -17,6 +18,28 @@ export default function ServiceArea() {
               Check coverage for your postcode
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Button>
+            <div className="mt-8">
+              <p className="font-mono text-xs font-medium uppercase tracking-wider text-eco-700">
+                Town pages
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-1.5 text-sm text-slate-600">
+                {LOCATION_LINKS.map((town, i) => (
+                  <li key={town.href} className="flex items-center gap-2">
+                    <Link
+                      href={town.href}
+                      className="font-medium underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-700"
+                    >
+                      {town.label}
+                    </Link>
+                    {i < LOCATION_LINKS.length - 1 && (
+                      <span aria-hidden="true" className="text-line">
+                        ·
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2" aria-label="Core service areas">
             {SERVICE_AREAS.map((area) => <li key={area} className="flex min-h-14 items-center gap-3 rounded-xl border border-line bg-white px-4 py-3 font-medium text-brand-950 shadow-card"><MapPin className="h-4 w-4 shrink-0 text-eco-700" aria-hidden="true" />{area}</li>)}

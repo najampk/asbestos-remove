@@ -10,16 +10,17 @@ import { articleSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "How to Identify Asbestos in Your Home",
   description:
-    "Think you've found asbestos? How to narrow it down by property age and material, what the common culprits look like, and why a £30 lab test beats guessing.",
+    "How do you know if your house has asbestos? Narrow it down by property age and material, read the Glasgow housing types, and why a £30 lab test beats guessing.",
   path: "/guides/how-to-identify-asbestos",
 });
 
 const schema = articleSchema({
   headline: "How to Tell If You Have Asbestos",
   description:
-    "A practical identification guide: reading property age, recognising the common asbestos-containing materials in UK homes, and when to stop looking and get a sample tested.",
+    "A practical identification guide: reading property age, recognising the common asbestos-containing materials in UK homes and Glasgow housing types, and when to stop looking and get a sample tested.",
   path: "/guides/how-to-identify-asbestos",
   datePublished: "2026-07-18",
+  dateModified: "2026-07-21",
 });
 
 // The everyday materials, in roughly the order we get asked about them.
@@ -67,6 +68,11 @@ const SUSPECTS: { name: string; looks: string }[] = [
 ];
 
 const FAQS: FAQ[] = [
+  {
+    question: "How do I know if my house in Glasgow has asbestos?",
+    answer:
+      "Two dates tell you most of it: when the building went up, and when it was last properly refitted. Anything built or refurbished before 2000 may contain asbestos; after that, you're clear. In Glasgow the usual finds are Artex ceilings and vinyl floor tiles from 1960s–80s tenement refits, asbestos cement roofs on outhouses, bin stores and garage courts across the post-war schemes, and insulating board around risers and airing cupboards in the 60s and 70s high flats. If you're in a factored block or a housing association property, ask for the asbestos register before anything else — the survey may already exist. Beyond that, nothing settles it but a lab test, at around £30 a sample.",
+  },
   {
     question: "Is asbestos dangerous if I just leave it alone?",
     answer:
@@ -146,8 +152,61 @@ export default function HowToIdentifyAsbestosPage() {
         </Container>
       </section>
 
-      {/* Usual suspects */}
+      {/* Glasgow housing stock */}
       <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Glasgow"
+            title="How do I know if my house in Glasgow has asbestos?"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Glasgow housing sorts into a handful of recognisable types, and
+              each carries its own signature. Pre-1919 sandstone tenements were
+              built long before asbestos went anywhere near a building site, so
+              nothing in the original fabric is a worry — it arrives with the
+              later work instead. Almost every close in the city has been
+              rewired, replumbed, refloored or re-ceilinged somewhere between
+              1960 and 1990, and that&rsquo;s where the Artex ceilings, the
+              cement flue from a back boiler, the 9-inch floor tiles in the
+              kitchen and the cement soffits at the top landing come from.
+            </p>
+            <p>
+              The inter-war and post-war stock is more predictable. Four-in-a-block
+              and cottage flats from the 1930s to the 50s, and the peripheral
+              schemes built through the 50s and 60s — Drumchapel, Easterhouse,
+              Castlemilk, Pollok — used asbestos cement outdoors as a matter of
+              routine: outhouse and bin store roofs, coal sheds, garage courts,
+              soffits under the eaves and cladding on gable ends. Most of it is
+              still there, weathered grey and mossy, and most of it is
+              lower-risk bonded material in reasonable condition.
+            </p>
+            <p>
+              The 60s and 70s high flats and deck-access blocks are where we ask
+              people to be most careful. Insulating board turns up around
+              service risers, ducts, airing cupboards and behind panel heaters,
+              and it reads as ordinary grey board from a stepladder — which is
+              exactly how it ends up cut through during a DIY kitchen refit.
+              That material is licensable, high-risk work. If you find flat grey
+              board in a flat of that era, stop and get it identified before
+              anything else happens.
+            </p>
+            <p>
+              One local shortcut worth knowing: in a factored block, a housing
+              association property or any building with common parts, the
+              dutyholder must already hold an asbestos register under Regulation
+              4 of the Control of Asbestos Regulations 2012. Phone the factor or
+              landlord and ask for it before you drill the close wall or lift a
+              hall floor — the survey may have been done years ago and the
+              answer may already be sitting in a filing cabinet with your
+              building&rsquo;s name on it.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Usual suspects */}
+      <section className="py-16 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="Know the Line-Up"
@@ -178,7 +237,7 @@ export default function HowToIdentifyAsbestosPage() {
       </section>
 
       {/* Why eyes aren't enough */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="The Hard Limit"
@@ -214,7 +273,7 @@ export default function HowToIdentifyAsbestosPage() {
       </section>
 
       {/* If you've found it */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Right Now"
@@ -243,7 +302,7 @@ export default function HowToIdentifyAsbestosPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -257,7 +316,7 @@ export default function HowToIdentifyAsbestosPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Next steps"

@@ -39,6 +39,11 @@ const FAQS: FAQ[] = [
       "Most household waste and recycling centres do not accept asbestos, and those that do require it correctly double-bagged and pre-booked. Because asbestos is special (hazardous) waste, using a registered carrier keeps you on the right side of your duty of care.",
   },
   {
+    question: "Do you provide an asbestos disposal certificate in Glasgow?",
+    answer:
+      "Yes — though the document you actually want is the special waste consignment note, which is the one with legal standing in Scotland. It records the waste type and EWC code, the producer, the carrier and the licensed facility that received it, and you keep a copy. Along with our waste carrier registration and, where relevant, the removal records, that's the complete evidence trail. Anyone offering a 'certificate' without a consignment note behind it is offering you a piece of paper, not proof.",
+  },
+  {
     question: "What paperwork do I get?",
     answer:
       "You receive SEPA consignment notes and a disposal certificate confirming the waste reached a licensed facility. We keep copies too, so the paper trail is there for property sales, audits or insurers.",
@@ -114,8 +119,56 @@ export default function AsbestosDisposalPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* The certificate question */}
       <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Your Paperwork"
+            title="Asbestos disposal certificates, explained"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              People ring us asking for a &ldquo;disposal certificate&rdquo;,
+              and it&rsquo;s worth being precise about what that is, because
+              the wrong document proves nothing. There is no single certificate
+              issued by a government body at the end of an asbestos job. The
+              document that actually carries legal weight in Scotland is the{" "}
+              <strong className="text-brand-950">
+                special waste consignment note
+              </strong>{" "}
+              — raised before the waste moves, travelling with it, and recording
+              what the waste is, the European Waste Catalogue code (17 06 05 for
+              cement products, for example), who produced it, who carried it,
+              and which licensed facility received it.
+            </p>
+            <p>
+              You get a copy, and you keep it. Three years is the recommended
+              minimum, though for a property you own it&rsquo;s worth keeping
+              indefinitely: the consignment note is what answers a buyer&rsquo;s
+              solicitor, an insurer or a SEPA officer asking what happened to
+              the garage roof, sometimes long after everyone has forgotten the
+              job. Alongside it we provide the waste carrier registration
+              details and, where the job warrants it, the removal method and
+              site records — which together are what most people mean when they
+              say &ldquo;certificate&rdquo;.
+            </p>
+            <p>
+              The test to apply to any contractor is simple. Ask, before the
+              waste leaves your property, for the carrier registration number
+              and the name of the receiving site. A legitimate operator answers
+              on the spot; ours is on the bottom of every page of this site. A
+              collector who offers a handwritten receipt, or who gets vague
+              about which tip it&rsquo;s going to, isn&rsquo;t offering disposal
+              — and because the duty of care under the Environmental Protection
+              Act 1990 stays with whoever produced the waste, it&rsquo;s your
+              name on the trail when it turns up in a lay-by.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -129,7 +182,7 @@ export default function AsbestosDisposalPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Related services"

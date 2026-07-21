@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_URL, LOCATION_LINKS } from "@/lib/constants";
 
 // SPEC.md §3.2 / §2. Flat list of all indexable routes.
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/services/asbestos-removal", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services/asbestos-disposal", priority: 0.8, changeFrequency: "monthly" },
     { path: "/services/asbestos-management", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/services/emergency-asbestos-removal", priority: 0.8, changeFrequency: "monthly" },
     { path: "/sectors", priority: 0.9, changeFrequency: "monthly" },
     { path: "/sectors/domestic", priority: 0.8, changeFrequency: "monthly" },
     { path: "/sectors/commercial", priority: 0.8, changeFrequency: "monthly" },
@@ -29,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.7, changeFrequency: "yearly" },
     { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
+    // Location pages (SPEC.md §7.1) — generated from the shared link list so a
+    // new town is added in one place.
+    ...LOCATION_LINKS.map((l) => ({
+      path: l.href,
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    })),
   ];
 
   return entries.map((e) => ({

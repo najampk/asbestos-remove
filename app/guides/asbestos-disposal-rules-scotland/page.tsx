@@ -4,26 +4,36 @@ import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
-import { HERO_CREDENTIALS } from "@/lib/claims";
+import {
+  HERO_CREDENTIALS,
+  DIY_REMOVAL_SCOTLAND_POSITION,
+  DIY_REMOVAL_SCOTLAND_WORK,
+  FAQ_DIY_REMOVAL_SCOTLAND_ANSWER,
+} from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
   title: "Asbestos Disposal Rules in Scotland",
   description:
-    "Asbestos is special waste in Scotland — the disposal rules explained: wrapping, consignment notes, which tips accept it and how to avoid rogue collectors.",
+    "Is it illegal to remove asbestos yourself in Scotland? The law explained — special waste status, wrapping, consignment notes and how to avoid rogue collectors.",
   path: "/guides/asbestos-disposal-rules-scotland",
 });
 
 const schema = articleSchema({
   headline: "Asbestos Disposal Rules in Scotland",
   description:
-    "What the law requires when asbestos waste leaves a Scottish property: special waste status, double-wrapping, SEPA registered carriers, consignment notes and the paperwork that protects you.",
+    "What the law requires when asbestos waste leaves a Scottish property: whether you may remove it yourself, special waste status, double-wrapping, SEPA registered carriers and the paperwork that protects you.",
   path: "/guides/asbestos-disposal-rules-scotland",
   datePublished: "2026-07-18",
+  dateModified: "2026-07-21",
 });
 
 const FAQS: FAQ[] = [
+  {
+    question: "Is it illegal to remove asbestos yourself in Scotland?",
+    answer: FAQ_DIY_REMOVAL_SCOTLAND_ANSWER,
+  },
   {
     question: "Can I put asbestos in a skip?",
     answer:
@@ -105,8 +115,53 @@ export default function AsbestosDisposalRulesPage() {
         </Container>
       </section>
 
-      {/* The tip question */}
+      {/* DIY removal legality */}
       <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="The Question We Get Most"
+            title="Is it illegal to remove asbestos yourself in Scotland?"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>{DIY_REMOVAL_SCOTLAND_POSITION}</p>
+            <p>{DIY_REMOVAL_SCOTLAND_WORK}</p>
+            <p>
+              Disposal is where DIY most often turns into an offence, and it
+              catches people who did the removal carefully. Special waste
+              can&rsquo;t go in a skip, a brown bin or the back of a van
+              belonging to someone who answered an advert. It has to be
+              double-wrapped, consigned and delivered to a facility licensed
+              to receive it — and the duty of care under the Environmental
+              Protection Act 1990 stays with you, the person who produced the
+              waste, until it gets there. Wrap it and hand it to the wrong
+              collector and you are still in the chain when SEPA follows it
+              back.
+            </p>
+            <p>
+              So the practical answer isn&rsquo;t &ldquo;you can&rsquo;t&rdquo;
+              — it&rsquo;s that the sums rarely work. Between wetting agents,
+              1000-gauge polythene, disposable coveralls, a proper mask that
+              actually fits, and a collection at the end of it, a homeowner
+              doing a small garage roof properly spends most of what a trained
+              crew charges to do the whole thing, insured, in a morning. The
+              corner people cut to avoid that is nearly always the wrapping or
+              the paperwork, which are the two parts that protect them. If
+              you&rsquo;re set on doing the removal yourself, at least let us
+              handle the waste — that&rsquo;s a{" "}
+              <a
+                href="/services/asbestos-disposal"
+                className="font-semibold text-brand-700 underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-950"
+              >
+                collection-only job
+              </a>{" "}
+              and it ends with a consignment note in your name.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* The tip question */}
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="The Obvious Question"
@@ -142,7 +197,7 @@ export default function AsbestosDisposalRulesPage() {
       </section>
 
       {/* Wrapping */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Doing It Right"
@@ -171,7 +226,7 @@ export default function AsbestosDisposalRulesPage() {
       </section>
 
       {/* Paperwork */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Your Protection"
@@ -203,7 +258,7 @@ export default function AsbestosDisposalRulesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -217,7 +272,7 @@ export default function AsbestosDisposalRulesPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Related reading"

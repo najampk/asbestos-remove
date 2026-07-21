@@ -5,6 +5,7 @@ import FeatureList from "@/components/FeatureList";
 import Button from "@/components/Button";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
+import { LICENSABLE_REFERRAL } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -52,6 +53,16 @@ const FAQS: FAQ[] = [
     answer:
       "Schools and nurseries need work scheduled around term times and safeguarding, with tight controls and clear communication to staff. We're experienced in education settings and plan works to keep pupils and staff well away from any activity.",
   },
+  {
+    question: "When can asbestos work be done in a Glasgow school?",
+    answer:
+      "In the holidays, for anything of size. The Scottish summer break from late June to mid-August is the window for larger programmes, with the October week, February break, Easter and Christmas holidays absorbing smaller jobs. Working in an empty building is safer, quicker and cheaper than enclosing part of an occupied one, so the scheduling conversation should come before the pricing conversation. Where something genuinely can't wait for a holiday, it's planned as a sealed, out-of-hours enclosure well away from pupil routes.",
+  },
+  {
+    question: "Who is the duty holder for asbestos in a school?",
+    answer:
+      "For a local authority school it's normally the council as the body responsible for the premises; for an independent school it's the board or trustees; and in a PPP or leased building it follows the contract and the repairing obligations. Whoever it is must identify asbestos under Regulation 4 of the Control of Asbestos Regulations 2012, record it in a register, assess its condition and make that information available to anyone doing work in the building — including the janitor putting up a shelf.",
+  },
 ];
 
 export default function CommercialSectorPage() {
@@ -91,8 +102,64 @@ export default function CommercialSectorPage() {
         </Container>
       </section>
 
-      {/* Duty holder package — conversion block */}
+      {/* Schools & education */}
       <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Education Estate"
+            title="Asbestos removal in Glasgow schools and nurseries"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              A large share of Scotland&rsquo;s school estate was built or
+              extended between the 1950s and the 1970s, which puts it squarely
+              in the decades when asbestos was standard specification. It shows
+              up in the same places building after building: cement roofing and
+              cladding on annexes, gyms and dining blocks, textured coatings on
+              ceilings, thermoplastic tiles in corridors, cement flues and
+              soffits, and insulating board around service ducts, risers and
+              plant rooms.
+            </p>
+            <p>
+              Be clear-eyed about that last one, because it drives everything.
+              A lot of what sits in school buildings of that vintage is
+              insulating board, and AIB is licensable work — a different tier
+              with different contractors, notification and clearance
+              requirements. {LICENSABLE_REFERRAL} What we handle in education
+              settings is the bonded material: the cement roofs and cladding,
+              the coatings, the floor tiles and the flues, which is a
+              substantial share of the estate and the part most often disturbed
+              by ordinary maintenance.
+            </p>
+            <p>
+              The scheduling is the other half of the job, and Scottish term
+              dates make it its own discipline. The summer break from late June
+              to the middle of August is the window for anything substantial;
+              the October week, the February break, Easter and the Christmas
+              holidays take the smaller pieces. Programme it properly and the
+              building is empty, the work is unhurried and nobody&rsquo;s
+              timetable moves. Programme it badly and you&rsquo;re trying to
+              enclose a corridor during a school day, which is the wrong answer
+              every time.
+            </p>
+            <p>
+              Where any work does need to happen while a school is occupied,
+              expect — and insist on — the full set of controls: sealed
+              enclosures well away from pupil routes, agreed access and signage,
+              a named contact on the school&rsquo;s side, and clear
+              communication to staff before anything starts. Schools will also
+              ask any contractor about PVG membership, escorting and site
+              induction before they come through the gate, and they are right
+              to. Every job ends with the document pack the local authority,
+              the board or the insurer will want: method, air monitoring where
+              applicable, and the waste consignment notes.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Duty holder package — conversion block */}
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <div className="gradient-hero relative overflow-hidden rounded-3xl px-6 py-12 shadow-card-hover sm:px-12 sm:py-14">
             <div
@@ -123,7 +190,7 @@ export default function CommercialSectorPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -137,7 +204,7 @@ export default function CommercialSectorPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Related services"

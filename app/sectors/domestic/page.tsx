@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Asbestos Removal for Homes Glasgow",
   description:
-    "Domestic asbestos removal across Glasgow — garage roofs, Artex ceilings, floor tiles & more. Tidy, discreet, UKATA-trained. Free fixed quotes for homeowners.",
+    "Domestic asbestos removal across Glasgow — garage roofs, Artex, floor tiles & more, plus landlord duties explained. Free fixed quotes for owners and landlords.",
   path: "/sectors/domestic",
 });
 
@@ -54,6 +54,16 @@ const FAQS: FAQ[] = [
     question: "Do landlords have asbestos duties?",
     answer:
       "Landlords are responsible for the common parts of residential buildings under the duty to manage, and have a general duty to keep tenants safe. We help landlords survey, manage and, where needed, remove asbestos across their portfolio.",
+  },
+  {
+    question: "Do I need an asbestos survey before letting a property in Glasgow?",
+    answer:
+      "There's no blanket legal requirement to survey the inside of a single let flat before handing over the keys, so anyone telling you it's compulsory is overselling. What is worth doing on any pre-2000 property is knowing what's there before a contractor works on it, because that's where landlords come unstuck. If your building has common parts you're responsible for, the duty to manage applies to those and a survey is how you meet it. For a portfolio, surveying during void periods is the cheapest and least disruptive route.",
+  },
+  {
+    question: "Who is responsible for asbestos in a tenement close?",
+    answer:
+      "The common parts are shared, so the responsibility is shared — usually the owners collectively, acting through a factor, with the split set by your title deeds. Under Regulation 4 of the Control of Asbestos Regulations 2012 whoever is the dutyholder for those areas must identify asbestos there, assess its condition and keep a register. If you own or let a flat in the close, you're entitled to ask to see it, and you should before any work touching shared walls, stairs, risers or the roof space.",
   },
 ];
 
@@ -124,8 +134,62 @@ export default function DomesticSectorPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Landlords */}
       <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="For Landlords"
+            title="Asbestos duties if you let property in Glasgow"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Landlords sit in an awkward gap, and a lot of them don&rsquo;t
+              realise it. The duty to manage under Regulation 4 of the Control
+              of Asbestos Regulations 2012 covers the{" "}
+              <em>common parts</em> of residential buildings — closes,
+              stairwells, shared roof spaces, bin stores, drying areas, communal
+              boiler rooms — but not the inside of the flat you let, which is
+              domestic premises and falls outside that particular regulation.
+              What doesn&rsquo;t fall outside anything is your obligation to
+              keep the property safe for the people living in it.
+            </p>
+            <p>
+              In Scotland that obligation has a name: the Repairing Standard
+              under the Housing (Scotland) Act 2006, which requires a let
+              property to be wind and watertight, in reasonable repair and safe
+              to live in. Damaged asbestos — a broken cement roof over a back
+              door, a scraped textured ceiling, a cracked flue — engages that
+              standard, and a tenant who thinks it isn&rsquo;t being dealt with
+              can take the matter to the First-tier Tribunal. Every private
+              landlord in Glasgow is on the council&rsquo;s landlord register
+              already; HMOs get more scrutiny again.
+            </p>
+            <p>
+              The failure we&rsquo;re called out to most, though, has nothing to
+              do with paperwork. It&rsquo;s a handyman sent to do a small job in
+              a pre-2000 flat, drilling or cutting into something nobody
+              identified first — a ceiling, an airing cupboard panel, a soffit.
+              At that point you own a contaminated let property, a displaced
+              tenant and a bill several times what a survey would have cost. If
+              you take one thing from this page: brief every contractor on what
+              is and isn&rsquo;t known about the building before they lift a
+              tool.
+            </p>
+            <p>
+              The practical answer for a portfolio is boring and cheap. Survey
+              once, keep a register, hand the relevant part of it to anyone
+              doing work, and re-check it when the condition of a building
+              changes. Void periods between tenancies are the natural window for
+              both surveying and any removal — nobody&rsquo;s displaced and
+              nobody&rsquo;s rent is disrupted. We work with landlords, letting
+              agents and factors across Glasgow on exactly that cycle.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -139,7 +203,7 @@ export default function DomesticSectorPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="How we can help at home"

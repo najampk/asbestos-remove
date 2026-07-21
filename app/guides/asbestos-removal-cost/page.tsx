@@ -4,23 +4,28 @@ import SectionHeading from "@/components/SectionHeading";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
-import { COST_GUIDE_LICENSED_NOTE, FAQ_SELF_REMOVAL_ANSWER } from "@/lib/claims";
+import {
+  COST_GUIDE_LICENSED_NOTE,
+  FAQ_SELF_REMOVAL_ANSWER,
+  PLACEHOLDERS,
+} from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 import { articleSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "Asbestos Removal Cost UK: 2026 Price Guide",
+  title: "Asbestos Removal Cost 2026: UK & Glasgow Guide",
   description:
-    "How much does asbestos removal cost in the UK? Real 2026 price ranges for garage roofs, Artex, floor tiles, testing and disposal — and what drives the price up.",
+    "How much does asbestos removal cost in Glasgow and the UK? Real 2026 price ranges and per-m² rates for garage roofs, Artex, floor tiles, testing and disposal.",
   path: "/guides/asbestos-removal-cost",
 });
 
 const schema = articleSchema({
   headline: "How Much Does Asbestos Removal Cost in the UK?",
   description:
-    "Indicative 2026 UK price ranges for non-licensed asbestos removal — garage roofs, Artex, floor tiles, testing and collection — with the factors that move a real quote.",
+    "Indicative 2026 UK and Glasgow price ranges for non-licensed asbestos removal — garage roofs, Artex, floor tiles, per-square-metre rates, testing and collection — with the factors that move a real quote.",
   path: "/guides/asbestos-removal-cost",
   datePublished: "2026-07-18",
+  dateModified: "2026-07-21",
 });
 
 // Indicative UK market ranges, July 2026 (SPEC.md §11.2) — market context,
@@ -78,7 +83,37 @@ const PRICE_ROWS: { job: string; range: string; note: string }[] = [
   },
 ];
 
+// Sheet-material rates, the only jobs where a per-m² figure means anything
+// (SPEC.md §11.2 — indicative UK market ranges, not a company tariff).
+const PER_M2_RATES: { material: string; rate: string; note: string }[] = [
+  {
+    material: "Asbestos cement sheeting",
+    rate: "£20 – £40 per m²",
+    note: "Garage and outbuilding roofs, wall cladding, farm roofing. The rate drops as the area grows — big, clean, accessible runs are the cheapest asbestos there is to remove.",
+  },
+  {
+    material: "Textured coatings (Artex)",
+    rate: "£25 – £50 per m²",
+    note: "Ceilings and occasionally walls. Overboarding may be cheaper than removal if the surface is sound and you can live with losing the height.",
+  },
+  {
+    material: "Vinyl floor tiles & bitumen adhesive",
+    rate: "£30 – £60 per m²",
+    note: "The tiles lift quickly; the black adhesive welded to the screed underneath is what fills the day and pushes the rate to the top of the range.",
+  },
+];
+
 const FAQS: FAQ[] = [
+  {
+    question: "How much does asbestos removal cost in Glasgow in 2026?",
+    answer:
+      "The same as most of urban Britain, give or take. A single garage roof removed and disposed of runs £400–£800, a double or larger roof £700–£1,200, a full garage demolition £800–£1,500, and Artex ceilings £25–£50 per m². Glasgow's variables are access rather than geography — tenement stairs, factored back courts and rear-lane lock-ups add labour that a suburban driveway doesn't. The city's advantage is short runs to licensed transfer stations in the west of Scotland, so the disposal leg costs less here than on a rural Highland job.",
+  },
+  {
+    question: "What does asbestos removal cost per square metre in the UK?",
+    answer:
+      "Broadly £20–£40 per m² for asbestos cement sheeting, £25–£50 per m² for textured coatings such as Artex, and £30–£60 per m² for vinyl floor tiles with bitumen adhesive underneath. Treat those rates as a sense-check on a quote for a decent-sized area, not a calculator. Below roughly 20 m² the fixed costs — call-out, set-up, decontamination, the disposal run — dominate, and any honest firm prices the job rather than the square metres.",
+  },
   {
     question: "Why do asbestos removal quotes vary so much?",
     answer:
@@ -112,7 +147,7 @@ export default function AsbestosRemovalCostPage() {
       <PageHero
         eyebrow="Guides & Advice"
         title="How Much Does Asbestos Removal Cost?"
-        intro="Most non-licensed domestic asbestos jobs in the UK land between £200 and £1,500 — a single garage roof typically £400–£800 including disposal. Testing starts around £30 a sample. Licensed work is a different bracket entirely. Here's what sits behind those numbers."
+        intro="Most non-licensed domestic asbestos jobs in the UK land between £200 and £1,500 — a single garage roof typically £400–£800 including disposal. Sheet materials run £20–£60 per m², and testing starts around £30 a sample. Licensed work is a different bracket. Here's what sits behind those numbers, in Glasgow and beyond."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Guides", href: "/guides" },
@@ -172,8 +207,50 @@ export default function AsbestosRemovalCostPage() {
         </Container>
       </section>
 
-      {/* Cost factors */}
+      {/* Per square metre */}
       <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <SectionHeading
+            eyebrow="Per Square Metre"
+            title="What removal costs per m²"
+            intro="Square-metre rates only apply to sheet materials measured by area — roofing, ceilings and flooring. Everything else, from a loft tank to a boiler flue, is priced as an item."
+          />
+          <div className="mt-10 grid gap-x-10 gap-y-7 md:grid-cols-3">
+            {PER_M2_RATES.map((item) => (
+              <div key={item.material}>
+                <h3 className="font-display text-lg font-bold text-brand-950">
+                  {item.material}
+                </h3>
+                <p className="mt-2 font-mono text-sm text-eco-700">
+                  {item.rate}
+                </p>
+                <p className="mt-2 leading-relaxed text-slate-600">
+                  {item.note}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 max-w-3xl space-y-5 leading-relaxed text-slate-600">
+            <p>
+              The rate is a sense-check, not a calculator. It only behaves
+              itself above roughly 20 m² — below that, the fixed costs swallow
+              it. A 15 m² garage roof at £500 works out at £33 per m², while
+              200 m² of the same sheeting on a farm building comes in nearer
+              £20, because the set-up, the decontamination and the run to the
+              transfer station happen once either way.
+            </p>
+            <p>
+              It also assumes material in reasonable condition, coming off in
+              whole sheets. Once something is broken, painted over or fixed
+              with rusted-in bolts, the area stops predicting the hours and the
+              quote has to be built from the job in front of us instead.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Cost factors */}
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Behind the Quote"
@@ -215,6 +292,54 @@ export default function AsbestosRemovalCostPage() {
               That&rsquo;s why nothing serious gets done for £80, and why
               combining jobs — the garage roof and the old loft tank in one
               visit — is the genuine saving.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Glasgow */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Local Detail"
+            title="How much does asbestos removal cost in Glasgow?"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Close to the national ranges above — Glasgow is not a cheap city
+              or an expensive one for this work. What changes here is access,
+              and access is the variable that quietly rewrites a quote. A
+              garage on a driveway in Newton Mearns and an identical roof on a
+              rear-lane lock-up in Dennistoun are the same square metres and
+              not the same day&rsquo;s work. Tenement jobs bring stairs, a
+              shared close, a factor to notify and often no parking within
+              carrying distance of the front door — all of it billable hours
+              that a suburban job simply doesn&rsquo;t have.
+            </p>
+            <p>
+              The city pays that back on disposal. The west of Scotland has
+              well-established licensed transfer and landfill routes, so the
+              waste leg of a Glasgow job is a short run rather than a day out —
+              one of the reasons rural and island quotes sit noticeably higher
+              for identical material. SEPA&rsquo;s special waste consignment
+              system adds paperwork to every load, but paperwork done properly
+              costs minutes, not hundreds of pounds.
+            </p>
+            <p>
+              The genuine local risk is at the bottom of the market. Glasgow
+              has no shortage of van-and-a-mobile-number quotes for garage
+              roofs at a couple of hundred pounds, and the sums only work if
+              the sheets are going somewhere they shouldn&rsquo;t. Ask for the
+              waste carrier registration and the name of the receiving site
+              before you compare prices — ours is{" "}
+              {PLACEHOLDERS.wasteCarrierNo}, and{" "}
+              <a
+                href="/guides/asbestos-disposal-rules-scotland"
+                className="font-semibold text-brand-700 underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-950"
+              >
+                Scotland&rsquo;s disposal rules
+              </a>{" "}
+              explain what the rest of that trail should look like.
             </p>
           </div>
         </Container>

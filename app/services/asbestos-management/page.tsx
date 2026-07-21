@@ -11,7 +11,7 @@ import { serviceSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "Asbestos Management Plans Glasgow",
   description:
-    "Asbestos management plans, registers and consultancy in Glasgow. Meet your CAR 2012 duty to manage with practical, audit-ready compliance. Free consultation.",
+    "Asbestos management plans and registers in Glasgow. What CAR 2012 Regulation 4 requires in Scotland, and the audit-ready compliance cycle we run for you.",
   path: "/services/asbestos-management",
 });
 
@@ -55,6 +55,16 @@ const FAQS: FAQ[] = [
     question: "Does the duty to manage apply to flats?",
     answer:
       "It applies to the common parts of residential blocks — closes, stairwells, plant rooms and shared services — even though individual flats are domestic. Factors and housing associations are typically the duty holders for those common areas.",
+  },
+  {
+    question: "Is there a separate asbestos law in Scotland?",
+    answer:
+      "No. The Control of Asbestos Regulations 2012 apply across Great Britain, so the duty to manage under Regulation 4 reads identically in Glasgow and in Birmingham. Two things are genuinely Scottish: asbestos waste is 'special waste' regulated by SEPA rather than 'hazardous waste' under the English regime, so the consignment paperwork differs, and enforcement is split between HSE and your local council's environmental health team depending on the type of premises.",
+  },
+  {
+    question: "What must an asbestos management plan contain?",
+    answer:
+      "Enough to show you've done what Regulation 4 asks and to be usable by someone standing in the building. In practice that means: who the duty holder is and who runs it day to day; the asbestos register with locations marked on plans; the type, condition and priority assessment of each material; what's being managed in place versus removed, and by when; the re-inspection date; and the two procedures that get used in anger — how contractors are given the information before starting work, and what happens if a material is damaged. Length is not the measure. Findability is.",
   },
   {
     question: "What are the penalties for non-compliance?",
@@ -122,8 +132,64 @@ export default function AsbestosManagementPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* The plan itself */}
       <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="The Document"
+            title="What an asbestos management plan must contain under CAR 2012"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Start with the point that catches people out: there is no separate
+              Scottish asbestos law. The Control of Asbestos Regulations 2012
+              apply across Great Britain, so a duty holder in Glasgow works to
+              exactly the same Regulation 4 as one in Manchester. What differs
+              north of the border is the waste side — asbestos is{" "}
+              <em>special waste</em> here, regulated by SEPA, not
+              &ldquo;hazardous waste&rdquo; under the English system — and the
+              enforcement route, which is HSE for most workplaces and your local
+              council&rsquo;s environmental health team for offices, shops,
+              warehouses and leisure premises.
+            </p>
+            <p>
+              Regulation 4 doesn&rsquo;t ask for a tidy folder, it asks for a
+              sequence, and the plan is what records it. You take reasonable
+              steps to find out whether asbestos is present and in what
+              condition — or presume it is, if you can&rsquo;t establish
+              otherwise. You record what you find. You assess the risk of anyone
+              disturbing it. You write down how that risk will be managed, put
+              those measures into effect, and review the whole thing regularly
+              and whenever something changes. Then, crucially, you make the
+              information available to every person liable to disturb the
+              material.
+            </p>
+            <p>
+              In practice the document that satisfies all of that is short and
+              usable rather than long and impressive. It names the duty holder
+              and whoever handles the day-to-day, carries the asbestos register
+              and the plans showing each location, states the condition and
+              priority assessment for every material, sets out what is being
+              managed in place versus removed and on what timescale, records the
+              re-inspection date, and explains the two procedures that actually
+              get used: how contractors are told before they start work, and
+              what everyone does if a material is damaged. A plan nobody can
+              find at eight on a Monday morning is not a plan.
+            </p>
+            <p>
+              The most common failure we see isn&rsquo;t a missing plan — it&rsquo;s
+              a good plan sitting in a drawer while a contractor drills into a
+              ceiling nobody warned them about. Getting the register in front of
+              trades before they lift a tool is the single cheapest piece of
+              compliance available to any duty holder, and it prevents the exact
+              incident that turns a managed building into an emergency call-out.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -137,7 +203,7 @@ export default function AsbestosManagementPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Related pages"

@@ -12,6 +12,9 @@ import {
   LICENSING_FAQ_GARAGE_ROOF_ANSWER,
   LICENSING_FAQ_WRONG_TIER_ANSWER,
   LICENSING_FAQ_CHECK_REGISTER_ANSWER,
+  HSE_NEAR_ME_DIRECT_ANSWER,
+  HSE_NEAR_ME_HOW_TO_FIND,
+  HSE_NEAR_ME_WRONG_SEARCH,
   THREE_TIER_EXPLAINER,
   SCOPE_STATEMENT,
   LICENSABLE_REFERRAL,
@@ -32,12 +35,18 @@ const schema = articleSchema({
     "The three legal categories of asbestos work under the Control of Asbestos Regulations 2012 — what each covers, when a licence is required by law, and how to vet a contractor.",
   path: "/guides/licensed-vs-non-licensed-asbestos-removal",
   datePublished: "2026-07-18",
+  dateModified: "2026-07-21",
 });
 
 const FAQS: FAQ[] = [
   {
     question: "Do I need a licensed contractor to remove a garage roof?",
     answer: LICENSING_FAQ_GARAGE_ROOF_ANSWER,
+  },
+  {
+    question: "How do I find an HSE licensed asbestos contractor near me?",
+    answer:
+      "Use HSE's own list rather than a search engine — look up 'HSE asbestos licence holders list', find the firms covering your area and check the licensed entity's name matches the company actually quoting you. Before you do any of that, though, find out whether you need one: if your material is asbestos cement, a textured coating, floor tiles or a flue, no licence is required to remove it and searching for a licence holder narrows you to a smaller and dearer pool. Asbestos Remove is not an HSE licensed contractor — we do non-licensed and NNLW work, and where a job is licensable we help you arrange a firm that is.",
   },
   {
     question: "How do I check whether a company holds an asbestos licence?",
@@ -175,8 +184,39 @@ export default function LicensedVsNonLicensedPage() {
         </Container>
       </section>
 
-      {/* Vetting checklist */}
+      {/* "HSE licensed contractor near me" — honest capture */}
       <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Searching For One?"
+            title="Looking for an HSE licensed asbestos contractor near you"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>{HSE_NEAR_ME_DIRECT_ANSWER}</p>
+            <p>{HSE_NEAR_ME_HOW_TO_FIND}</p>
+            <p>{HSE_NEAR_ME_WRONG_SEARCH}</p>
+            <p>
+              So the order that saves people money is: identify the material,
+              then choose the contractor. If it comes back licensable, use the
+              HSE list and hire properly — we&rsquo;ll happily point you at
+              firms who cover the west of Scotland. If it comes back as cement,
+              coating or tile, you&rsquo;re looking for trained operatives,
+              controlled methods and a waste carrier registration instead, and
+              the{" "}
+              <a
+                href="#vetting-checklist"
+                className="font-semibold text-brand-700 underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-950"
+              >
+                checklist below
+              </a>{" "}
+              is how you judge that.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Vetting checklist */}
+      <section id="vetting-checklist" className="scroll-mt-24 py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Due Diligence"
@@ -224,7 +264,7 @@ export default function LicensedVsNonLicensedPage() {
       </section>
 
       {/* Where we stand */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading eyebrow="Our Position" title="Where we stand" />
           <div className="mt-6 space-y-4 leading-relaxed text-slate-600">
@@ -235,7 +275,7 @@ export default function LicensedVsNonLicensedPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -249,7 +289,7 @@ export default function LicensedVsNonLicensedPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Keep reading"

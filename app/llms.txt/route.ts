@@ -8,6 +8,7 @@ import {
   BUSINESS,
   ADDRESS_ONE_LINE,
   GUIDE_LINKS,
+  LOCATION_LINKS,
 } from "@/lib/constants";
 import {
   SCOPE_STATEMENT,
@@ -34,6 +35,11 @@ export function GET(): Response {
     (g) => `- [${g.label}](${SITE_URL}${g.href}): ${g.description}`,
   ).join("\n");
 
+  const areas = LOCATION_LINKS.map(
+    (l) =>
+      `- [Asbestos removal in ${l.label}](${SITE_URL}${l.href}): Local building stock, typical materials and common questions for ${l.label}.`,
+  ).join("\n");
+
   const body = `# ${BUSINESS.tradingName}
 
 > ${SCOPE_STATEMENT} ${LICENSABLE_REFERRAL}
@@ -45,6 +51,11 @@ Licensing status: ${LICENSING_FAQ_ANSWER}
 ## Services
 
 ${services}
+- [Emergency Asbestos Removal](${SITE_URL}/services/emergency-asbestos-removal): 24-hour response to damaged or disturbed asbestos — free telephone triage, same-day surveys and urgent controlled removal of non-licensed and NNLW materials.
+
+## Areas we cover
+
+${areas}
 
 ## Sectors
 

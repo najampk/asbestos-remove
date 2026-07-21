@@ -202,6 +202,86 @@ export const LICENSING_FAQ_CHECK_REGISTER_ANSWER =
   "HSE publishes a register of every current asbestos licence holder — search for it as 'HSE asbestos licence holders list'. If a firm claims a licence, its name is on that list; no exceptions, no 'pending applications'. For non-licensed and NNLW work no such licence exists, so the checks that matter are training certificates, waste carrier registration and insurance — and any honest firm, ourselves included, will show you all three without being chased.";
 
 /**
+ * Disposal-rules guide (Scotland) — "is it illegal to remove asbestos yourself?"
+ * Both paragraphs assert who may legally do the work, so they belong here rather
+ * than in the page. Consistent with FAQ_SELF_REMOVAL_ANSWER, with the Scottish
+ * specifics (no separate Scots asbestos law; special waste is the local variable).
+ */
+export const DIY_REMOVAL_SCOTLAND_POSITION =
+  "Scotland has no separate asbestos removal law. The Control of Asbestos Regulations 2012 apply across Great Britain, and nothing in them makes a criminal of a homeowner who takes a cement sheet off their own shed. What people mean by 'is it illegal' usually splits into two questions — am I allowed to do the work, and am I allowed to get rid of what comes down — and the answers are not the same.";
+
+/** Disposal-rules guide — the work-side answer (licensing-status statement). */
+export const DIY_REMOVAL_SCOTLAND_WORK =
+  "Licensable materials — sprayed coatings, pipe and boiler lagging, most asbestos insulating board — legally require an HSE licensed contractor, and that line doesn't move because the building happens to be yours. Lower-risk bonded materials such as asbestos cement sheeting and textured coatings sit outside the licensing regime, so a homeowner working on their own property isn't breaking the licensing rules by handling them. The moment anyone else is in the picture — a tenant, a factored common close, a neighbour's garage, a mate you're paying a few quid — it stops being DIY, and the duties in CAR 2012 land squarely on whoever is directing the work.";
+
+/** Disposal-rules guide FAQ — "Is it illegal to remove asbestos yourself in Scotland?" */
+export const FAQ_DIY_REMOVAL_SCOTLAND_ANSWER =
+  "Not automatically. No Scottish law bans a homeowner from taking down lower-risk bonded material — an asbestos cement shed roof, say — at a property they live in, though we'd talk you out of it. Licensable materials such as pipe lagging, sprayed coatings and most insulating board legally require an HSE licensed contractor wherever they are. And disposal is regulated whoever does the removal: asbestos is special waste in Scotland, it can't go in a skip or a bin, and the duty of care under the Environmental Protection Act 1990 traces the waste back to you. Do the same work in a rented, factored or commercial building and you're not a homeowner doing DIY any more — you're a dutyholder, and CAR 2012 applies in full.";
+
+/**
+ * Surveys page FAQ — "Do I need a survey before removing Artex?" States the
+ * licensing category of textured coatings, so it lives here.
+ */
+export const SURVEY_FAQ_ARTEX_ANSWER =
+  "A test, almost certainly. A full survey, usually not. Asbestos and asbestos-free Artex look identical, so nobody — us included — can plan or price the work until a sample has been analysed, and a single sample costs a fraction of a survey. A survey earns its keep when several ceilings are coming off, when a property is going back to brick, or when you're a landlord or commercial dutyholder who needs the register anyway. Textured coatings are non-licensed work under the Control of Asbestos Regulations 2012, so once the result is in, removal is straightforward to arrange. The one order that never works is sanding or scraping first and testing afterwards.";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Location pages (SPEC.md §7.1) and the emergency service page. Same rule:
+// anything asserting what tier of work we may legally perform lives here.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Shared scope note rendered on every location page beneath the local copy.
+ * Keeps the honest-scope statement identical town to town — the ONE part of a
+ * location page that is deliberately not unique.
+ */
+export const LOCATION_SCOPE_NOTE =
+  "Wherever we're working, the scope is the same. We carry out non-licensed and notifiable non-licensed (NNLW) asbestos work — cement roofing and cladding, textured coatings, floor tiles, tanks, flues and the rest of the bonded materials that make up most of what's in Scottish buildings. Licensable materials, meaning sprayed coatings, pipe and boiler lagging and most asbestos insulating board, legally require an HSE licensed contractor. If a survey turns those up we tell you on the spot and help you arrange the right firm.";
+
+/**
+ * Emergency page — the licensing line under time pressure. People ring at 2am
+ * assuming urgency suspends the rules; it doesn't, and saying so is the point.
+ */
+export const EMERGENCY_LICENSABLE_NOTE =
+  "Urgency doesn't move the legal line, and any firm telling you otherwise at 11pm is the wrong firm. Licensable materials — sprayed coatings, pipe and boiler lagging, most asbestos insulating board — require an HSE licensed contractor whatever time the phone rings and whatever has just happened to them. What we can always do is help you make the area safe, tell you honestly which category you're looking at, and put you onto a licensed contractor if that's what it needs. Making an area safe and stopping people walking through it costs nothing and buys you the time to do the rest properly.";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Response commitments. These are OPERATIONAL PROMISES, not licensing claims —
+// they live here because the same discipline applies: one place to edit, never
+// scattered through pages, and never written without the owner confirming them.
+//
+// CONFIRMED by the owner, July 2026: same-day survey attendance is a real offer.
+// If the crew's availability changes, change it HERE and nowhere else.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Same-day survey / sampling attendance. Owner-confirmed commitment. */
+export const SAME_DAY_SURVEY_COMMITMENT =
+  "We offer same-day asbestos surveys and sampling across Glasgow. Call early enough in the day and we'll get someone out to you before it ends — for a suspect ceiling, a garage roof or a material a contractor has just uncovered, that usually means a sample collected the same day and the lab result back within a few days. If your job genuinely can't be done that day, we'll tell you when it can rather than string you along.";
+
+/** 24/7 line + emergency attendance framing. */
+export const EMERGENCY_RESPONSE_COMMITMENT =
+  "Our line is answered 24 hours a day, seven days a week, by people who do this work rather than a call centre reading a script. Ring it and the first thing you get is free advice: what to do in the next ten minutes, whether the area needs closing off, and whether this is genuinely urgent or something that can wait until Monday. Plenty of calls end there, and that's fine. Where attendance is needed we prioritise damaged and disturbed material over planned work, and we tell you honestly when we can be there.";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// "HSE licensed asbestos contractor near me" — search intent this company can
+// NEVER claim (CLAUDE.md legal rule). Captured honestly on the licensing guide:
+// explain how to find and verify a real licence holder, state plainly that we
+// are not one, and say what we do instead. Never soften this into an implication.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** Licensing guide — the direct answer for searchers looking for a licence holder. */
+export const HSE_NEAR_ME_DIRECT_ANSWER =
+  "Let's answer this one plainly, because it's the search that goes wrong most often. Asbestos Remove is not an HSE licensed contractor. We carry out non-licensed and notifiable non-licensed work, and we say so on every page of this site rather than letting you find out at the quoting stage. If your material genuinely is licensable, you need a licence holder and we'll help you find one — that costs you nothing and it's a call we make regularly.";
+
+/** Licensing guide — how to actually find and check a licence holder. */
+export const HSE_NEAR_ME_HOW_TO_FIND =
+  "HSE publishes the list of every current licence holder in Great Britain, so finding one doesn't require a search engine at all: look up 'HSE asbestos licence holders list', find firms covering your area, and check the name of the company actually quoting you appears on it. Not a trading name, not a parent company, not an application in progress — the licensed entity itself. Licences carry conditions and expiry dates, so ask for the licence number and check it's current. Any genuine licence holder will hand that over without a flicker, because they're asked every week.";
+
+/** Licensing guide — the reverse mistake, which costs domestic customers money. */
+export const HSE_NEAR_ME_WRONG_SEARCH =
+  "The more common problem, though, is people searching for a licensed contractor when they don't need one. If what you have is a cement garage roof, an Artex ceiling, floor tiles, a cement flue or a water tank, no licence is required to remove any of it — the law asks for trained operatives, controlled methods and correct disposal instead. Searching for a licence holder for that work narrows you to a smaller, more expensive pool of firms geared up for high-risk jobs, and you can end up paying enclosure-and-air-monitoring prices for a morning's work on a shed. Find out which material you actually have first; a single sample costs around £25–£60 and decides it.";
+
+/**
  * Cost guide — licensed work pricing context. The only licensing-status
  * statement on the cost page.
  */

@@ -5,14 +5,18 @@ import FeatureList from "@/components/FeatureList";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
 import JsonLd from "@/components/JsonLd";
-import { LICENSABLE_REFERRAL } from "@/lib/claims";
+import {
+  LICENSABLE_REFERRAL,
+  SURVEY_FAQ_ARTEX_ANSWER,
+  SAME_DAY_SURVEY_COMMITMENT,
+} from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
   title: "Asbestos Surveys & Testing Glasgow",
   description:
-    "HSG264-compliant asbestos surveys in Glasgow. Management surveys, refurbishment & demolition surveys, sampling and testing with clear reports. Book today.",
+    "HSG264-compliant asbestos surveys in Glasgow — management, refurbishment & demolition surveys and sampling, with same-day attendance available. Book today.",
   path: "/services/asbestos-surveys",
 });
 
@@ -59,6 +63,10 @@ const FAQS: FAQ[] = [
       "It isn't always a legal requirement for a private sale, but a survey gives buyers and solicitors certainty and avoids renovation surprises. For any building work before 2000, testing first is the safest and often cheapest route.",
   },
   {
+    question: "Do I need a survey before removing Artex?",
+    answer: SURVEY_FAQ_ARTEX_ANSWER,
+  },
+  {
     question: "What happens if asbestos is found?",
     answer: `Your report sets out the material type, condition and a clear recommendation — manage, encapsulate or remove. ${LICENSABLE_REFERRAL}`,
   },
@@ -66,6 +74,16 @@ const FAQS: FAQ[] = [
     question: "Where can I get asbestos testing near me?",
     answer:
       "If you're searching from Glasgow or the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank, Cumbernauld, Livingston, Edinburgh or further afield — we're your local option: targeted sampling collected at your property and analysed by a UKAS-accredited laboratory, with fast turnaround on results.",
+  },
+  {
+    question: "Can I get a same-day asbestos survey in Glasgow?",
+    answer:
+      "Yes. We offer same-day surveys and sampling across Glasgow — call early enough in the day and we'll get someone out before it ends. Same-day refers to attendance and sample collection; laboratory analysis takes a few days after that, because the certainty comes from a UKAS-accredited lab rather than an opinion on site. If a contractor has stopped work over something they've uncovered, say so when you ring and it goes to the front of the queue.",
+  },
+  {
+    question: "Do I need an asbestos survey before renovating my Glasgow home?",
+    answer:
+      "If the property is pre-2000 and the work breaks into the fabric — kitchens and bathrooms out, walls through, ceilings down, a loft conversion, re-roofing — then yes, a refurbishment and demolition survey before anyone starts. It isn't box-ticking: builders must stop the moment suspect material appears, so a mid-project discovery costs you the survey anyway plus standing time and rescheduled trades. For a single suspect material, one sample may be all you need instead.",
   },
   {
     question: "How much does an asbestos survey cost in Glasgow?",
@@ -148,8 +166,55 @@ export default function AsbestosSurveysPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Before renovation */}
       <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Before The Builders"
+            title="Asbestos surveys before renovation in Glasgow"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Renovation is where asbestos stops being theoretical. A property
+              can sit for forty years with a textured ceiling and a cement flue
+              doing nobody any harm, and then someone knocks a wall through and
+              it becomes everyone&rsquo;s problem in an afternoon. If your
+              building predates 2000 and the work is going to break into the
+              fabric, a refurbishment and demolition survey is the step that
+              comes first — before the skip is booked, not after the first
+              ceiling comes down.
+            </p>
+            <p>
+              The Glasgow jobs that most often turn something up are the
+              predictable ones: tenement kitchen and bathroom refits, where the
+              old vinyl tiles and the bitumen under them appear as soon as the
+              units come out; loft conversions, where cement tanks, flues and
+              soffits live; knocking through between rooms in a 60s or 70s
+              property; re-roofing anything with a cement outbuilding attached;
+              and stripping ceilings that were skimmed in textured coating some
+              time after the war. None of it is exotic. All of it is cheaper to
+              find in a survey than in a stopped job.
+            </p>
+            <p>
+              Which is the real argument, frankly. Any competent builder will
+              down tools the moment suspect material appears — they&rsquo;re
+              legally obliged to and their own insurance depends on it. That
+              means a discovery mid-project costs you the survey anyway, plus
+              the standing time, plus the rescheduled trades, plus whatever the
+              removal turns out to be, with everybody stood in your hallway
+              waiting. Surveying first converts an unknown into a line on the
+              budget. For work needing a building warrant from the council,
+              having it done up front keeps the programme honest too.
+            </p>
+            <p>
+              {SAME_DAY_SURVEY_COMMITMENT}
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -163,7 +228,7 @@ export default function AsbestosSurveysPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Where to next?"
