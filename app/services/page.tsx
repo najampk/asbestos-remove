@@ -16,9 +16,19 @@ export const metadata = buildMetadata({
 
 const DECISION_HELPER = [
   {
-    situation: "Found suspect material",
-    action: "Start with a Survey",
+    situation: "One suspect material",
+    action: "Get it Tested",
+    href: "/services/asbestos-testing",
+  },
+  {
+    situation: "A whole building to check",
+    action: "Book a Survey",
     href: "/services/asbestos-surveys",
+  },
+  {
+    situation: "Grey corrugated garage roof",
+    action: "Garage Roof Removal",
+    href: "/services/asbestos-garage-roof-removal",
   },
   {
     situation: "Confirmed asbestos",
@@ -69,7 +79,7 @@ export default function ServicesPage() {
             title="Not sure what you need?"
             intro="Tell us where you are and we'll steer you to the right service — or just call and we'll advise, free of charge."
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {DECISION_HELPER.map((item) => (
               <Link
                 key={item.href}

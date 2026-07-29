@@ -1,9 +1,12 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import FeatureList from "@/components/FeatureList";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
 import RelatedLinks from "@/components/RelatedLinks";
+import Button from "@/components/Button";
 import JsonLd from "@/components/JsonLd";
 import {
   LICENSABLE_REFERRAL,
@@ -14,21 +17,26 @@ import { buildMetadata } from "@/lib/seo";
 import { serviceSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "Asbestos Surveys & Testing Glasgow",
+  title: "Asbestos Survey Glasgow | HSG264 Surveyors",
   description:
-    "HSG264-compliant asbestos surveys in Glasgow — management, refurbishment & demolition surveys and sampling, with same-day attendance available. Book today.",
+    "Asbestos surveys in Glasgow to HSG264 — management, refurbishment and demolition surveys with UKAS-accredited analysis. Same-day attendance available. Book today.",
   path: "/services/asbestos-surveys",
 });
 
 const schema = serviceSchema({
-  name: "Asbestos Surveys & Testing",
+  name: "Asbestos Survey",
   description:
-    "Management and refurbishment/demolition asbestos surveys with sampling and UKAS-accredited analysis across Glasgow.",
+    "Management and refurbishment/demolition asbestos surveys to HSG264, with sampling and UKAS-accredited analysis, carried out by asbestos surveyors across Glasgow.",
   path: "/services/asbestos-surveys",
   serviceType: "Asbestos survey",
 });
 
-const SURVEY_TYPES = [
+const SURVEY_TYPES: {
+  name: string;
+  body: string;
+  href?: string;
+  linkLabel?: string;
+}[] = [
   {
     name: "Management Survey",
     body: "For buildings in normal use. Locates ACMs that could be disturbed during occupation and maintenance, assesses condition, and forms the basis of your asbestos register. Required to meet the duty to manage under CAR 2012 Regulation 4.",
@@ -39,7 +47,9 @@ const SURVEY_TYPES = [
   },
   {
     name: "Sampling & Testing",
-    body: "Targeted sampling of individual suspect materials — a ceiling, a floor tile, a garage roof — with UKAS-accredited laboratory analysis and fast turnaround.",
+    body: "Targeted sampling of individual suspect materials — a ceiling, a floor tile, a garage roof — with UKAS-accredited laboratory analysis and fast turnaround. For a single material this is usually all you need instead of a survey.",
+    href: "/services/asbestos-testing",
+    linkLabel: "See asbestos testing",
   },
 ];
 
@@ -71,9 +81,14 @@ const FAQS: FAQ[] = [
     answer: `Your report sets out the material type, condition and a clear recommendation — manage, encapsulate or remove. ${LICENSABLE_REFERRAL}`,
   },
   {
-    question: "Where can I get asbestos testing near me?",
+    question: "How do I choose an asbestos surveyor in Glasgow?",
     answer:
-      "If you're searching from Glasgow or the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank, Cumbernauld, Livingston, Edinburgh or further afield — we're your local option: targeted sampling collected at your property and analysed by a UKAS-accredited laboratory, with fast turnaround on results.",
+      "Ask three questions before you commission anyone. Who is actually attending and what asbestos training do they hold for this type of survey? Which laboratory analyses the samples, and is it UKAS accredited? Does the quoted fee include the analysis, or does that appear on a second invoice? 'Asbestos surveyor' is not a protected title, so those answers — not the wording on the van — are what tell you whether the report will stand up to a solicitor, an insurer or an enforcing authority.",
+  },
+  {
+    question: "What's the difference between an asbestos survey and a test?",
+    answer:
+      "A test analyses one sample of one material and tells you whether it contains asbestos. A survey inspects the building, records every asbestos-containing material with its location and condition, assesses the risk and gives you a report you can act on and hand to contractors. One suspect ceiling means a test; a pre-2000 property going back to brick, a purchase, or a duty to manage a non-domestic building means a survey.",
   },
   {
     question: "Can I get a same-day asbestos survey in Glasgow?",
@@ -98,7 +113,7 @@ export default function AsbestosSurveysPage() {
       <JsonLd data={schema} />
       <PageHero
         eyebrow="Services"
-        title="Asbestos Surveys & Testing in Glasgow"
+        title="Asbestos Surveys in Glasgow"
         intro="An asbestos survey identifies the location, type and condition of asbestos-containing materials in your property. If your building was built before 2000, a survey is the first — and legally safest — step before any refurbishment, demolition or property purchase."
         crumbs={[
           { label: "Home", href: "/" },
@@ -121,6 +136,15 @@ export default function AsbestosSurveysPage() {
                   {type.name}
                 </h3>
                 <p className="mt-3 text-slate-600">{type.body}</p>
+                {type.href && (
+                  <Link
+                    href={type.href}
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-950"
+                  >
+                    {type.linkLabel}
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -213,8 +237,64 @@ export default function AsbestosSurveysPage() {
         </Container>
       </section>
 
-      {/* FAQ */}
+      {/* Surveyors */}
       <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Who Attends"
+            title="Your asbestos surveyors in Glasgow"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              &ldquo;Asbestos surveyor&rdquo; is not a protected title, which is
+              worth knowing before you hire one. Anybody can print it on a van.
+              What separates a survey you can rely on from a piece of paper is
+              the work behind it: whether the surveyor holds asbestos training
+              appropriate to the survey type, whether the inspection actually
+              follows HSG264 rather than a walk round with a clipboard, and
+              whether the samples go to a UKAS-accredited laboratory instead of
+              being judged by eye on site.
+            </p>
+            <p>
+              Our surveys are carried out by our own trained people, not
+              subcontracted to whoever is free that week, and the samples go to
+              an accredited lab every time. The founder has more than thirty
+              years in the industry behind the assessment side of it, and the
+              team includes a certified plumber and joiner — both asbestos
+              trained — which matters more than it sounds when a surveyor needs
+              to work out what is behind a bath panel, inside a boiler cupboard
+              or under a floor without wrecking the place to find out.
+            </p>
+            <p>
+              The other half of a good surveyor is what they tell you
+              afterwards. A report that lists materials and stops is only half
+              the job. Ours says what the material is, what condition it is in,
+              whether it needs to move at all, and what the realistic options
+              are — including the frequent answer that sound bonded material is
+              safest left where it is and managed. We would rather write that
+              than sell you a removal you do not need, and if a survey turns up
+              licensable material we say so and help you arrange the right
+              contractor.
+            </p>
+            <p>
+              Before you commission anyone, in Glasgow or elsewhere, ask three
+              questions: who is attending and what training do they hold, which
+              laboratory analyses the samples and is it UKAS accredited, and
+              does the fee include the analysis or is that added later. Any
+              honest firm answers all three without being chased.
+            </p>
+          </div>
+          <div className="mt-8">
+            <Button href="/trust-centre" variant="outline">
+              Check our credentials
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-white py-16 sm:py-20">
         <Container className="max-w-4xl">
           <SectionHeading
             eyebrow="Common Questions"
@@ -228,22 +308,22 @@ export default function AsbestosSurveysPage() {
       </section>
 
       {/* Cross-links */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="py-16 sm:py-20">
         <Container>
           <RelatedLinks
             title="Where to next?"
             links={[
               {
+                label: "Asbestos Testing",
+                href: "/services/asbestos-testing",
+                description:
+                  "One suspect material? A single sample is cheaper than a survey.",
+              },
+              {
                 label: "Asbestos Removal",
                 href: "/services/asbestos-removal",
                 description:
                   "Confirmed asbestos? See our controlled, non-licensed removal process.",
-              },
-              {
-                label: "Asbestos Management",
-                href: "/services/asbestos-management",
-                description:
-                  "Keeping material in place? Stay compliant with a management plan.",
               },
               {
                 label: "How to Identify Asbestos",

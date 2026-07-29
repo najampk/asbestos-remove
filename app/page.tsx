@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, FileCheck2, MapPin, Phone, ShieldCheck } from "lucide-react";
 import Container from "@/components/Container";
 import Button from "@/components/Button";
@@ -46,6 +47,55 @@ const WHY_US: string[] = [
   "Available 24 hours a day, 7 days a week",
 ];
 
+/**
+ * The specific jobs people search for by name, rather than the four broad
+ * service categories. Each points at the page that answers that search in full.
+ */
+const SPECIFIC_JOBS: { label: string; description: string; meta: string; href: string }[] = [
+  {
+    label: "Asbestos garage roof removal",
+    description:
+      "Grey corrugated cement sheeting on a garage, shed or coal store — taken off whole, wrapped and disposed of with the paperwork.",
+    meta: "From £400 · usually one day",
+    href: "/services/asbestos-garage-roof-removal",
+  },
+  {
+    label: "Asbestos testing",
+    description:
+      "A sample collected at your property and analysed by a UKAS-accredited laboratory. Nothing else confirms asbestos.",
+    meta: "From £25 · same-day attendance",
+    href: "/services/asbestos-testing",
+  },
+  {
+    label: "Artex & textured ceilings",
+    description:
+      "Test first, then remove. Asbestos and asbestos-free Artex look identical from a stepladder.",
+    meta: "£25–£50 per m²",
+    href: "/services/asbestos-removal",
+  },
+  {
+    label: "Asbestos surveys",
+    description:
+      "HSG264 management and refurbishment/demolition surveys, with the register and recommendations you can act on.",
+    meta: "Before the builders start",
+    href: "/services/asbestos-surveys",
+  },
+  {
+    label: "Damaged or disturbed asbestos",
+    description:
+      "A sheet broken in a storm, or a contractor who cut into something. Stop, keep everyone out, and ring.",
+    meta: "24-hour line · free triage",
+    href: "/services/emergency-asbestos-removal",
+  },
+  {
+    label: "Disposal & collection",
+    description:
+      "Already down and wrapped? We uplift it as a registered carrier and hand you the consignment note.",
+    meta: "SEPA registered carrier",
+    href: "/services/asbestos-disposal",
+  },
+];
+
 const HOME_FAQS: FAQ[] = [
   {
     question: "How much does asbestos removal cost in Glasgow?",
@@ -64,7 +114,12 @@ const HOME_FAQS: FAQ[] = [
   {
     question: "Which areas of Glasgow and Scotland do you cover?",
     answer:
-      "We're based in Glasgow city and cover the surrounding areas — Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld — as well as Livingston, Edinburgh and further afield, with Scotland-wide coverage for commercial and industrial projects.",
+      "The whole of the City of Glasgow at a single rate — West End, Southside, East End, the north of the city and the post-war schemes alike, from Hillhead and Partick to Shawlands, Dennistoun, Knightswood, Cardonald, Castlemilk and Drumchapel. Beyond the city boundary we cover Paisley, Hamilton, Motherwell, East Kilbride, Clydebank and Cumbernauld, as well as Livingston, Edinburgh and further afield, with Scotland-wide coverage for commercial and industrial projects. Nobody pays a premium for a postcode.",
+  },
+  {
+    question: "How much does asbestos garage roof removal cost in Glasgow?",
+    answer:
+      "A single garage roof typically runs £400–£800 including disposal and the waste paperwork, a double or larger roof £700–£1,200, and a full garage demolition £800–£1,500. Condition moves the price more than size does — sheets that unbolt and lift whole are a morning's work, while cracked or previously patched sheets need slower handling. Most single garages are cleared in a day.",
   },
   {
     question: "Do you offer emergency asbestos removal?",
@@ -271,6 +326,34 @@ export default function HomePage() {
               {SERVICES.map((service) => (
                 <ServiceCard key={service.slug} service={service} />
               ))}
+            </div>
+          </Reveal>
+
+          {/* Specific jobs — the searches people actually arrive on */}
+          <Reveal>
+            <div className="mt-12 rounded-3xl border border-line bg-surface p-7 sm:p-9">
+              <p className="font-mono text-xs font-medium uppercase tracking-wider text-eco-700">
+                What Glasgow calls us about most
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {SPECIFIC_JOBS.map((job) => (
+                  <Link
+                    key={job.href}
+                    href={job.href}
+                    className="group flex flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-700/25 hover:shadow-card-hover"
+                  >
+                    <span className="font-display text-lg font-semibold text-brand-950 transition-colors duration-300 group-hover:text-brand-700">
+                      {job.label}
+                    </span>
+                    <span className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-600">
+                      {job.description}
+                    </span>
+                    <span className="mt-3 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-eco-700">
+                      {job.meta}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </Reveal>
         </Container>

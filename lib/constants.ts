@@ -67,7 +67,12 @@ export interface NavGroup {
 
 export const SERVICE_LINKS: NavLink[] = [
   { label: "Asbestos Surveys", href: "/services/asbestos-surveys" },
+  { label: "Asbestos Testing", href: "/services/asbestos-testing" },
   { label: "Asbestos Removal", href: "/services/asbestos-removal" },
+  {
+    label: "Garage Roof Removal",
+    href: "/services/asbestos-garage-roof-removal",
+  },
   { label: "Asbestos Disposal", href: "/services/asbestos-disposal" },
   { label: "Asbestos Management", href: "/services/asbestos-management" },
   {

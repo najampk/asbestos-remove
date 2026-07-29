@@ -51,6 +51,8 @@ Licensing status: ${LICENSING_FAQ_ANSWER}
 ## Services
 
 ${services}
+- [Asbestos Garage Roof Removal](${SITE_URL}/services/asbestos-garage-roof-removal): Removal of corrugated asbestos cement garage, shed and outbuilding roofs across Glasgow — non-licensed work, sheets taken off whole where possible, wrapped and consigned to a licensed facility. A single garage roof typically costs £400–£800 including disposal and is usually completed in a day. Full garage demolition £800–£1,500.
+- [Asbestos Testing](${SITE_URL}/services/asbestos-testing): Sampling of suspect materials at the property, analysed by a UKAS-accredited laboratory, typically £25–£60 per sample with results in a few working days. Asbestos cannot be identified visually — laboratory analysis is the only reliable confirmation.
 - [Emergency Asbestos Removal](${SITE_URL}/services/emergency-asbestos-removal): 24-hour response to damaged or disturbed asbestos — free telephone triage, same-day surveys and urgent controlled removal of non-licensed and NNLW materials.
 
 ## Areas we cover
