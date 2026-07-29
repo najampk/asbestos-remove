@@ -1,10 +1,10 @@
-import { BadgeCheck, Truck, FileCheck, Wrench } from "lucide-react";
+import { BadgeCheck, Truck, FileCheck, Umbrella, Wrench } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import FeatureList from "@/components/FeatureList";
 import { BUSINESS } from "@/lib/constants";
-import { SCOPE_STATEMENT, LICENSABLE_REFERRAL, PLACEHOLDERS } from "@/lib/claims";
+import { SCOPE_STATEMENT, LICENSABLE_REFERRAL, PLACEHOLDERS, INSURANCE } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -25,6 +25,11 @@ const CREDENTIALS = [
     icon: Truck,
     label: `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
     body: "Registered with SEPA to transport waste in Scotland, so asbestos waste is contained, transported and tracked to an appropriately authorised facility with the applicable paperwork.",
+  },
+  {
+    icon: Umbrella,
+    label: `${INSURANCE.policyType} Insurance — ${INSURANCE.insurer}`,
+    body: `Combined liability cover is in place with ${INSURANCE.insurer}, arranged through ${INSURANCE.broker} under policy ${INSURANCE.policyNumber}. Ask for the certificate before work starts — any firm worth hiring hands it over without being chased.`,
   },
   {
     icon: FileCheck,

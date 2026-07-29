@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import QuoteForm from "@/components/QuoteForm";
 import FAQAccordion, { type FAQ } from "@/components/FAQAccordion";
+import MapEmbed from "@/components/MapEmbed";
 import { BUSINESS, ADDRESS_ONE_LINE, OPENING_HOURS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 
@@ -67,6 +68,13 @@ export default function ContactPage() {
               <h2 className="font-display text-xl font-bold text-brand-950">
                 Contact details
               </h2>
+              {/* Registered name rendered in full alongside the address so the
+                  page's NAP block matches the Google Business Profile and
+                  Companies House record exactly. */}
+              <p className="mt-2 text-sm text-slate-600">
+                {BUSINESS.legalName} — trading as {BUSINESS.tradingName}.
+                Registered in Scotland, company number {BUSINESS.companyNumber}.
+              </p>
               <address className="mt-4 space-y-4 text-sm not-italic text-slate-600">
                 <a
                   href={BUSINESS.phoneHref}
@@ -120,13 +128,8 @@ export default function ContactPage() {
               </address>
             </div>
 
-            {/* Location panel (map embed added later) */}
-            <div className="containment-grid relative flex min-h-40 items-center justify-center overflow-hidden rounded-2xl border border-line bg-surface p-6 text-center">
-              <p className="flex items-center gap-2.5 rounded-full border border-line bg-white/90 px-4 py-2 font-mono text-xs uppercase tracking-wider text-brand-900 shadow-card backdrop-blur-sm">
-                <MapPin className="h-3.5 w-3.5 text-eco-700" aria-hidden="true" />
-                SMK Business Centre · Glasgow G5 8BE
-              </p>
-            </div>
+            {/* Location — click-to-load map facade, keeps Maps JS off first load */}
+            <MapEmbed />
 
             {/* Reassurance strip */}
             <p className="text-center font-mono text-xs uppercase tracking-wider text-slate-600">

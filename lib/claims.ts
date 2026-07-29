@@ -29,9 +29,11 @@
  * Removed pending confirmation from Quinton — re-add HERE, in this object, once
  * real values are supplied (never scatter the re-add across other files):
  *   - isoStandards (which of ISO 9001 / 14001 / 45001)
- *   - insuranceCover (public/employers liability cover amount)
  *   - founderQuote (a real 2–3 sentence statement from Quinton Davidson —
  *     never invent a quote in his voice)
+ *
+ * Insurance is now partially confirmed — see INSURANCE below. The cover AMOUNT
+ * (SPEC.md §0 `[INSURANCE_COVER]`) remains outstanding and must not be guessed.
  */
 export const PLACEHOLDERS = {
   /**
@@ -42,6 +44,40 @@ export const PLACEHOLDERS = {
    */
   wasteCarrierNo: "EAS/R/6101484",
 } as const;
+
+/**
+ * Combined Liability insurance. CONFIRMED 28 July 2026 by the Gallagher cover
+ * confirmation letter (client reference 120937274); cover incepts 29 July 2026.
+ *
+ * ⚠ THE COVER AMOUNT IS NOT CONFIRMED AND MUST NOT BE INFERRED FROM THAT LETTER.
+ * The letter states the PREMIUM — £5,000 plus £600 Insurance Premium Tax — which
+ * is what the company PAYS, not what it is covered FOR. A limit of indemnity is a
+ * different figure entirely (typically £5m/£10m), and publishing the premium as
+ * though it were the cover would be a false claim about the company's insurance.
+ * The limit is in the policy schedule Gallagher are still preparing. When it
+ * arrives, set `limitOfIndemnity` HERE and nowhere else, then add the amount to
+ * the TrustBar / footer strings below — that is the whole §0 change.
+ *
+ * RENEWAL: cover runs from 29 July 2026. Diarise renewal before 29 July 2027 —
+ * an expired policy makes every string built from this object untrue.
+ */
+export const INSURANCE = {
+  policyType: "Combined Liability",
+  insurer: "Aspen Insurance UK Ltd",
+  /** Underwriting agency the policy is placed through. */
+  placedVia: "Miles Smith Limited",
+  broker: "Gallagher",
+  policyNumber: "176923242",
+  effectiveFrom: "29 July 2026",
+  /** §0 outstanding — the limit of indemnity. NEVER substitute the premium. */
+  limitOfIndemnity: null,
+} as const;
+
+/**
+ * One-line insurance statement for body copy and credential lists. Deliberately
+ * makes no claim about the cover amount until `limitOfIndemnity` is confirmed.
+ */
+export const INSURANCE_STATEMENT = `${INSURANCE.policyType} insurance is in place with ${INSURANCE.insurer} (policy ${INSURANCE.policyNumber}), arranged through ${INSURANCE.broker} and effective from ${INSURANCE.effectiveFrom}. The certificate is available on request — and we would rather you asked for it than took our word for it.`;
 
 /**
  * Founder experience claim. Always the founder's industry tenure — never company age.
@@ -71,19 +107,23 @@ export const LICENSING_FAQ_ANSWER =
   "We carry out non-licensed and notifiable non-licensed asbestos work — the categories that cover the majority of asbestos in Scottish homes and businesses, including cement roofs, Artex, floor tiles and more. Licensable materials legally require an HSE licensed contractor; if a survey identifies these, we say so straight away and help you arrange compliant removal.";
 
 /**
- * Hero credentials line — rendered bold at the top of the homepage hero.
- * The insurance policy number joins this string once confirmed (§0 rule:
- * never invent it; add it HERE, not in the page).
+ * Short credentials byline (currently the guide-page "last updated" strip).
+ * Insurance is deliberately NOT appended here — a policy number reads as clutter
+ * in a byline. It belongs on the pages where people go to verify a company:
+ * /trust-centre and /about, both of which render INSURANCE_STATEMENT.
  */
 export const HERO_CREDENTIALS = `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`;
 
 /**
  * TrustBar items (SPEC.md §1.4 / §4). Rendered in mono type beneath the hero.
- * ISO / insurance items join this list once those §0 values are confirmed.
+ * The ISO item joins this list once that §0 value is confirmed. The insurance
+ * item states that cover exists but NOT how much — SPEC.md's
+ * "FULLY INSURED [INSURANCE_COVER]" wording waits on INSURANCE.limitOfIndemnity.
  */
 export const TRUST_BAR_ITEMS: readonly string[] = [
   "UKATA-TRAINED OPERATIVES",
   `SEPA REGISTERED CARRIER ${PLACEHOLDERS.wasteCarrierNo}`,
+  "COMBINED LIABILITY INSURED",
   "ASBESTOS-TRAINED PLUMBER & JOINER",
   "NON-LICENSED & NNLW SCOPE",
   "CONTROLLED WORK METHODS",
@@ -97,6 +137,7 @@ export const TRUST_BAR_ITEMS: readonly string[] = [
 export const FOOTER_COMPLIANCE_ITEMS: readonly string[] = [
   "UKATA-Trained Operatives",
   `SEPA Registered Waste Carrier ${PLACEHOLDERS.wasteCarrierNo}`,
+  `Combined Liability Insured — ${INSURANCE.insurer}`,
   "Asbestos-Trained Plumber & Joiner",
   "Non-Licensed & NNLW Scope",
   "Controlled Work Methods",
@@ -117,7 +158,7 @@ export const SCHEMA_CREDENTIALS: readonly string[] = ["UKATA asbestos training"]
 
 /** Homepage direct-answer GEO block (SPEC.md §5.1). */
 export const HOMEPAGE_SCOPE_PARAGRAPH =
-  "Asbestos Remove is a Glasgow-based asbestos contractor specialising in non-licensed and notifiable non-licensed asbestos work — the categories covering the majority of asbestos found in Scottish homes and commercial buildings. We survey, remove, dispose of and manage asbestos-containing materials in full compliance with the Control of Asbestos Regulations 2012. Where a material legally requires an HSE licensed contractor, we tell you straight and help you arrange it.";
+  "Asbestos Remove is the trading name of Asbestos Removal Environmental Ltd, a Glasgow-based asbestos contractor specialising in non-licensed and notifiable non-licensed asbestos work — the categories covering the majority of asbestos found in Scottish homes and commercial buildings. We survey, remove, dispose of and manage asbestos-containing materials in full compliance with the Control of Asbestos Regulations 2012. Where a material legally requires an HSE licensed contractor, we tell you straight and help you arrange it.";
 
 /** Removal page direct-answer GEO block (SPEC.md §5.4). */
 export const REMOVAL_SCOPE_PARAGRAPH =

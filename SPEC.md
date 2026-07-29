@@ -15,7 +15,7 @@ These placeholders MUST be replaced with verified values before deployment. Do n
 |---|---|---|
 | `[ISO_STANDARDS]` | TrustBar, About, footer badges | Confirm which: ISO 9001 / 14001 / 45001 |
 | `[WASTE_CARRIER_NO]` | Disposal page, footer | SEPA waste carrier registration number |
-| `[INSURANCE_COVER]` | About, footer | Public/employers liability cover amount (e.g. £10m) |
+| `[INSURANCE_COVER]` | About, footer | Public/employers liability cover **amount** (e.g. £10m). **Still outstanding.** The insurer, broker and policy number *are* confirmed (28 Jul 2026 Gallagher letter) and live in `INSURANCE` in `lib/claims.ts`; the amount is not. That letter states the **premium** (£5,000 + £600 IPT) — what the company pays, not what it is covered for. Never publish the premium as the cover. Take the limit of indemnity from the policy schedule when it arrives. |
 | `[FOUNDER_QUOTE]` | About | 2–3 sentence founder statement from Quinton |
 
 > **Copy rule (legal — LICENSING):** The company is **not HSE licensed**. It carries out **non-licensed and notifiable non-licensed (NNLW) asbestos work only**. The words "licensed contractor", "HSE licensed" or any equivalent claim must NOT appear anywhere on the site in reference to the company. Where a survey identifies licensable materials (sprayed coatings, pipe/boiler lagging, most AIB), the site says so honestly and offers to help the customer arrange an HSE licensed contractor. Experience claims reference the **founder's 30+ years in the industry** (confirmed), never company age (incorporated 13 May 2026).

@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { BadgeCheck, Building2, ClipboardCheck, FileCheck2, Scale, ShieldCheck } from "lucide-react";
+import { BadgeCheck, Building2, ClipboardCheck, FileCheck2, Scale, ShieldCheck, Umbrella } from "lucide-react";
 import Container from "@/components/Container";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
 import { BUSINESS } from "@/lib/constants";
+import { INSURANCE } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({ title: "Trust Centre | Asbestos Remove Glasgow", titleAbsolute: true, description: "Verify the company behind Asbestos Remove — legal identity, training, honest work scope and the documentation Glasgow customers should expect on every job.", path: "/trust-centre" });
@@ -12,6 +13,7 @@ const proofs = [
   { icon: Building2, title: "Legal identity", text: `${BUSINESS.legalName}, registered in Scotland under company number ${BUSINESS.companyNumber}.` },
   { icon: BadgeCheck, title: "Training", text: "Operatives assigned to asbestos work hold training appropriate to their role. Job-specific competence and supervision remain essential." },
   { icon: Scale, title: "Honest work scope", text: "We perform non-licensed and notifiable non-licensed work. We do not present the company as an HSE-licensed asbestos contractor." },
+  { icon: Umbrella, title: "Insurance", text: `${INSURANCE.policyType} cover with ${INSURANCE.insurer}, placed via ${INSURANCE.placedVia} and arranged through ${INSURANCE.broker}. Policy ${INSURANCE.policyNumber}, effective from ${INSURANCE.effectiveFrom}. Certificate available on request.` },
   { icon: ClipboardCheck, title: "Scope decision first", text: "Material type alone does not decide the work category. Condition, task, duration and likely exposure must be assessed." },
   { icon: FileCheck2, title: "Project records", text: "The applicable quotation, scope, work information and waste records are supplied according to the job." },
   { icon: ShieldCheck, title: "Claims policy", text: "Registration numbers, insurance values, reviews and certification marks are published only after they are verified." },

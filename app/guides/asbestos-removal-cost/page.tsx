@@ -15,17 +15,17 @@ import { articleSchema } from "@/lib/schema";
 export const metadata = buildMetadata({
   title: "Asbestos Removal Cost 2026: UK & Glasgow Guide",
   description:
-    "How much does asbestos removal cost in Glasgow and the UK? Real 2026 price ranges and per-m² rates for garage roofs, Artex, floor tiles, testing and disposal.",
+    "How much does asbestos removal cost in Glasgow and the UK? Real 2026 prices for garage roofs, Artex, floor tiles, encapsulation, testing and per-tonne disposal.",
   path: "/guides/asbestos-removal-cost",
 });
 
 const schema = articleSchema({
   headline: "How Much Does Asbestos Removal Cost in the UK?",
   description:
-    "Indicative 2026 UK and Glasgow price ranges for non-licensed asbestos removal — garage roofs, Artex, floor tiles, per-square-metre rates, testing and collection — with the factors that move a real quote.",
+    "Indicative 2026 UK and Glasgow price ranges for non-licensed asbestos removal — garage roofs, Artex, floor tiles, flues and pipework, encapsulation, per-square-metre and per-square-foot rates, testing, skips and per-tonne disposal — with the factors that move a real quote.",
   path: "/guides/asbestos-removal-cost",
   datePublished: "2026-07-18",
-  dateModified: "2026-07-21",
+  dateModified: "2026-07-29",
 });
 
 // Indicative UK market ranges, July 2026 (SPEC.md §11.2) — market context,
@@ -77,9 +77,34 @@ const PRICE_ROWS: { job: string; range: string; note: string }[] = [
     note: "Loft access and tank size set the price",
   },
   {
+    job: "Cement flue, soil pipe or boiler flue",
+    range: "£150 – £400",
+    note: "Priced as an item; awkward runs through a roof cost more",
+  },
+  {
+    job: "Rope seals, gaskets and tape",
+    range: "£150 – £350",
+    note: "Around old boilers and pipework — small job, same fixed costs",
+  },
+  {
+    job: "Cement cladding or wall panels",
+    range: "£20 – £40 per m²",
+    note: "Same material as roofing; height and edge protection move it",
+  },
+  {
+    job: "Encapsulation instead of removal",
+    range: "£15 – £30 per m²",
+    note: "Sealing sound material in place — cheaper, but it stays your duty",
+  },
+  {
     job: "Collection only (pre-wrapped waste)",
     range: "£150 – £350",
     note: "Already double-wrapped sheets, collected with consignment note",
+  },
+  {
+    job: "Disposal gate fee (trade rate)",
+    range: "£200 – £400 per tonne",
+    note: "What the licensed facility charges — inside every legitimate quote",
   },
 ];
 
@@ -132,6 +157,36 @@ const FAQS: FAQ[] = [
     question: "How much does asbestos testing cost?",
     answer:
       "A single lab-analysed sample typically costs £25–£60, and for one suspect material — an Artex ceiling, a floor tile, a garage roof — that's often all you need before deciding anything. A full management survey of a three-bed house generally runs £200–£400 and earns its keep when you're buying, renovating or dealing with several suspect materials at once.",
+  },
+  {
+    question: "How much does it cost to remove asbestos floor tiles?",
+    answer:
+      "Budget £30–£60 per m², which puts a typical kitchen or hallway somewhere between £400 and £1,200. The tiles themselves are the quick part — they lift in whole pieces once warmed or eased up. What fills the day is the black bitumen adhesive welded to the screed underneath, which is usually asbestos-containing too and cannot simply be sanded off. If you only need the tiles gone and the floor is being covered anyway, leaving sound adhesive in place and sealing it is often the cheaper and equally legitimate answer.",
+  },
+  {
+    question: "How much does Artex or textured ceiling removal cost?",
+    answer:
+      "£25–£50 per m², so a typical room ceiling lands between £600 and £1,500. Two things move it: whether the coating comes off wet with hand tools or has been painted and re-skimmed over the years, and how much of the plasterboard behind it survives. Overboarding — fixing new board straight over the sound textured surface — is frequently cheaper than removal and perfectly legal, provided nobody drills or sands into it later and the material is recorded. Americans call this a popcorn ceiling; it is the same material and the same job.",
+  },
+  {
+    question: "How much does asbestos encapsulation cost?",
+    answer:
+      "Roughly £15–£30 per m², which is usually half or less what removing the same material would cost. Encapsulation seals sound, undamaged material in place behind a coating or boarding rather than taking it out, and for a cement roof in fair condition or a textured ceiling nobody is about to disturb it is often the sensible choice. The trade-off is that the asbestos is still there: it stays on the register, it needs periodic checks, and it has to be declared when you sell or bring contractors in. You are deferring the cost, not deleting it.",
+  },
+  {
+    question: "How much does it cost to dispose of asbestos per tonne?",
+    answer:
+      "Licensed facilities charge roughly £200–£400 per tonne to accept asbestos waste, and that gate fee sits inside every legitimate removal quote rather than beside it. Weight is what matters, not area — cement sheeting is dense, and a double garage roof is a genuine tonne of material. It is also why you cannot use an ordinary skip: asbestos is special waste in Scotland, hire firms charge to decontaminate a skip that comes back with it in, and the duty of care follows the waste back to whoever produced it.",
+  },
+  {
+    question: "Is asbestos abatement the same as asbestos removal?",
+    answer:
+      "Broadly yes — 'abatement' and 'remediation' are American terms for the same work, and they cover encapsulation and management as well as physical removal. UK firms, ourselves included, say removal. If you have arrived here from a US price guide, treat the figures with care: American quotes are usually per square foot, in dollars, and reflect a different regulatory regime with different notification and clearance requirements. The UK ranges on this page are the ones that will match a quote you actually receive here.",
+  },
+  {
+    question: "How much does it cost to remove asbestos from a boiler or pipework?",
+    answer:
+      "Cement flues, soil pipes and boiler flues are priced as items rather than by area, typically £150–£400 depending on the run and whether it passes through a roof. Rope seals, gaskets and tape around old boilers land around £150–£350. The important distinction is thermal pipe lagging — the thick plaster-like insulation wrapped around old pipes and boilers. That is licensable material in a different cost bracket entirely, and it legally requires an HSE licensed contractor. A sample tells you which of the two you are looking at before anybody quotes.",
   },
   {
     question: "Do you charge for quotes?",
@@ -244,6 +299,176 @@ export default function AsbestosRemovalCostPage() {
               whole sheets. Once something is broken, painted over or fixed
               with rusted-in bolts, the area stops predicting the hours and the
               quote has to be built from the job in front of us instead.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Per square foot */}
+      <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Different Units"
+            title="What does asbestos removal cost per square foot?"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              UK contractors quote in square metres, so a per-square-foot
+              figure is a conversion rather than a rate anyone actually works
+              to. If you want it anyway: there are 10.76 square feet in a
+              square metre, so the £20–£40 per m² for cement sheeting is
+              roughly <strong className="text-brand-950">£2–£4 per square
+              foot</strong>, textured coatings at £25–£50 per m² are about
+              £2.30–£4.65, and floor tiles at £30–£60 per m² work out near
+              £2.80–£5.60.
+            </p>
+            <p>
+              If a quote arrives priced per square foot, it is worth asking
+              why. It is usually one of two things — an American price guide
+              being repeated back to you, or a small area being made to sound
+              larger. Neither is a scandal, but the useful comparison is total
+              price for the whole job including disposal, because that is the
+              only number the invoice will actually show.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Fibre type */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="Blue, Brown and White"
+            title="Does the type of asbestos change the cost?"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Indirectly, and less than people expect. Price follows the{" "}
+              <em>product</em> and its condition, not the fibre colour — but
+              the two correlate, which is why the question keeps coming up.
+            </p>
+            <p>
+              <strong className="text-brand-950">
+                White asbestos (chrysotile)
+              </strong>{" "}
+              is what is bonded into cement sheeting, textured coatings and
+              floor tiles. It accounts for the overwhelming majority of what is
+              found in UK homes, and it sits at the ordinary end of the price
+              list above.
+            </p>
+            <p>
+              <strong className="text-brand-950">
+                Brown asbestos (amosite)
+              </strong>{" "}
+              turns up in insulating board, ceiling tiles and thermal panels.
+              Most insulating board is licensable work, which puts it in a
+              different bracket entirely — enclosures, air monitoring and a
+              four-stage clearance, from £2,500 and often well beyond.
+            </p>
+            <p>
+              <strong className="text-brand-950">
+                Blue asbestos (crocidolite)
+              </strong>{" "}
+              was used in sprayed coatings and some lagging and is the highest
+              risk of the three. It is licensable work in practically every
+              case it appears, and priced accordingly.
+            </p>
+            <p>
+              So &ldquo;blue asbestos removal cost&rdquo; and &ldquo;brown
+              asbestos removal cost&rdquo; are usually really asking about
+              licensed work. The honest answer is that a lab result naming the
+              fibre type also tells you which side of the licensing line you
+              are on, and that line moves the budget far more than the colour
+              does. A single sample settles both questions at once.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Skips and per-tonne */}
+      <section className="py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="The Waste Leg"
+            title="Skip hire, tip fees and what disposal costs per tonne"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              There is no such thing as an asbestos skip in the ordinary sense.
+              Asbestos is special waste in Scotland and hazardous waste in the
+              rest of the UK, so it cannot travel in a general skip, and hire
+              companies charge for decontaminating one that comes back
+              contaminated — commonly several hundred pounds, on top of the
+              disposal you still have to arrange. People searching for
+              &ldquo;asbestos skip cost&rdquo; are nearly always better served
+              by a wrapped collection, which is the £150–£350 line in the table
+              above.
+            </p>
+            <p>
+              Some operators do offer a sealed, lockable asbestos-only skip or
+              a bagged uplift arrangement, typically £250–£500 depending on
+              volume and how far you are from a licensed facility. What matters
+              is not the container but the paperwork: whoever takes it away
+              must be a registered waste carrier and must give you a
+              consignment note naming the receiving site.
+            </p>
+            <p>
+              Underneath all of it is the gate fee. Licensed facilities charge
+              roughly <strong className="text-brand-950">£200–£400 per
+              tonne</strong> to accept asbestos waste, which is why weight
+              rather than area drives the disposal half of a quote — cement
+              sheeting is dense, and a double garage roof is a genuine tonne of
+              material. That fee is inside every legitimate price. When a quote
+              lands far below everyone else&rsquo;s, this is the line that has
+              quietly gone missing, and{" "}
+              <a
+                href="/guides/asbestos-disposal-rules-scotland"
+                className="font-semibold text-brand-700 underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-950"
+              >
+                Scotland&rsquo;s disposal rules
+              </a>{" "}
+              explain who carries the liability when it does.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Reinstatement */}
+      <section className="bg-white py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="After The Removal"
+            title="What replacing an asbestos roof costs"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Removal and replacement are two separate trades, and a quote that
+              blurs them is a quote you cannot compare with anyone
+              else&rsquo;s. Taking a single garage roof off runs £400–£800
+              including disposal. Putting a new one on is ordinary roofing
+              work: box-profile steel sheeting typically £1,000–£2,000 on a
+              standard single garage, bitumen or felt systems a little less,
+              and a full rebuild in modern materials more again.
+            </p>
+            <p>
+              This is where a lot of people decide the garage was not worth
+              keeping. Once the asbestos is gone you are left with a slab and a
+              choice, and demolishing the whole structure at £800–£1,500
+              sometimes makes more sense than re-roofing a fifty-year-old frame
+              — particularly if the side panels are cement too and will need
+              the same treatment in a few years.
+            </p>
+            <p>
+              We take the asbestos off and leave the structure sound. We do not
+              quote reinstatement inside a removal price, because bundling the
+              two is how an honest comparison stops being possible.{" "}
+              <a
+                href="/services/asbestos-garage-roof-removal"
+                className="font-semibold text-brand-700 underline decoration-eco-500/40 underline-offset-4 transition-colors hover:text-brand-950"
+              >
+                Our garage roof page
+              </a>{" "}
+              covers the removal half in detail.
             </p>
           </div>
         </Container>

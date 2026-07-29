@@ -32,10 +32,10 @@ export const metadata = buildMetadata({
 const schema = articleSchema({
   headline: "Licensed vs Non-Licensed Asbestos Removal, Explained",
   description:
-    "The three legal categories of asbestos work under the Control of Asbestos Regulations 2012 — what each covers, when a licence is required by law, and how to vet a contractor.",
+    "The three legal categories of asbestos work under the Control of Asbestos Regulations 2012 — what each covers, the split between notifiable and non-notifiable non-licensed work, when a licence is required by law, and how to vet a contractor.",
   path: "/guides/licensed-vs-non-licensed-asbestos-removal",
   datePublished: "2026-07-18",
-  dateModified: "2026-07-21",
+  dateModified: "2026-07-29",
 });
 
 const FAQS: FAQ[] = [
@@ -59,6 +59,16 @@ const FAQS: FAQ[] = [
   {
     question: "Are you HSE licensed?",
     answer: LICENSING_FAQ_ANSWER,
+  },
+  {
+    question: "What is the difference between notifiable and non-notifiable asbestos work?",
+    answer:
+      "Both sit inside non-licensed work, so neither requires an HSE licence holder. Notifiable non-licensed work (NNLW) covers jobs where the material is damaged or degraded, or where the task will disturb it enough to raise exposure above the trivial — cracked cement sheeting, or textured coating stripped by anything other than careful wet methods. It adds three duties: notification to the enforcing authority before work starts, an exposure record kept for each worker for 40 years, and health surveillance. Non-notifiable non-licensed work needs none of those, but still requires trained operatives, controlled methods, a written plan of work and correct disposal. Condition and task decide which applies, not the material alone — which is why no honest firm can tell you over the phone.",
+  },
+  {
+    question: "Is unlicensed asbestos removal legal?",
+    answer:
+      "Yes, for the materials the law places outside the licensing regime — asbestos cement, textured coatings, floor tiles, cement flues, rope seals and similar bonded products. 'Unlicensed' is an unfortunate word for it, because it sounds like a cowboy operation when it actually describes a legally defined category of work that makes up the bulk of what is found in UK buildings. What is never legal is a firm without a licence removing licensable material — sprayed coatings, pipe and boiler lagging, most asbestos insulating board. That is a criminal offence for the firm, and potentially for a commercial client who commissioned it.",
   },
 ];
 
@@ -121,6 +131,66 @@ export default function LicensedVsNonLicensedPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Notifiable vs non-notifiable — the split inside non-licensed work.
+          Uses the muted band rather than white so the surrounding sections keep
+          their existing light/white alternation. */}
+      <section className="section-muted py-16 sm:py-20">
+        <Container className="max-w-4xl">
+          <SectionHeading
+            eyebrow="The Line Inside Non-Licensed Work"
+            title="Notifiable or non-notifiable? What decides it"
+          />
+          <div className="mt-8 space-y-5 leading-relaxed text-slate-600">
+            <p>
+              Most people meet this distinction halfway through a quote, and it
+              catches them out because it sounds like a fourth category. It
+              isn&rsquo;t. Non-licensed work splits in two: some of it must be
+              notified to the enforcing authority before it starts, and some of
+              it needn&rsquo;t be. Both are non-licensed. Neither needs an HSE
+              licence holder.
+            </p>
+            <p>
+              What decides it is not the material on its own — it is the
+              material, its condition, and what you are about to do to it.
+              Notifiable non-licensed work (NNLW) is the higher end: work where
+              the material is already damaged or degraded, or where the task
+              itself will disturb it enough that exposure rises above the
+              trivial. Taking down asbestos cement sheeting that has already
+              cracked, or stripping textured coating by anything other than
+              careful wet methods, will usually land in NNLW. The same cement
+              sheeting in sound condition, unbolted and lifted off whole,
+              usually will not.
+            </p>
+            <p>
+              The practical difference is duties and paperwork rather than
+              standards on site — the controls are much the same either way.
+              NNLW adds three things: notification to the enforcing authority
+              (HSE, or the local authority depending on the premises) before
+              work begins, an exposure record kept for each worker for 40
+              years, and health surveillance for the operatives carrying it
+              out. Non-notifiable non-licensed work needs none of those three,
+              though it still demands trained people, controlled methods, a
+              written plan of work and correct disposal.
+            </p>
+            <p>
+              Two things follow that are worth holding on to. First, nobody can
+              honestly tell you which side you are on from a description down
+              the phone — it needs the material looked at, which is one reason
+              a price given sight-unseen is worth very little. Second, a firm
+              that never seems to encounter NNLW is a firm worth asking about,
+              because the notification, the records and the health surveillance
+              are exactly the overhead a corner-cutting operation quietly
+              drops.
+            </p>
+            <p>
+              Both categories are our core work. When we quote, we tell you
+              which one your job falls into and why, before you agree to
+              anything.
+            </p>
           </div>
         </Container>
       </section>

@@ -29,6 +29,41 @@ export const ADDRESS_ONE_LINE =
   "Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE";
 
 /**
+ * Verified premises coordinates, taken from the Google Business Profile listing
+ * (place 0x4888471ab46983e5:0x9c61c274622e8c07). These must match the GBP pin —
+ * a site whose JSON-LD geo disagrees with its Maps listing weakens the entity
+ * match that brand searches depend on.
+ */
+export const GEO = { latitude: 55.8538594, longitude: -4.269405 } as const;
+
+/**
+ * Canonical URL of the Google Business Profile listing, built from the place's
+ * CID. Used for `hasMap`, `sameAs` and the contact-page directions link.
+ */
+export const GOOGLE_MAPS_URL =
+  "https://maps.google.com/?cid=11268501547776904199";
+
+/**
+ * Embed URL for the contact-page map. Loaded only after the visitor asks for it
+ * (see components/MapEmbed.tsx) so the Maps payload never touches first load.
+ */
+export const GOOGLE_MAPS_EMBED_URL =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2239.5075822360404!2d-4.269405!3d55.853859400000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4888471ab46983e5%3A0x9c61c274622e8c07!2sAsbestos%20Removal%20Environmental!5e0!3m2!1sen!2s!4v1785322718624!5m2!1sen!2s";
+
+/**
+ * Authoritative third-party profiles for the company, emitted as schema.org
+ * `sameAs`. This is the main lever we control for getting Google to treat
+ * "Asbestos Removal Environmental" as an entity rather than a generic phrase —
+ * each entry corroborates the same name, address and company number.
+ * Add verified profiles only (Companies House, GBP, trade bodies) — never a
+ * social account that doesn't exist yet.
+ */
+export const SAME_AS: string[] = [
+  GOOGLE_MAPS_URL,
+  "https://find-and-update.company-information.service.gov.uk/company/SC889602",
+];
+
+/**
  * Internal inbox that receives quote-form notifications (app/api/quote).
  * Not public NAP — customer-facing contact details live in BUSINESS above.
  */

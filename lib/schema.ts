@@ -2,7 +2,14 @@
 // JSON-LD builders (SPEC.md §3.4). LocalBusiness (ProfessionalService) sitewide,
 // Service per service page, FAQPage for every FAQ section, BreadcrumbList on inner
 // pages. NEVER emit an HSE licence credential — UKATA training only.
-import { SITE_URL, BUSINESS, SERVICE_AREAS } from "./constants";
+import {
+  SITE_URL,
+  BUSINESS,
+  SERVICE_AREAS,
+  GEO,
+  GOOGLE_MAPS_URL,
+  SAME_AS,
+} from "./constants";
 import { SCHEMA_CREDENTIALS, SCOPE_STATEMENT } from "./claims";
 
 export const BUSINESS_ID = `${SITE_URL}/#business`;
@@ -23,7 +30,15 @@ export function localBusinessSchema() {
     "@type": "ProfessionalService",
     "@id": BUSINESS_ID,
     name: BUSINESS.legalName,
-    alternateName: BUSINESS.tradingName,
+    // The registered name is the entity Google should attach the brand to.
+    // `alternateName` carries every form people actually search: the short
+    // trading name, and the registered name without the "LTD" suffix.
+    legalName: BUSINESS.legalName,
+    alternateName: [
+      BUSINESS.tradingName,
+      "Asbestos Removal Environmental",
+      "Asbestos Removal Environmental Ltd",
+    ],
     description: SCOPE_STATEMENT,
     slogan: "Breathe Easy",
     url: SITE_URL,
@@ -43,10 +58,13 @@ export function localBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      // Approximate — SMK Business Centre, Tradeston, Glasgow G5. Refine at launch.
-      latitude: 55.8541,
-      longitude: -4.2649,
+      // Verified against the Google Business Profile pin (lib/constants.ts GEO).
+      latitude: GEO.latitude,
+      longitude: GEO.longitude,
     },
+    hasMap: GOOGLE_MAPS_URL,
+    // Corroborating profiles — the entity signal behind brand-name searches.
+    sameAs: SAME_AS,
     areaServed: AREA_SERVED,
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",

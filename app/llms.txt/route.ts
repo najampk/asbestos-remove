@@ -16,6 +16,7 @@ import {
   LICENSING_FAQ_ANSWER,
   FOUNDER_EXPERIENCE,
   PLACEHOLDERS,
+  INSURANCE_STATEMENT,
 } from "@/lib/claims";
 import { SERVICES } from "@/lib/services";
 import { SECTORS } from "@/lib/sectors";
@@ -47,6 +48,8 @@ export function GET(): Response {
 ${BUSINESS.tradingName} is the trading name of ${BUSINESS.legalName} (Company No. ${BUSINESS.companyNumber}), a Glasgow asbestos contractor led by a founder with ${FOUNDER_EXPERIENCE}. Operatives are UKATA-trained, and the company is a SEPA registered waste carrier (${PLACEHOLDERS.wasteCarrierNo}) authorised to transport waste in Scotland. Based at ${ADDRESS_ONE_LINE}. Phone ${BUSINESS.phoneDisplay}, email ${BUSINESS.emailGeneral}. Serving Glasgow and the surrounding areas (Paisley, Hamilton, Motherwell, East Kilbride, Clydebank, Cumbernauld, Livingston, Edinburgh), with projects undertaken Scotland-wide. The team includes a certified plumber and a certified joiner, both asbestos trained, and is available 24 hours a day, 7 days a week.
 
 Licensing status: ${LICENSING_FAQ_ANSWER}
+
+Insurance: ${INSURANCE_STATEMENT}
 
 ## Services
 

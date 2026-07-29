@@ -17,10 +17,10 @@ export const metadata = buildMetadata({
 const schema = articleSchema({
   headline: "How to Tell If You Have Asbestos",
   description:
-    "A practical identification guide: reading property age, recognising the common asbestos-containing materials in UK homes and Glasgow housing types, and when to stop looking and get a sample tested.",
+    "A practical identification guide: reading property age, recognising the common asbestos-containing materials in UK homes and Glasgow housing types, spotting insulating board and cement cladding, and when to stop looking and get a sample tested.",
   path: "/guides/how-to-identify-asbestos",
   datePublished: "2026-07-18",
-  dateModified: "2026-07-21",
+  dateModified: "2026-07-29",
 });
 
 // The everyday materials, in roughly the order we get asked about them.
@@ -92,6 +92,26 @@ const FAQS: FAQ[] = [
     question: "What does asbestos in Artex look like?",
     answer:
       "Exactly like Artex without asbestos in it — same swirls, same stipple, same colour. No one can tell by looking, including surveyors. The age of the coating is a clue (pre-1985 is higher probability) but the only answer that means anything is a lab result, which costs around £30 and takes a few days.",
+  },
+  {
+    question: "How can you tell if something is asbestos just by looking at it?",
+    answer:
+      "You can't, and that is the single most important thing on this page. Asbestos fibres are microscopic, and the products they were mixed into were designed to look like ordinary building materials — because that is what they were. There is no colour, no smell and no texture that confirms it. What looking gets you is a sensible shortlist: the age of the building, the type of product, and where in the property it sits. Corrugated grey sheeting on a pre-2000 garage is a strong candidate. A textured ceiling in a 1970s flat is a strong candidate. Neither is a diagnosis. The only thing that turns a candidate into an answer is a small sample analysed under a microscope at an accredited laboratory, which costs around £25–£60.",
+  },
+  {
+    question: "How do I find out if I have asbestos without disturbing anything?",
+    answer:
+      "Start with paperwork rather than a screwdriver. If you are in a factored block, a housing association property or a rented home, an asbestos register or survey may already exist — ask the factor, landlord or managing agent, because for common areas of non-domestic and shared buildings the dutyholder is legally required under CAR 2012 Regulation 4 to have identified it. Next, check your own documents: a home report, a previous survey or refurbishment records from a past sale often name materials directly. After that comes the build date, which narrows it more than anything else. Only when all of that leaves a genuine question mark does anyone need to take a sample, and at that point have someone do it properly rather than breaking a piece off yourself.",
+  },
+  {
+    question: "How do I identify asbestos insulating board (AIB)?",
+    answer:
+      "Carefully, and preferably not at all by hand. Insulating board is a soft, low-density board — noticeably lighter and more fibrous than cement sheet, usually pale grey or off-white, often with a slightly furry cut edge. It was used for ceiling tiles, airing cupboard and service riser linings, soffits, bath panels, heater cupboards, partition infills and fire protection around steelwork, mostly from the 1950s to the early 1980s. It matters more than the other materials because most AIB work is licensable and legally requires an HSE licensed contractor — and because it releases fibres far more readily than bonded cement does. The practical test people use is weight and hardness: cement sheet is dense and rings when tapped, insulating board is light and sounds dull. That is a clue, not a confirmation, and it is not worth handling the board to find out. If you suspect AIB, leave it alone and have a professional sample it.",
+  },
+  {
+    question: "What does asbestos cement cladding or siding look like?",
+    answer:
+      "Flat or lightly profiled grey panels, roughly 4–6 mm thick, often on gable ends, porch panels, dormer cheeks, soffits and the walls of outbuildings and garages. It is the same material as corrugated roofing, just pressed flat, so it weathers the same way — chalky surface, moss in the shaded parts, hairline cracking at fixings. Americans call it siding; in the UK it is cladding or wall panels. Like every other cement product it is bonded, lower-risk and non-licensed work to remove while it is intact, and like every other product it cannot be confirmed without a test.",
   },
   {
     question: "Why does Glasgow have so much asbestos?",
@@ -322,16 +342,16 @@ export default function HowToIdentifyAsbestosPage() {
             title="Next steps"
             links={[
               {
+                label: "Asbestos Testing",
+                href: "/services/asbestos-testing",
+                description:
+                  "The only thing that turns a maybe into an answer — from £25 a sample.",
+              },
+              {
                 label: "Asbestos Surveys",
                 href: "/services/asbestos-surveys",
                 description:
-                  "Professional sampling and surveys with UKAS accredited lab analysis.",
-              },
-              {
-                label: "Clarity Check",
-                href: "/clarity-check",
-                description:
-                  "Explore a typical property and see where asbestos usually hides.",
+                  "Whole-building identification, registers and HSG264 reports.",
               },
               {
                 label: "Asbestos Removal Costs",

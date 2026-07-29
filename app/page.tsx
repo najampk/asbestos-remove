@@ -28,10 +28,13 @@ import {
 } from "@/lib/claims";
 import { buildMetadata } from "@/lib/seo";
 
+// The homepage title is the one place the registered company name can sit at
+// full weight without breaking the ≤60-char rule on every other page, so it
+// carries both the head keyword and the brand people search by name.
 export const metadata = buildMetadata({
-  title: "Asbestos Removal Glasgow | Surveys, Removal & Disposal",
+  title: "Asbestos Removal Glasgow | Asbestos Removal Environmental",
   description:
-    "Safe, compliant asbestos removal, surveys, disposal & management across Glasgow. UKATA-trained team, 30+ years' experience, free quotes. Call 07960 881102.",
+    "Asbestos Removal Environmental Ltd — safe, compliant asbestos removal, surveys, testing and disposal across Glasgow. UKATA-trained team. Call 07960 881102.",
   path: "/",
   titleAbsolute: true,
 });
