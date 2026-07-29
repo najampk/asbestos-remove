@@ -73,6 +73,10 @@ export default function RootLayout({
     <html
       lang="en-GB"
       className={`${archivo.variable} ${inter.variable} ${plexMono.variable} h-full`}
+      // globals.css sets `scroll-behavior: smooth`. Declaring it here too tells
+      // Next to suppress smooth scrolling during route transitions, so a page
+      // change lands at the top instantly instead of animating there.
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col bg-surface pb-16 text-ink antialiased lg:pb-0">

@@ -149,6 +149,11 @@ export default function Header() {
             alt=""
             width={1254}
             height={1254}
+            // Rendered into a fixed 56px box (h-14 w-14). Without `sizes`, Next
+            // builds a srcset of 1920w/3840w from the intrinsic width and the
+            // browser downloads a ~2-4k image for a 56px slot — on every page,
+            // and it is the LCP element on pages without a hero image.
+            sizes="56px"
             className="h-14 w-14 transition-transform duration-300 group-hover:scale-105"
             priority
           />

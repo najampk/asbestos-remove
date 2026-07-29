@@ -72,6 +72,10 @@ export default function Footer() {
               alt=""
               width={1254}
               height={1254}
+              // Fills a fixed 64px box (h-16 w-16, less 6px padding). Same
+              // reason as the header logo — without `sizes` the browser pulls a
+              // multi-thousand-pixel image for a thumbnail-sized slot.
+              sizes="64px"
               className="h-full w-full object-contain"
             />
           </div>

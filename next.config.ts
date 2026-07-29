@@ -17,6 +17,10 @@ const securityHeaders = [
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
+      // The contact-page map (components/MapEmbed.tsx) embeds Google Maps.
+      // Without this, `default-src 'self'` blocks the iframe and Chrome shows
+      // "This content is blocked. Contact the site owner to fix the issue."
+      "frame-src 'self' https://www.google.com https://maps.google.com",
       "object-src 'none'",
       `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
       "style-src 'self' 'unsafe-inline'",
