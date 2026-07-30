@@ -34,7 +34,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Asbestos Removal Glasgow | Asbestos Removal Environmental",
   description:
-    "Asbestos Removal Environmental Ltd — safe, compliant asbestos removal, surveys, testing and disposal across Glasgow. UKATA-trained team. Call 07960 881102.",
+    "Asbestos Removal Environmental Ltd — safe, compliant asbestos removal, surveys, testing and disposal across Glasgow. UKATA-trained team. Call 07908 837025.",
   path: "/",
   titleAbsolute: true,
 });

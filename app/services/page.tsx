@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Asbestos Services Glasgow",
   description:
-    "Complete asbestos services in Glasgow: surveys & testing, compliant removal, certified disposal and ongoing management plans. Free fixed quotes — 07960 881102.",
+    "Complete asbestos services in Glasgow: surveys & testing, compliant removal, certified disposal and ongoing management plans. Free fixed quotes — 07908 837025.",
   path: "/services",
 });
 

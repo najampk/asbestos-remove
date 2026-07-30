@@ -9,10 +9,10 @@ import { BUSINESS, ADDRESS_ONE_LINE, OPENING_HOURS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact Asbestos Remove Glasgow | Free Quotes 07960 881102",
+  title: "Contact Asbestos Remove Glasgow | Free Quotes 07908 837025",
   titleAbsolute: true,
   description:
-    "Get a free asbestos survey or removal quote in Glasgow. Call 07960 881102, email info@asbestosremove.co.uk or use our quick quote form.",
+    "Get a free asbestos survey or removal quote in Glasgow. Call 07908 837025, email info@asbestosremove.co.uk or use our quick quote form.",
   path: "/contact",
 });
 

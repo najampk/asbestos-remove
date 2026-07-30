@@ -195,12 +195,12 @@ Home
 ## 4. Global Elements — Copy
 
 ### 4.1 Header nav
-`Home · Services ▾ · Sectors ▾ · About · Contact` + `☎ 07960 881102` + button **Get a Free Quote** → /contact
+`Home · Services ▾ · Sectors ▾ · About · Contact` + `☎ 07908 837025` + button **Get a Free Quote** → /contact
 
 ### 4.2 CTA Band (every page, pre-footer)
 > **Think you've found asbestos? Don't disturb it.**
 > Leave the area, avoid touching the material, and call our Glasgow team for fast, professional advice.
-> [Call 07960 881102] [Request a Free Quote]
+> [Call 07908 837025] [Request a Free Quote]
 
 ### 4.3 Footer legal strip
 > Asbestos Remove is a trading name of ASBESTOS REMOVAL ENVIRONMENTAL LTD. Registered in Scotland, company number SC889602. Registered office: Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE.
@@ -213,7 +213,7 @@ Home
 # 5.1 HOMEPAGE — `/`
 
 **Meta title:** Asbestos Removal Glasgow | Surveys, Removal & Disposal — Asbestos Remove
-**Meta description:** Safe, compliant asbestos removal, surveys, disposal & management across Glasgow. UKATA-trained team, 30+ years' experience, free quotes. Call 07960 881102.
+**Meta description:** Safe, compliant asbestos removal, surveys, disposal & management across Glasgow. UKATA-trained team, 30+ years' experience, free quotes. Call 07908 837025.
 
 ### Hero
 - **Eyebrow (mono):** UKATA-TRAINED SPECIALISTS · GLASGOW & SURROUNDING AREAS
@@ -270,7 +270,7 @@ Home
 # 5.2 SERVICES HUB — `/services`
 
 **Meta title:** Asbestos Services Glasgow | Surveys, Removal, Disposal & Management
-**Meta description:** Complete asbestos services in Glasgow: surveys & testing, compliant removal, certified disposal and ongoing management plans. Free fixed quotes — 07960 881102.
+**Meta description:** Complete asbestos services in Glasgow: surveys & testing, compliant removal, certified disposal and ongoing management plans. Free fixed quotes — 07908 837025.
 
 - **H1:** Asbestos Services in Glasgow
 - **Intro (GEO block):** From first suspicion to final documentation, Asbestos Remove provides every asbestos service under one roof — surveying, compliant removal, certified disposal and long-term management — across Glasgow and surrounding areas.
@@ -333,7 +333,7 @@ Cross-links: Surveys (before), Disposal (after), Industrial sector. CTA Band.
 # 5.5 ASBESTOS DISPOSAL — `/services/asbestos-disposal`
 
 **Meta title:** Certified Asbestos Disposal & Collection Glasgow | Asbestos Remove
-**Meta description:** Fully certified asbestos disposal in Glasgow. SEPA-compliant collection, consignment notes and licensed facility disposal. No risk left behind. Call 07960 881102.
+**Meta description:** Fully certified asbestos disposal in Glasgow. SEPA-compliant collection, consignment notes and licensed facility disposal. No risk left behind. Call 07908 837025.
 
 - **H1:** Certified Asbestos Disposal in Glasgow
 - **GEO block:** Asbestos waste is classified as special (hazardous) waste in Scotland and must be transported by a registered carrier and disposed of at a licensed facility. We handle the entire chain — double-bagging, sealed transport, consignment notes and disposal certificates — so your legal duty of care is fully discharged.
@@ -455,13 +455,13 @@ CTA Band.
 
 # 5.11 CONTACT — `/contact`
 
-**Meta title:** Contact Asbestos Remove Glasgow | Free Quotes — 07960 881102
-**Meta description:** Get a free asbestos survey or removal quote in Glasgow. Call 07960 881102, email info@asbestosremove.co.uk or send photos through our quick quote form.
+**Meta title:** Contact Asbestos Remove Glasgow | Free Quotes — 07908 837025
+**Meta description:** Get a free asbestos survey or removal quote in Glasgow. Call 07908 837025, email info@asbestosremove.co.uk or send photos through our quick quote form.
 
 - **H1:** Get Your Free Asbestos Quote
 - **Layout:** 2-col — QuoteForm left, contact details + map right.
 - **Contact block (semantic `<address>`):**
-  - ☎ 07960 881102 (tel: link)
+  - ☎ 07908 837025 (tel: link)
   - ✉ info@asbestosremove.co.uk (general) · qd@asbestosremove.co.uk (direct)
   - 📍 Unit 4, 95 Morrison Street, SMK Business Centre, The Piazza, Glasgow, G5 8BE
   - Hours: [CONFIRM — e.g. Mon–Fri 8:00–18:00, 24/7 emergency line?]

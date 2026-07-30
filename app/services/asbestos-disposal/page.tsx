@@ -12,7 +12,7 @@ import { PLACEHOLDERS } from "@/lib/claims";
 export const metadata = buildMetadata({
   title: "Certified Asbestos Disposal Glasgow",
   description:
-    "Fully certified asbestos disposal in Glasgow. SEPA-compliant collection, consignment notes and licensed facility disposal. No risk left behind. Call 07960 881102.",
+    "Fully certified asbestos disposal in Glasgow. SEPA-compliant collection, consignment notes and licensed facility disposal. No risk left behind. Call 07908 837025.",
   path: "/services/asbestos-disposal",
 });
 
